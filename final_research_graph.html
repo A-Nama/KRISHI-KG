@@ -1,0 +1,820 @@
+<html>
+    <head>
+        <meta charset="utf-8">
+        
+            <script src="lib/bindings/utils.js"></script>
+            <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/vis-network/9.1.2/dist/dist/vis-network.min.css" integrity="sha512-WgxfT5LWjfszlPHXRmBWHkV2eceiWTOBvrKCNbdgDYTHrT2AeLCGbF4sZlZw3UMN3WtL0tGUoIAKsu8mllg/XA==" crossorigin="anonymous" referrerpolicy="no-referrer" />
+            <script src="https://cdnjs.cloudflare.com/ajax/libs/vis-network/9.1.2/dist/vis-network.min.js" integrity="sha512-LnvoEWDFrqGHlHmDD2101OrLcbsfkrzoSpvtSQtxK3RMnRV0eOkhhBN2dXHKRrUU8p2DGRTk35n4O8nWSVe1mQ==" crossorigin="anonymous" referrerpolicy="no-referrer"></script>
+            
+                <link href="lib/tom-select/tom-select.css" rel="stylesheet">
+                <script src="lib/tom-select/tom-select.complete.min.js"></script>
+            
+        
+<center>
+<h1></h1>
+</center>
+
+<!-- <link rel="stylesheet" href="../node_modules/vis/dist/vis.min.css" type="text/css" />
+<script type="text/javascript" src="../node_modules/vis/dist/vis.js"> </script>-->
+        <link
+          href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.0-beta3/dist/css/bootstrap.min.css"
+          rel="stylesheet"
+          integrity="sha384-eOJMYsd53ii+scO/bJGFsiCZc+5NDVN2yr8+0RDqr0Ql0h+rP48ckxlpbzKgwra6"
+          crossorigin="anonymous"
+        />
+        <script
+          src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.0-beta3/dist/js/bootstrap.bundle.min.js"
+          integrity="sha384-JEW9xMcG8R+pH31jmWH6WWP0WintQrMb4s7ZOdauHnUtxwoG2vI5DkLtS3qm9Ekf"
+          crossorigin="anonymous"
+        ></script>
+
+
+        <center>
+          <h1></h1>
+        </center>
+        <style type="text/css">
+
+             #mynetwork {
+                 width: 100%;
+                 height: 800px;
+                 background-color: #0d1117;
+                 border: 1px solid lightgray;
+                 position: relative;
+                 float: left;
+             }
+
+             
+             #loadingBar {
+                 position:absolute;
+                 top:0px;
+                 left:0px;
+                 width: 100%;
+                 height: 800px;
+                 background-color:rgba(200,200,200,0.8);
+                 -webkit-transition: all 0.5s ease;
+                 -moz-transition: all 0.5s ease;
+                 -ms-transition: all 0.5s ease;
+                 -o-transition: all 0.5s ease;
+                 transition: all 0.5s ease;
+                 opacity:1;
+             }
+
+             #bar {
+                 position:absolute;
+                 top:0px;
+                 left:0px;
+                 width:20px;
+                 height:20px;
+                 margin:auto auto auto auto;
+                 border-radius:11px;
+                 border:2px solid rgba(30,30,30,0.05);
+                 background: rgb(0, 173, 246); /* Old browsers */
+                 box-shadow: 2px 0px 4px rgba(0,0,0,0.4);
+             }
+
+             #border {
+                 position:absolute;
+                 top:10px;
+                 left:10px;
+                 width:500px;
+                 height:23px;
+                 margin:auto auto auto auto;
+                 box-shadow: 0px 0px 4px rgba(0,0,0,0.2);
+                 border-radius:10px;
+             }
+
+             #text {
+                 position:absolute;
+                 top:8px;
+                 left:530px;
+                 width:30px;
+                 height:50px;
+                 margin:auto auto auto auto;
+                 font-size:22px;
+                 color: #000000;
+             }
+
+             div.outerBorder {
+                 position:relative;
+                 top:400px;
+                 width:600px;
+                 height:44px;
+                 margin:auto auto auto auto;
+                 border:8px solid rgba(0,0,0,0.1);
+                 background: rgb(252,252,252); /* Old browsers */
+                 background: -moz-linear-gradient(top,  rgba(252,252,252,1) 0%, rgba(237,237,237,1) 100%); /* FF3.6+ */
+                 background: -webkit-gradient(linear, left top, left bottom, color-stop(0%,rgba(252,252,252,1)), color-stop(100%,rgba(237,237,237,1))); /* Chrome,Safari4+ */
+                 background: -webkit-linear-gradient(top,  rgba(252,252,252,1) 0%,rgba(237,237,237,1) 100%); /* Chrome10+,Safari5.1+ */
+                 background: -o-linear-gradient(top,  rgba(252,252,252,1) 0%,rgba(237,237,237,1) 100%); /* Opera 11.10+ */
+                 background: -ms-linear-gradient(top,  rgba(252,252,252,1) 0%,rgba(237,237,237,1) 100%); /* IE10+ */
+                 background: linear-gradient(to bottom,  rgba(252,252,252,1) 0%,rgba(237,237,237,1) 100%); /* W3C */
+                 filter: progid:DXImageTransform.Microsoft.gradient( startColorstr='#fcfcfc', endColorstr='#ededed',GradientType=0 ); /* IE6-9 */
+                 border-radius:72px;
+                 box-shadow: 0px 0px 10px rgba(0,0,0,0.2);
+             }
+             
+
+             
+
+             
+        </style>
+    </head>
+
+
+    <body>
+        <div class="card" style="width: 100%">
+            
+                <div id="select-menu" class="card-header">
+                    <div class="row no-gutters">
+                        <div class="col-10 pb-2">
+                            <select
+                            class="form-select"
+                            aria-label="Default select example"
+                            onchange="selectNode([value]);"
+                            id="select-node"
+                            placeholder="Select node..."
+                            >
+                                <option selected>Select a Node by ID</option>
+                                
+                                    <option value="ജലസേചനമില്ലാതെ ലാഭകരമായ കൃഷി
+(Unmapped)">ജലസേചനമില്ലാതെ ലാഭകരമായ കൃഷി
+(Unmapped)</option>
+                                
+                                    <option value="ജലസേചനമില്ലാതെ ലാഭകരമായ കൃഷി">ജലസേചനമില്ലാതെ ലാഭകരമായ കൃഷി</option>
+                                
+                                    <option value="ജലസേചിത കൃഷി
+(Unmapped)">ജലസേചിത കൃഷി
+(Unmapped)</option>
+                                
+                                    <option value="ജലസേചിത കൃഷി">ജലസേചിത കൃഷി</option>
+                                
+                                    <option value="കൃഷിക്കാലം
+(Unmapped)">കൃഷിക്കാലം
+(Unmapped)</option>
+                                
+                                    <option value="കൃഷിക്കാലം">കൃഷിക്കാലം</option>
+                                
+                                    <option value="വിളനിർണയം
+(Unmapped)">വിളനിർണയം
+(Unmapped)</option>
+                                
+                                    <option value="വിളനിർണയം">വിളനിർണയം</option>
+                                
+                                    <option value="കൃഷിരീതികൾ
+(Unmapped)">കൃഷിരീതികൾ
+(Unmapped)</option>
+                                
+                                    <option value="കൃഷിരീതികൾ">കൃഷിരീതികൾ</option>
+                                
+                                    <option value="മണ്ണ് കിളച്ചുമറിക്കൽ രീതികൾ
+(Unmapped)">മണ്ണ് കിളച്ചുമറിക്കൽ രീതികൾ
+(Unmapped)</option>
+                                
+                                    <option value="മണ്ണ് കിളച്ചുമറിക്കൽ രീതികൾ">മണ്ണ് കിളച്ചുമറിക്കൽ രീതികൾ</option>
+                                
+                                    <option value="ഭൂമി ഒരുക്കുന്ന സമയം
+(Unmapped)">ഭൂമി ഒരുക്കുന്ന സമയം
+(Unmapped)</option>
+                                
+                                    <option value="ഭൂമി ഒരുക്കുന്ന സമയം">ഭൂമി ഒരുക്കുന്ന സമയം</option>
+                                
+                                    <option value="T രീതി (ഷീൽഡ്) അല്ലെങ്കിൽ പാച്ച് രീതി
+(Unmapped)">T രീതി (ഷീൽഡ്) അല്ലെങ്കിൽ പാച്ച് രീതി
+(Unmapped)</option>
+                                
+                                    <option value="T രീതി (ഷീൽഡ്) അല്ലെങ്കിൽ പാച്ച് രീതി">T രീതി (ഷീൽഡ്) അല്ലെങ്കിൽ പാച്ച് രീതി</option>
+                                
+                                    <option value="നഴ്സറിയിൽ
+(Unmapped)">നഴ്സറിയിൽ
+(Unmapped)</option>
+                                
+                                    <option value="നഴ്സറിയിൽ">നഴ്സറിയിൽ</option>
+                                
+                                    <option value="ഇൻ-സിറ്റു ബഡ്ഡിംഗ്
+(Unmapped)">ഇൻ-സിറ്റു ബഡ്ഡിംഗ്
+(Unmapped)</option>
+                                
+                                    <option value="ഇൻ-സിറ്റു ബഡ്ഡിംഗ്">ഇൻ-സിറ്റു ബഡ്ഡിംഗ്</option>
+                                
+                                    <option value="റൂട്ട്സ്റ്റോക്ക് തൈകൾ
+(Unmapped)">റൂട്ട്സ്റ്റോക്ക് തൈകൾ
+(Unmapped)</option>
+                                
+                                    <option value="റൂട്ട്സ്റ്റോക്ക് തൈകൾ">റൂട്ട്സ്റ്റോക്ക് തൈകൾ</option>
+                                
+                                    <option value="വിത്തുകൾ വേർതിരിച്ചെടുക്കുന്നു
+(Unmapped)">വിത്തുകൾ വേർതിരിച്ചെടുക്കുന്നു
+(Unmapped)</option>
+                                
+                                    <option value="വിത്തുകൾ വേർതിരിച്ചെടുക്കുന്നു">വിത്തുകൾ വേർതിരിച്ചെടുക്കുന്നു</option>
+                                
+                                    <option value="കോൺ H2SO4
+(Unmapped)">കോൺ H2SO4
+(Unmapped)</option>
+                                
+                                    <option value="കോൺ H2SO4">കോൺ H2SO4</option>
+                                
+                                    <option value="വിത്തുകൾ കോൺ H2SO4 ഉപയോഗിച്ച് 3 മിനിറ്റ് പുരട്ടണം
+(Unmapped)">വിത്തുകൾ കോൺ H2SO4 ഉപയോഗിച്ച് 3 മിനിറ്റ് പുരട്ടണം
+(Unmapped)</option>
+                                
+                                    <option value="വിത്തുകൾ കോൺ H2SO4 ഉപയോഗിച്ച് 3 മിനിറ്റ് പുരട്ടണം">വിത്തുകൾ കോൺ H2SO4 ഉപയോഗിച്ച് 3 മിനിറ്റ് പുരട്ടണം</option>
+                                
+                                    <option value="500 ppm ഗിബ്ബെറലിക് ആസിഡിൽ
+(Unmapped)">500 ppm ഗിബ്ബെറലിക് ആസിഡിൽ
+(Unmapped)</option>
+                                
+                                    <option value="500 ppm ഗിബ്ബെറലിക് ആസിഡിൽ">500 ppm ഗിബ്ബെറലിക് ആസിഡിൽ</option>
+                                
+                                    <option value="വെള്ളത്തിൽ കഴുകി 500 ppm ഗിബ്ബെറലിക് ആസിഡിൽ 24 മണിക്കൂർ മുക്കിവയ്ക്കണം
+(Unmapped)">വെള്ളത്തിൽ കഴുകി 500 ppm ഗിബ്ബെറലിക് ആസിഡിൽ 24 മണിക്കൂർ മുക്കിവയ്ക്കണം
+(Unmapped)</option>
+                                
+                                    <option value="വെള്ളത്തിൽ കഴുകി 500 ppm ഗിബ്ബെറലിക് ആസിഡിൽ 24 മണിക്കൂർ മുക്കിവയ്ക്കണം">വെള്ളത്തിൽ കഴുകി 500 ppm ഗിബ്ബെറലിക് ആസിഡിൽ 24 മണിക്കൂർ മുക്കിവയ്ക്കണം</option>
+                                
+                                    <option value="നഴ്സറി ബെഡിലോ
+(Unmapped)">നഴ്സറി ബെഡിലോ
+(Unmapped)</option>
+                                
+                                    <option value="നഴ്സറി ബെഡിലോ">നഴ്സറി ബെഡിലോ</option>
+                                
+                                    <option value="പോട്ട് മിശ്രിതം നിറച്ച പോളിബാഗിലോ
+(Unmapped)">പോട്ട് മിശ്രിതം നിറച്ച പോളിബാഗിലോ
+(Unmapped)</option>
+                                
+                                    <option value="പോട്ട് മിശ്രിതം നിറച്ച പോളിബാഗിലോ">പോട്ട് മിശ്രിതം നിറച്ച പോളിബാഗിലോ</option>
+                                
+                                    <option value="വിതയ്ക്കാം
+(Unmapped)">വിതയ്ക്കാം
+(Unmapped)</option>
+                                
+                                    <option value="വിതയ്ക്കാം">വിതയ്ക്കാം</option>
+                                
+                                    <option value="നേന്ത്രവാഴയിലെ
+(Unmapped)">നേന്ത്രവാഴയിലെ
+(Unmapped)</option>
+                                
+                                    <option value="നേന്ത്രവാഴയിലെ">നേന്ത്രവാഴയിലെ</option>
+                                
+                                    <option value="സിഗറ്റോക്ക ഇലപ്പുള്ളി രോഗം
+(Unmapped)">സിഗറ്റോക്ക ഇലപ്പുള്ളി രോഗം
+(Unmapped)</option>
+                                
+                                    <option value="സിഗറ്റോക്ക ഇലപ്പുള്ളി രോഗം">സിഗറ്റോക്ക ഇലപ്പുള്ളി രോഗം</option>
+                                
+                                    <option value="നേന്ത്രൻ ഇനങ്ങളിൽ
+(Unmapped)">നേന്ത്രൻ ഇനങ്ങളിൽ
+(Unmapped)</option>
+                                
+                                    <option value="നേന്ത്രൻ ഇനങ്ങളിൽ">നേന്ത്രൻ ഇനങ്ങളിൽ</option>
+                                
+                                    <option value="റോബസ്റ്റ
+(Unmapped)">റോബസ്റ്റ
+(Unmapped)</option>
+                                
+                                    <option value="റോബസ്റ്റ">റോബസ്റ്റ</option>
+                                
+                                    <option value="പൂവൻ
+(Unmapped)">പൂവൻ
+(Unmapped)</option>
+                                
+                                    <option value="പൂവൻ">പൂവൻ</option>
+                                
+                                    <option value="പാളയംകോടൻ
+(Unmapped)">പാളയംകോടൻ
+(Unmapped)</option>
+                                
+                                    <option value="പാളയംകോടൻ">പാളയംകോടൻ</option>
+                                
+                                    <option value="സിഗറ്റോക്ക രോഗം
+(Unmapped)">സിഗറ്റോക്ക രോഗം
+(Unmapped)</option>
+                                
+                                    <option value="സിഗറ്റോക്ക രോഗം">സിഗറ്റോക്ക രോഗം</option>
+                                
+                                    <option value="സ്യൂഡോമൊണാസ് ഫ്ലൂറസെൻസ്
+(Unmapped)">സ്യൂഡോമൊണാസ് ഫ്ലൂറസെൻസ്
+(Unmapped)</option>
+                                
+                                    <option value="സ്യൂഡോമൊണാസ് ഫ്ലൂറസെൻസ്">സ്യൂഡോമൊണാസ് ഫ്ലൂറസെൻസ്</option>
+                                
+                                    <option value="ഇലകളിൽ തളിക്കുന്നത്
+(Unmapped)">ഇലകളിൽ തളിക്കുന്നത്
+(Unmapped)</option>
+                                
+                                    <option value="ഇലകളിൽ തളിക്കുന്നത്">ഇലകളിൽ തളിക്കുന്നത്</option>
+                                
+                                    <option value="ഗോമൂത്രം
+(Unmapped)">ഗോമൂത്രം
+(Unmapped)</option>
+                                
+                                    <option value="ഗോമൂത്രം">ഗോമൂത്രം</option>
+                                
+                                    <option value="പെട്രോളിയം അധിഷ്ഠിത ധാതു എണ്ണ
+(Unmapped)">പെട്രോളിയം അധിഷ്ഠിത ധാതു എണ്ണ
+(Unmapped)</option>
+                                
+                                    <option value="പെട്രോളിയം അധിഷ്ഠിത ധാതു എണ്ണ">പെട്രോളിയം അധിഷ്ഠിത ധാതു എണ്ണ</option>
+                                
+                                    <option value="ഇലകളിൽ തളിക്കുന്നതും
+(Unmapped)">ഇലകളിൽ തളിക്കുന്നതും
+(Unmapped)</option>
+                                
+                                    <option value="ഇലകളിൽ തളിക്കുന്നതും">ഇലകളിൽ തളിക്കുന്നതും</option>
+                                
+                                    <option value="ബോർഡോ മിശ്രിതം
+(Unmapped)">ബോർഡോ മിശ്രിതം
+(Unmapped)</option>
+                                
+                                    <option value="ബോർഡോ മിശ്രിതം">ബോർഡോ മിശ്രിതം</option>
+                                
+                                    <option value="കാർബെൻഡാസിം
+(Unmapped)">കാർബെൻഡാസിം
+(Unmapped)</option>
+                                
+                                    <option value="കാർബെൻഡാസിം">കാർബെൻഡാസിം</option>
+                                
+                                    <option value="പ്രൊപികൊണസോൾ
+(Unmapped)">പ്രൊപികൊണസോൾ
+(Unmapped)</option>
+                                
+                                    <option value="പ്രൊപികൊണസോൾ">പ്രൊപികൊണസോൾ</option>
+                                
+                                    <option value="ഡൈഫെൻകൊണസോൾ
+(Unmapped)">ഡൈഫെൻകൊണസോൾ
+(Unmapped)</option>
+                                
+                                    <option value="ഡൈഫെൻകൊണസോൾ">ഡൈഫെൻകൊണസോൾ</option>
+                                
+                                    <option value="മഞ്ചേരി നേന്ത്രൻ
+(Unmapped)">മഞ്ചേരി നേന്ത്രൻ
+(Unmapped)</option>
+                                
+                                    <option value="മഞ്ചേരി നേന്ത്രൻ">മഞ്ചേരി നേന്ത്രൻ</option>
+                                
+                                    <option value="രോഗം ബാധിച്ച ഇലകളുടെ 50% ഭാഗം കരിഞ്ഞിട്ടുണ്ടെങ്കിൽ അവ മുറിച്ചുമാറ്റണം
+(Unmapped)">രോഗം ബാധിച്ച ഇലകളുടെ 50% ഭാഗം കരിഞ്ഞിട്ടുണ്ടെങ്കിൽ അവ മുറിച്ചുമാറ്റണം
+(Unmapped)</option>
+                                
+                                    <option value="രോഗം ബാധിച്ച ഇലകളുടെ 50% ഭാഗം കരിഞ്ഞിട്ടുണ്ടെങ്കിൽ അവ മുറിച്ചുമാറ്റണം">രോഗം ബാധിച്ച ഇലകളുടെ 50% ഭാഗം കരിഞ്ഞിട്ടുണ്ടെങ്കിൽ അവ മുറിച്ചുമാറ്റണം</option>
+                                
+                                    <option value="ഒന്നോ മൂന്നോ ആഴ്ച ഇടവിട്ട് ഇലകളിൽ മരുന്ന് തളിക്കണം
+(Unmapped)">ഒന്നോ മൂന്നോ ആഴ്ച ഇടവിട്ട് ഇലകളിൽ മരുന്ന് തളിക്കണം
+(Unmapped)</option>
+                                
+                                    <option value="ഒന്നോ മൂന്നോ ആഴ്ച ഇടവിട്ട് ഇലകളിൽ മരുന്ന് തളിക്കണം">ഒന്നോ മൂന്നോ ആഴ്ച ഇടവിട്ട് ഇലകളിൽ മരുന്ന് തളിക്കണം</option>
+                                
+                                    <option value="മരുന്നുകൾ മാറിമാറി ഉപയോഗിക്കാൻ ശ്രദ്ധിക്കുക
+(Unmapped)">മരുന്നുകൾ മാറിമാറി ഉപയോഗിക്കാൻ ശ്രദ്ധിക്കുക
+(Unmapped)</option>
+                                
+                                    <option value="മരുന്നുകൾ മാറിമാറി ഉപയോഗിക്കാൻ ശ്രദ്ധിക്കുക">മരുന്നുകൾ മാറിമാറി ഉപയോഗിക്കാൻ ശ്രദ്ധിക്കുക</option>
+                                
+                                    <option value="ചവിട്ടു പമ്പ് (റോക്കർ സ്പ്രെയർ)
+(Unmapped)">ചവിട്ടു പമ്പ് (റോക്കർ സ്പ്രെയർ)
+(Unmapped)</option>
+                                
+                                    <option value="ചവിട്ടു പമ്പ് (റോക്കർ സ്പ്രെയർ)">ചവിട്ടു പമ്പ് (റോക്കർ സ്പ്രെയർ)</option>
+                                
+                                    <option value="പവർ സ്പ്രെയർ
+(Unmapped)">പവർ സ്പ്രെയർ
+(Unmapped)</option>
+                                
+                                    <option value="പവർ സ്പ്രെയർ">പവർ സ്പ്രെയർ</option>
+                                
+                                    <option value="മുകളിലെ ഇലകളിലും മരുന്ന് എത്തിക്കാൻ ശ്രദ്ധിക്കണം
+(Unmapped)">മുകളിലെ ഇലകളിലും മരുന്ന് എത്തിക്കാൻ ശ്രദ്ധിക്കണം
+(Unmapped)</option>
+                                
+                                    <option value="മുകളിലെ ഇലകളിലും മരുന്ന് എത്തിക്കാൻ ശ്രദ്ധിക്കണം">മുകളിലെ ഇലകളിലും മരുന്ന് എത്തിക്കാൻ ശ്രദ്ധിക്കണം</option>
+                                
+                                    <option value="ചക്ക
+(Unmapped)">ചക്ക
+(Unmapped)</option>
+                                
+                                    <option value="ചക്ക">ചക്ക</option>
+                                
+                                    <option value="സസ്യപ്രചരണം
+(Unmapped)">സസ്യപ്രചരണം
+(Unmapped)</option>
+                                
+                                    <option value="സസ്യപ്രചരണം">സസ്യപ്രചരണം</option>
+                                
+                                    <option value="10 മാസം പ്രായമുള്ള
+(Unmapped)">10 മാസം പ്രായമുള്ള
+(Unmapped)</option>
+                                
+                                    <option value="10 മാസം പ്രായമുള്ള">10 മാസം പ്രായമുള്ള</option>
+                                
+                                    <option value="അങ്കുരണം നടത്തുന്നു
+(Unmapped)">അങ്കുരണം നടത്തുന്നു
+(Unmapped)</option>
+                                
+                                    <option value="അങ്കുരണം നടത്തുന്നു">അങ്കുരണം നടത്തുന്നു</option>
+                                
+                                    <option value="തൈകൾ
+(Unmapped)">തൈകൾ
+(Unmapped)</option>
+                                
+                                    <option value="തൈകൾ">തൈകൾ</option>
+                                
+                                    <option value="ഗ്രാഫ്റ്റുകൾ
+(Unmapped)">ഗ്രാഫ്റ്റുകൾ
+(Unmapped)</option>
+                                
+                                    <option value="ഗ്രാഫ്റ്റുകൾ">ഗ്രാഫ്റ്റുകൾ</option>
+                                
+                                    <option value="3-4 മാസം പ്രായമുള്ള
+(Unmapped)">3-4 മാസം പ്രായമുള്ള
+(Unmapped)</option>
+                                
+                                    <option value="3-4 മാസം പ്രായമുള്ള">3-4 മാസം പ്രായമുള്ള</option>
+                                
+                                    <option value="1 മാസം പ്രായമുള്ള
+(Unmapped)">1 മാസം പ്രായമുള്ള
+(Unmapped)</option>
+                                
+                                    <option value="1 മാസം പ്രായമുള്ള">1 മാസം പ്രായമുള്ള</option>
+                                
+                                    <option value="സോഫ്റ്റ് വുഡ് ഗ്രാഫ്റ്റിംഗ് (ക്ലെഫ്റ്റ് രീതി)
+(Unmapped)">സോഫ്റ്റ് വുഡ് ഗ്രാഫ്റ്റിംഗ് (ക്ലെഫ്റ്റ് രീതി)
+(Unmapped)</option>
+                                
+                                    <option value="സോഫ്റ്റ് വുഡ് ഗ്രാഫ്റ്റിംഗ് (ക്ലെഫ്റ്റ് രീതി)">സോഫ്റ്റ് വുഡ് ഗ്രാഫ്റ്റിംഗ് (ക്ലെഫ്റ്റ് രീതി)</option>
+                                
+                                    <option value="വിത്തുകൾ
+(Unmapped)">വിത്തുകൾ
+(Unmapped)</option>
+                                
+                                    <option value="വിത്തുകൾ">വിത്തുകൾ</option>
+                                
+                                    <option value="വിതയ്ക്കണം
+(Unmapped)">വിതയ്ക്കണം
+(Unmapped)</option>
+                                
+                                    <option value="വിതയ്ക്കണം">വിതയ്ക്കണം</option>
+                                
+                                    <option value="രുദ്രാക്ഷി
+(Unmapped)">രുദ്രാക്ഷി
+(Unmapped)</option>
+                                
+                                    <option value="രുദ്രാക്ഷി">രുദ്രാക്ഷി</option>
+                                
+                                    <option value="എ. ഹിർസ്യൂട്ടും
+(Unmapped)">എ. ഹിർസ്യൂട്ടും
+(Unmapped)</option>
+                                
+                                    <option value="എ. ഹിർസ്യൂട്ടും">എ. ഹിർസ്യൂട്ടും</option>
+                                
+                                    <option value="റൂട്ട് സ്റ്റോക്കുകളായി
+(Unmapped)">റൂട്ട് സ്റ്റോക്കുകളായി
+(Unmapped)</option>
+                                
+                                    <option value="റൂട്ട് സ്റ്റോക്കുകളായി">റൂട്ട് സ്റ്റോക്കുകളായി</option>
+                                
+                                    <option value="ചക്കയിൽ
+(Unmapped)">ചക്കയിൽ
+(Unmapped)</option>
+                                
+                                    <option value="ചക്കയിൽ">ചക്കയിൽ</option>
+                                
+                                    <option value="പരിഷ്കരിച്ച ഫോർകെർട്ട് രീതിയിലുള്ള ബഡ്ഡിംഗും
+(Unmapped)">പരിഷ്കരിച്ച ഫോർകെർട്ട് രീതിയിലുള്ള ബഡ്ഡിംഗും
+(Unmapped)</option>
+                                
+                                    <option value="പരിഷ്കരിച്ച ഫോർകെർട്ട് രീതിയിലുള്ള ബഡ്ഡിംഗും">പരിഷ്കരിച്ച ഫോർകെർട്ട് രീതിയിലുള്ള ബഡ്ഡിംഗും</option>
+                                
+                                    <option value="മലയയിൽ
+(Unmapped)">മലയയിൽ
+(Unmapped)</option>
+                                
+                                    <option value="മലയയിൽ">മലയയിൽ</option>
+                                
+                                    <option value="എയർ ലെയറിംഗ്
+(Unmapped)">എയർ ലെയറിംഗ്
+(Unmapped)</option>
+                                
+                                    <option value="എയർ ലെയറിംഗ്">എയർ ലെയറിംഗ്</option>
+                                
+                                    <option value="പെച്ചിപ്പാറൈ (തമിഴ്നാട്)
+(Unmapped)">പെച്ചിപ്പാറൈ (തമിഴ്നാട്)
+(Unmapped)</option>
+                                
+                                    <option value="പെച്ചിപ്പാറൈ (തമിഴ്നാട്)">പെച്ചിപ്പാറൈ (തമിഴ്നാട്)</option>
+                                
+                                    <option value="ജനുവരി - ഫെബ്രുവരി
+(Unmapped)">ജനുവരി - ഫെബ്രുവരി
+(Unmapped)</option>
+                                
+                                    <option value="ജനുവരി - ഫെബ്രുവരി">ജനുവരി - ഫെബ്രുവരി</option>
+                                
+                                    <option value="ഒക്ടോബർ - നവംബർ
+(Unmapped)">ഒക്ടോബർ - നവംബർ
+(Unmapped)</option>
+                                
+                                    <option value="ഒക്ടോബർ - നവംബർ">ഒക്ടോബർ - നവംബർ</option>
+                                
+                                    <option value="3-5 മാസം പ്രായമുള്ള
+(Unmapped)">3-5 മാസം പ്രായമുള്ള
+(Unmapped)</option>
+                                
+                                    <option value="3-5 മാസം പ്രായമുള്ള">3-5 മാസം പ്രായമുള്ള</option>
+                                
+                                    <option value="റൂട്ട് സ്റ്റോക്ക് തൈകളിൽ
+(Unmapped)">റൂട്ട് സ്റ്റോക്ക് തൈകളിൽ
+(Unmapped)</option>
+                                
+                                    <option value="റൂട്ട് സ്റ്റോക്ക് തൈകളിൽ">റൂട്ട് സ്റ്റോക്ക് തൈകളിൽ</option>
+                                
+                                    <option value="പാച്ച് ബഡ്ഡിംഗ്
+(Unmapped)">പാച്ച് ബഡ്ഡിംഗ്
+(Unmapped)</option>
+                                
+                                    <option value="പാച്ച് ബഡ്ഡിംഗ്">പാച്ച് ബഡ്ഡിംഗ്</option>
+                                
+                                    <option value="ചെടികൾ
+(Unmapped)">ചെടികൾ
+(Unmapped)</option>
+                                
+                                    <option value="ചെടികൾ">ചെടികൾ</option>
+                                
+                                    <option value="8 മാസത്തിനുള്ളിൽ
+(Unmapped)">8 മാസത്തിനുള്ളിൽ
+(Unmapped)</option>
+                                
+                                    <option value="8 മാസത്തിനുള്ളിൽ">8 മാസത്തിനുള്ളിൽ</option>
+                                
+                                    <option value="1 മീറ്റർ ക്യൂബ് വലിപ്പമുള്ള കുഴികൾ 9-12 മീറ്റർ അകലത്തിൽ കുഴിച്ചെടുക്കുന്നു
+(Unmapped)">1 മീറ്റർ ക്യൂബ് വലിപ്പമുള്ള കുഴികൾ 9-12 മീറ്റർ അകലത്തിൽ കുഴിച്ചെടുക്കുന്നു
+(Unmapped)</option>
+                                
+                                    <option value="1 മീറ്റർ ക്യൂബ് വലിപ്പമുള്ള കുഴികൾ 9-12 മീറ്റർ അകലത്തിൽ കുഴിച്ചെടുക്കുന്നു">1 മീറ്റർ ക്യൂബ് വലിപ്പമുള്ള കുഴികൾ 9-12 മീറ്റർ അകലത്തിൽ കുഴിച്ചെടുക്കുന്നു</option>
+                                
+                                    <option value="മേൽമണ്ണ്
+(Unmapped)">മേൽമണ്ണ്
+(Unmapped)</option>
+                                
+                                    <option value="മേൽമണ്ണ്">മേൽമണ്ണ്</option>
+                                
+                                    <option value="10 കിലോഗ്രാം കാലിവളം
+(Unmapped)">10 കിലോഗ്രാം കാലിവളം
+(Unmapped)</option>
+                                
+                                    <option value="10 കിലോഗ്രാം കാലിവളം">10 കിലോഗ്രാം കാലിവളം</option>
+                                
+                                    <option value="മേൽമണ്ണും 10 കിലോഗ്രാം കാലിവളവും നിറയ്ക്കുന്നു
+(Unmapped)">മേൽമണ്ണും 10 കിലോഗ്രാം കാലിവളവും നിറയ്ക്കുന്നു
+(Unmapped)</option>
+                                
+                                    <option value="മേൽമണ്ണും 10 കിലോഗ്രാം കാലിവളവും നിറയ്ക്കുന്നു">മേൽമണ്ണും 10 കിലോഗ്രാം കാലിവളവും നിറയ്ക്കുന്നു</option>
+                                
+                                    <option value="ജൂൺ - സെപ്റ്റംബർ മാസങ്ങളിൽ
+(Unmapped)">ജൂൺ - സെപ്റ്റംബർ മാസങ്ങളിൽ
+(Unmapped)</option>
+                                
+                                    <option value="ജൂൺ - സെപ്റ്റംബർ മാസങ്ങളിൽ">ജൂൺ - സെപ്റ്റംബർ മാസങ്ങളിൽ</option>
+                                
+                                    <option value="ഒട്ടു തൈകൾ
+(Unmapped)">ഒട്ടു തൈകൾ
+(Unmapped)</option>
+                                
+                                    <option value="ഒട്ടു തൈകൾ">ഒട്ടു തൈകൾ</option>
+                                
+                                    <option value="കുഴികളുടെ മധ്യത്തിൽ ഒട്ടു തൈകൾ നടുന്നു
+(Unmapped)">കുഴികളുടെ മധ്യത്തിൽ ഒട്ടു തൈകൾ നടുന്നു
+(Unmapped)</option>
+                                
+                                    <option value="കുഴികളുടെ മധ്യത്തിൽ ഒട്ടു തൈകൾ നടുന്നു">കുഴികളുടെ മധ്യത്തിൽ ഒട്ടു തൈകൾ നടുന്നു</option>
+                                
+                                    <option value="ജലസേചനം
+(Unmapped)">ജലസേചനം
+(Unmapped)</option>
+                                
+                                    <option value="ജലസേചനം">ജലസേചനം</option>
+                                
+                                    <option value="ലൈഫ് ഇറിഗേഷൻ
+(Unmapped)">ലൈഫ് ഇറിഗേഷൻ
+(Unmapped)</option>
+                                
+                                    <option value="ലൈഫ് ഇറിഗേഷൻ">ലൈഫ് ഇറിഗേഷൻ</option>
+                                
+                                    <option value="4-ാം ദിവസം
+(Unmapped)">4-ാം ദിവസം
+(Unmapped)</option>
+                                
+                                    <option value="4-ാം ദിവസം">4-ാം ദിവസം</option>
+                                
+                                    <option value="ആഴ്ചയിൽ ഒരിക്കൽ
+(Unmapped)">ആഴ്ചയിൽ ഒരിക്കൽ
+(Unmapped)</option>
+                                
+                                    <option value="ആഴ്ചയിൽ ഒരിക്കൽ">ആഴ്ചയിൽ ഒരിക്കൽ</option>
+                                
+                                    <option value="തണ്ണീർത്തടത്തിൽ
+(Unmapped)">തണ്ണീർത്തടത്തിൽ
+(Unmapped)</option>
+                                
+                                    <option value="തണ്ണീർത്തടത്തിൽ">തണ്ണീർത്തടത്തിൽ</option>
+                                
+                                    <option value="10-15 ദിവസം
+(Unmapped)">10-15 ദിവസം
+(Unmapped)</option>
+                                
+                                    <option value="10-15 ദിവസം">10-15 ദിവസം</option>
+                                
+                                    <option value="വളപ്രയോഗം
+(Unmapped)">വളപ്രയോഗം
+(Unmapped)</option>
+                                
+                                    <option value="വളപ്രയോഗം">വളപ്രയോഗം</option>
+                                
+                                    <option value="തോട്ടഭൂമിയിൽ
+(Unmapped)">തോട്ടഭൂമിയിൽ
+(Unmapped)</option>
+                                
+                                    <option value="തോട്ടഭൂമിയിൽ">തോട്ടഭൂമിയിൽ</option>
+                                
+                                    <option value="നനയ്ക്കണം
+(Unmapped)">നനയ്ക്കണം
+(Unmapped)</option>
+                                
+                                    <option value="നനയ്ക്കണം">നനയ്ക്കണം</option>
+                                
+                                    <option value="ഡ്രിപ്പ് ഇറിഗേഷൻ
+(Unmapped)">ഡ്രിപ്പ് ഇറിഗേഷൻ
+(Unmapped)</option>
+                                
+                                    <option value="ഡ്രിപ്പ് ഇറിഗേഷൻ">ഡ്രിപ്പ് ഇറിഗേഷൻ</option>
+                                
+                                    <option value="നടീൽ മുതൽ 4-ാം മാസം വരെ
+(Unmapped)">നടീൽ മുതൽ 4-ാം മാസം വരെ
+(Unmapped)</option>
+                                
+                                    <option value="നടീൽ മുതൽ 4-ാം മാസം വരെ">നടീൽ മുതൽ 4-ാം മാസം വരെ</option>
+                                
+                                    <option value="5-ാം തീയതി മുതൽ വിളവെടുപ്പ് വരെ
+(Unmapped)">5-ാം തീയതി മുതൽ വിളവെടുപ്പ് വരെ
+(Unmapped)</option>
+                                
+                                    <option value="5-ാം തീയതി മുതൽ വിളവെടുപ്പ് വരെ">5-ാം തീയതി മുതൽ വിളവെടുപ്പ് വരെ</option>
+                                
+                                    <option value="വിളവെടുപ്പിന് 15 ദിവസം മുമ്പ് വരെ
+(Unmapped)">വിളവെടുപ്പിന് 15 ദിവസം മുമ്പ് വരെ
+(Unmapped)</option>
+                                
+                                    <option value="വിളവെടുപ്പിന് 15 ദിവസം മുമ്പ് വരെ">വിളവെടുപ്പിന് 15 ദിവസം മുമ്പ് വരെ</option>
+                                
+                            </select>
+                        </div>
+                        <div class="col-2 pb-2">
+                            <button type="button" class="btn btn-primary btn-block" onclick="neighbourhoodHighlight({nodes: []});">Reset Selection</button>
+                        </div>
+                    </div>
+                </div>
+            
+            
+            <div id="mynetwork" class="card-body"></div>
+        </div>
+
+        
+            <div id="loadingBar">
+              <div class="outerBorder">
+                <div id="text">0%</div>
+                <div id="border">
+                  <div id="bar"></div>
+                </div>
+              </div>
+            </div>
+        
+        
+
+        <script type="text/javascript">
+
+              // initialize global variables.
+              var edges;
+              var nodes;
+              var allNodes;
+              var allEdges;
+              var nodeColors;
+              var originalNodes;
+              var network;
+              var container;
+              var options, data;
+              var filter = {
+                  item : '',
+                  property : '',
+                  value : []
+              };
+
+              
+                  new TomSelect("#select-node",{
+                      create: false,
+                      sortField: {
+                          field: "text",
+                          direction: "asc"
+                      }
+                  });
+              
+
+              
+
+              // This method is responsible for drawing the graph, returns the drawn network
+              function drawGraph() {
+                  var container = document.getElementById('mynetwork');
+
+                  
+
+                  // parsing and collecting nodes and edges from the python
+                  nodes = new vis.DataSet([{"color": "#2ed573", "font": {"color": "white"}, "id": "\u0d1c\u0d32\u0d38\u0d47\u0d1a\u0d28\u0d2e\u0d3f\u0d32\u0d4d\u0d32\u0d3e\u0d24\u0d46 \u0d32\u0d3e\u0d2d\u0d15\u0d30\u0d2e\u0d3e\u0d2f \u0d15\u0d43\u0d37\u0d3f\n(Unmapped)", "label": "\u0d1c\u0d32\u0d38\u0d47\u0d1a\u0d28\u0d2e\u0d3f\u0d32\u0d4d\u0d32\u0d3e\u0d24\u0d46 \u0d32\u0d3e\u0d2d\u0d15\u0d30\u0d2e\u0d3e\u0d2f \u0d15\u0d43\u0d37\u0d3f\n(Unmapped)", "shape": "hexagon", "size": 40}, {"color": "#00a8ff", "font": {"color": "white"}, "id": "\u0d1c\u0d32\u0d38\u0d47\u0d1a\u0d28\u0d2e\u0d3f\u0d32\u0d4d\u0d32\u0d3e\u0d24\u0d46 \u0d32\u0d3e\u0d2d\u0d15\u0d30\u0d2e\u0d3e\u0d2f \u0d15\u0d43\u0d37\u0d3f", "label": "\u0d1c\u0d32\u0d38\u0d47\u0d1a\u0d28\u0d2e\u0d3f\u0d32\u0d4d\u0d32\u0d3e\u0d24\u0d46 \u0d32\u0d3e\u0d2d\u0d15\u0d30\u0d2e\u0d3e\u0d2f \u0d15\u0d43\u0d37\u0d3f", "shape": "dot", "size": 20, "title": "Dataset Lang: ml"}, {"color": "#2ed573", "font": {"color": "white"}, "id": "\u0d1c\u0d32\u0d38\u0d47\u0d1a\u0d3f\u0d24 \u0d15\u0d43\u0d37\u0d3f\n(Unmapped)", "label": "\u0d1c\u0d32\u0d38\u0d47\u0d1a\u0d3f\u0d24 \u0d15\u0d43\u0d37\u0d3f\n(Unmapped)", "shape": "hexagon", "size": 40}, {"color": "#00a8ff", "font": {"color": "white"}, "id": "\u0d1c\u0d32\u0d38\u0d47\u0d1a\u0d3f\u0d24 \u0d15\u0d43\u0d37\u0d3f", "label": "\u0d1c\u0d32\u0d38\u0d47\u0d1a\u0d3f\u0d24 \u0d15\u0d43\u0d37\u0d3f", "shape": "dot", "size": 20, "title": "Dataset Lang: ml"}, {"color": "#2ed573", "font": {"color": "white"}, "id": "\u0d15\u0d43\u0d37\u0d3f\u0d15\u0d4d\u0d15\u0d3e\u0d32\u0d02\n(Unmapped)", "label": "\u0d15\u0d43\u0d37\u0d3f\u0d15\u0d4d\u0d15\u0d3e\u0d32\u0d02\n(Unmapped)", "shape": "hexagon", "size": 40}, {"color": "#00a8ff", "font": {"color": "white"}, "id": "\u0d15\u0d43\u0d37\u0d3f\u0d15\u0d4d\u0d15\u0d3e\u0d32\u0d02", "label": "\u0d15\u0d43\u0d37\u0d3f\u0d15\u0d4d\u0d15\u0d3e\u0d32\u0d02", "shape": "dot", "size": 20, "title": "Dataset Lang: ml"}, {"color": "#2ed573", "font": {"color": "white"}, "id": "\u0d35\u0d3f\u0d33\u0d28\u0d3f\u0d7c\u0d23\u0d2f\u0d02\n(Unmapped)", "label": "\u0d35\u0d3f\u0d33\u0d28\u0d3f\u0d7c\u0d23\u0d2f\u0d02\n(Unmapped)", "shape": "hexagon", "size": 40}, {"color": "#00a8ff", "font": {"color": "white"}, "id": "\u0d35\u0d3f\u0d33\u0d28\u0d3f\u0d7c\u0d23\u0d2f\u0d02", "label": "\u0d35\u0d3f\u0d33\u0d28\u0d3f\u0d7c\u0d23\u0d2f\u0d02", "shape": "dot", "size": 20, "title": "Dataset Lang: ml"}, {"color": "#2ed573", "font": {"color": "white"}, "id": "\u0d15\u0d43\u0d37\u0d3f\u0d30\u0d40\u0d24\u0d3f\u0d15\u0d7e\n(Unmapped)", "label": "\u0d15\u0d43\u0d37\u0d3f\u0d30\u0d40\u0d24\u0d3f\u0d15\u0d7e\n(Unmapped)", "shape": "hexagon", "size": 40}, {"color": "#00a8ff", "font": {"color": "white"}, "id": "\u0d15\u0d43\u0d37\u0d3f\u0d30\u0d40\u0d24\u0d3f\u0d15\u0d7e", "label": "\u0d15\u0d43\u0d37\u0d3f\u0d30\u0d40\u0d24\u0d3f\u0d15\u0d7e", "shape": "dot", "size": 20, "title": "Dataset Lang: ml"}, {"color": "#2ed573", "font": {"color": "white"}, "id": "\u0d2e\u0d23\u0d4d\u0d23\u0d4d \u0d15\u0d3f\u0d33\u0d1a\u0d4d\u0d1a\u0d41\u0d2e\u0d31\u0d3f\u0d15\u0d4d\u0d15\u0d7d \u0d30\u0d40\u0d24\u0d3f\u0d15\u0d7e\n(Unmapped)", "label": "\u0d2e\u0d23\u0d4d\u0d23\u0d4d \u0d15\u0d3f\u0d33\u0d1a\u0d4d\u0d1a\u0d41\u0d2e\u0d31\u0d3f\u0d15\u0d4d\u0d15\u0d7d \u0d30\u0d40\u0d24\u0d3f\u0d15\u0d7e\n(Unmapped)", "shape": "hexagon", "size": 40}, {"color": "#00a8ff", "font": {"color": "white"}, "id": "\u0d2e\u0d23\u0d4d\u0d23\u0d4d \u0d15\u0d3f\u0d33\u0d1a\u0d4d\u0d1a\u0d41\u0d2e\u0d31\u0d3f\u0d15\u0d4d\u0d15\u0d7d \u0d30\u0d40\u0d24\u0d3f\u0d15\u0d7e", "label": "\u0d2e\u0d23\u0d4d\u0d23\u0d4d \u0d15\u0d3f\u0d33\u0d1a\u0d4d\u0d1a\u0d41\u0d2e\u0d31\u0d3f\u0d15\u0d4d\u0d15\u0d7d \u0d30\u0d40\u0d24\u0d3f\u0d15\u0d7e", "shape": "dot", "size": 20, "title": "Dataset Lang: ml"}, {"color": "#2ed573", "font": {"color": "white"}, "id": "\u0d2d\u0d42\u0d2e\u0d3f \u0d12\u0d30\u0d41\u0d15\u0d4d\u0d15\u0d41\u0d28\u0d4d\u0d28 \u0d38\u0d2e\u0d2f\u0d02\n(Unmapped)", "label": "\u0d2d\u0d42\u0d2e\u0d3f \u0d12\u0d30\u0d41\u0d15\u0d4d\u0d15\u0d41\u0d28\u0d4d\u0d28 \u0d38\u0d2e\u0d2f\u0d02\n(Unmapped)", "shape": "hexagon", "size": 40}, {"color": "#00a8ff", "font": {"color": "white"}, "id": "\u0d2d\u0d42\u0d2e\u0d3f \u0d12\u0d30\u0d41\u0d15\u0d4d\u0d15\u0d41\u0d28\u0d4d\u0d28 \u0d38\u0d2e\u0d2f\u0d02", "label": "\u0d2d\u0d42\u0d2e\u0d3f \u0d12\u0d30\u0d41\u0d15\u0d4d\u0d15\u0d41\u0d28\u0d4d\u0d28 \u0d38\u0d2e\u0d2f\u0d02", "shape": "dot", "size": 20, "title": "Dataset Lang: ml"}, {"color": "#2ed573", "font": {"color": "white"}, "id": "T \u0d30\u0d40\u0d24\u0d3f (\u0d37\u0d40\u0d7d\u0d21\u0d4d) \u0d05\u0d32\u0d4d\u0d32\u0d46\u0d19\u0d4d\u0d15\u0d3f\u0d7d \u0d2a\u0d3e\u0d1a\u0d4d\u0d1a\u0d4d \u0d30\u0d40\u0d24\u0d3f\n(Unmapped)", "label": "T \u0d30\u0d40\u0d24\u0d3f (\u0d37\u0d40\u0d7d\u0d21\u0d4d) \u0d05\u0d32\u0d4d\u0d32\u0d46\u0d19\u0d4d\u0d15\u0d3f\u0d7d \u0d2a\u0d3e\u0d1a\u0d4d\u0d1a\u0d4d \u0d30\u0d40\u0d24\u0d3f\n(Unmapped)", "shape": "hexagon", "size": 40}, {"color": "#00a8ff", "font": {"color": "white"}, "id": "T \u0d30\u0d40\u0d24\u0d3f (\u0d37\u0d40\u0d7d\u0d21\u0d4d) \u0d05\u0d32\u0d4d\u0d32\u0d46\u0d19\u0d4d\u0d15\u0d3f\u0d7d \u0d2a\u0d3e\u0d1a\u0d4d\u0d1a\u0d4d \u0d30\u0d40\u0d24\u0d3f", "label": "T \u0d30\u0d40\u0d24\u0d3f (\u0d37\u0d40\u0d7d\u0d21\u0d4d) \u0d05\u0d32\u0d4d\u0d32\u0d46\u0d19\u0d4d\u0d15\u0d3f\u0d7d \u0d2a\u0d3e\u0d1a\u0d4d\u0d1a\u0d4d \u0d30\u0d40\u0d24\u0d3f", "shape": "dot", "size": 20, "title": "Dataset Lang: ml"}, {"color": "#2ed573", "font": {"color": "white"}, "id": "\u0d28\u0d34\u0d4d\u0d38\u0d31\u0d3f\u0d2f\u0d3f\u0d7d\n(Unmapped)", "label": "\u0d28\u0d34\u0d4d\u0d38\u0d31\u0d3f\u0d2f\u0d3f\u0d7d\n(Unmapped)", "shape": "hexagon", "size": 40}, {"color": "#00a8ff", "font": {"color": "white"}, "id": "\u0d28\u0d34\u0d4d\u0d38\u0d31\u0d3f\u0d2f\u0d3f\u0d7d", "label": "\u0d28\u0d34\u0d4d\u0d38\u0d31\u0d3f\u0d2f\u0d3f\u0d7d", "shape": "dot", "size": 20, "title": "Dataset Lang: ml"}, {"color": "#2ed573", "font": {"color": "white"}, "id": "\u0d07\u0d7b-\u0d38\u0d3f\u0d31\u0d4d\u0d31\u0d41 \u0d2c\u0d21\u0d4d\u0d21\u0d3f\u0d02\u0d17\u0d4d\n(Unmapped)", "label": "\u0d07\u0d7b-\u0d38\u0d3f\u0d31\u0d4d\u0d31\u0d41 \u0d2c\u0d21\u0d4d\u0d21\u0d3f\u0d02\u0d17\u0d4d\n(Unmapped)", "shape": "hexagon", "size": 40}, {"color": "#00a8ff", "font": {"color": "white"}, "id": "\u0d07\u0d7b-\u0d38\u0d3f\u0d31\u0d4d\u0d31\u0d41 \u0d2c\u0d21\u0d4d\u0d21\u0d3f\u0d02\u0d17\u0d4d", "label": "\u0d07\u0d7b-\u0d38\u0d3f\u0d31\u0d4d\u0d31\u0d41 \u0d2c\u0d21\u0d4d\u0d21\u0d3f\u0d02\u0d17\u0d4d", "shape": "dot", "size": 20, "title": "Dataset Lang: ml"}, {"color": "#2ed573", "font": {"color": "white"}, "id": "\u0d31\u0d42\u0d1f\u0d4d\u0d1f\u0d4d\u0d38\u0d4d\u0d31\u0d4d\u0d31\u0d4b\u0d15\u0d4d\u0d15\u0d4d \u0d24\u0d48\u0d15\u0d7e\n(Unmapped)", "label": "\u0d31\u0d42\u0d1f\u0d4d\u0d1f\u0d4d\u0d38\u0d4d\u0d31\u0d4d\u0d31\u0d4b\u0d15\u0d4d\u0d15\u0d4d \u0d24\u0d48\u0d15\u0d7e\n(Unmapped)", "shape": "hexagon", "size": 40}, {"color": "#00a8ff", "font": {"color": "white"}, "id": "\u0d31\u0d42\u0d1f\u0d4d\u0d1f\u0d4d\u0d38\u0d4d\u0d31\u0d4d\u0d31\u0d4b\u0d15\u0d4d\u0d15\u0d4d \u0d24\u0d48\u0d15\u0d7e", "label": "\u0d31\u0d42\u0d1f\u0d4d\u0d1f\u0d4d\u0d38\u0d4d\u0d31\u0d4d\u0d31\u0d4b\u0d15\u0d4d\u0d15\u0d4d \u0d24\u0d48\u0d15\u0d7e", "shape": "dot", "size": 20, "title": "Dataset Lang: ml"}, {"color": "#2ed573", "font": {"color": "white"}, "id": "\u0d35\u0d3f\u0d24\u0d4d\u0d24\u0d41\u0d15\u0d7e \u0d35\u0d47\u0d7c\u0d24\u0d3f\u0d30\u0d3f\u0d1a\u0d4d\u0d1a\u0d46\u0d1f\u0d41\u0d15\u0d4d\u0d15\u0d41\u0d28\u0d4d\u0d28\u0d41\n(Unmapped)", "label": "\u0d35\u0d3f\u0d24\u0d4d\u0d24\u0d41\u0d15\u0d7e \u0d35\u0d47\u0d7c\u0d24\u0d3f\u0d30\u0d3f\u0d1a\u0d4d\u0d1a\u0d46\u0d1f\u0d41\u0d15\u0d4d\u0d15\u0d41\u0d28\u0d4d\u0d28\u0d41\n(Unmapped)", "shape": "hexagon", "size": 40}, {"color": "#00a8ff", "font": {"color": "white"}, "id": "\u0d35\u0d3f\u0d24\u0d4d\u0d24\u0d41\u0d15\u0d7e \u0d35\u0d47\u0d7c\u0d24\u0d3f\u0d30\u0d3f\u0d1a\u0d4d\u0d1a\u0d46\u0d1f\u0d41\u0d15\u0d4d\u0d15\u0d41\u0d28\u0d4d\u0d28\u0d41", "label": "\u0d35\u0d3f\u0d24\u0d4d\u0d24\u0d41\u0d15\u0d7e \u0d35\u0d47\u0d7c\u0d24\u0d3f\u0d30\u0d3f\u0d1a\u0d4d\u0d1a\u0d46\u0d1f\u0d41\u0d15\u0d4d\u0d15\u0d41\u0d28\u0d4d\u0d28\u0d41", "shape": "dot", "size": 20, "title": "Dataset Lang: ml"}, {"color": "#2ed573", "font": {"color": "white"}, "id": "\u0d15\u0d4b\u0d7a H2SO4\n(Unmapped)", "label": "\u0d15\u0d4b\u0d7a H2SO4\n(Unmapped)", "shape": "hexagon", "size": 40}, {"color": "#00a8ff", "font": {"color": "white"}, "id": "\u0d15\u0d4b\u0d7a H2SO4", "label": "\u0d15\u0d4b\u0d7a H2SO4", "shape": "dot", "size": 20, "title": "Dataset Lang: ml"}, {"color": "#2ed573", "font": {"color": "white"}, "id": "\u0d35\u0d3f\u0d24\u0d4d\u0d24\u0d41\u0d15\u0d7e \u0d15\u0d4b\u0d7a H2SO4 \u0d09\u0d2a\u0d2f\u0d4b\u0d17\u0d3f\u0d1a\u0d4d\u0d1a\u0d4d 3 \u0d2e\u0d3f\u0d28\u0d3f\u0d31\u0d4d\u0d31\u0d4d \u0d2a\u0d41\u0d30\u0d1f\u0d4d\u0d1f\u0d23\u0d02\n(Unmapped)", "label": "\u0d35\u0d3f\u0d24\u0d4d\u0d24\u0d41\u0d15\u0d7e \u0d15\u0d4b\u0d7a H2SO4 \u0d09\u0d2a\u0d2f\u0d4b\u0d17\u0d3f\u0d1a\u0d4d\u0d1a\u0d4d 3 \u0d2e\u0d3f\u0d28\u0d3f\u0d31\u0d4d\u0d31\u0d4d \u0d2a\u0d41\u0d30\u0d1f\u0d4d\u0d1f\u0d23\u0d02\n(Unmapped)", "shape": "hexagon", "size": 40}, {"color": "#00a8ff", "font": {"color": "white"}, "id": "\u0d35\u0d3f\u0d24\u0d4d\u0d24\u0d41\u0d15\u0d7e \u0d15\u0d4b\u0d7a H2SO4 \u0d09\u0d2a\u0d2f\u0d4b\u0d17\u0d3f\u0d1a\u0d4d\u0d1a\u0d4d 3 \u0d2e\u0d3f\u0d28\u0d3f\u0d31\u0d4d\u0d31\u0d4d \u0d2a\u0d41\u0d30\u0d1f\u0d4d\u0d1f\u0d23\u0d02", "label": "\u0d35\u0d3f\u0d24\u0d4d\u0d24\u0d41\u0d15\u0d7e \u0d15\u0d4b\u0d7a H2SO4 \u0d09\u0d2a\u0d2f\u0d4b\u0d17\u0d3f\u0d1a\u0d4d\u0d1a\u0d4d 3 \u0d2e\u0d3f\u0d28\u0d3f\u0d31\u0d4d\u0d31\u0d4d \u0d2a\u0d41\u0d30\u0d1f\u0d4d\u0d1f\u0d23\u0d02", "shape": "dot", "size": 20, "title": "Dataset Lang: ml"}, {"color": "#2ed573", "font": {"color": "white"}, "id": "500 ppm \u0d17\u0d3f\u0d2c\u0d4d\u0d2c\u0d46\u0d31\u0d32\u0d3f\u0d15\u0d4d \u0d06\u0d38\u0d3f\u0d21\u0d3f\u0d7d\n(Unmapped)", "label": "500 ppm \u0d17\u0d3f\u0d2c\u0d4d\u0d2c\u0d46\u0d31\u0d32\u0d3f\u0d15\u0d4d \u0d06\u0d38\u0d3f\u0d21\u0d3f\u0d7d\n(Unmapped)", "shape": "hexagon", "size": 40}, {"color": "#00a8ff", "font": {"color": "white"}, "id": "500 ppm \u0d17\u0d3f\u0d2c\u0d4d\u0d2c\u0d46\u0d31\u0d32\u0d3f\u0d15\u0d4d \u0d06\u0d38\u0d3f\u0d21\u0d3f\u0d7d", "label": "500 ppm \u0d17\u0d3f\u0d2c\u0d4d\u0d2c\u0d46\u0d31\u0d32\u0d3f\u0d15\u0d4d \u0d06\u0d38\u0d3f\u0d21\u0d3f\u0d7d", "shape": "dot", "size": 20, "title": "Dataset Lang: ml"}, {"color": "#2ed573", "font": {"color": "white"}, "id": "\u0d35\u0d46\u0d33\u0d4d\u0d33\u0d24\u0d4d\u0d24\u0d3f\u0d7d \u0d15\u0d34\u0d41\u0d15\u0d3f 500 ppm \u0d17\u0d3f\u0d2c\u0d4d\u0d2c\u0d46\u0d31\u0d32\u0d3f\u0d15\u0d4d \u0d06\u0d38\u0d3f\u0d21\u0d3f\u0d7d 24 \u0d2e\u0d23\u0d3f\u0d15\u0d4d\u0d15\u0d42\u0d7c \u0d2e\u0d41\u0d15\u0d4d\u0d15\u0d3f\u0d35\u0d2f\u0d4d\u0d15\u0d4d\u0d15\u0d23\u0d02\n(Unmapped)", "label": "\u0d35\u0d46\u0d33\u0d4d\u0d33\u0d24\u0d4d\u0d24\u0d3f\u0d7d \u0d15\u0d34\u0d41\u0d15\u0d3f 500 ppm \u0d17\u0d3f\u0d2c\u0d4d\u0d2c\u0d46\u0d31\u0d32\u0d3f\u0d15\u0d4d \u0d06\u0d38\u0d3f\u0d21\u0d3f\u0d7d 24 \u0d2e\u0d23\u0d3f\u0d15\u0d4d\u0d15\u0d42\u0d7c \u0d2e\u0d41\u0d15\u0d4d\u0d15\u0d3f\u0d35\u0d2f\u0d4d\u0d15\u0d4d\u0d15\u0d23\u0d02\n(Unmapped)", "shape": "hexagon", "size": 40}, {"color": "#00a8ff", "font": {"color": "white"}, "id": "\u0d35\u0d46\u0d33\u0d4d\u0d33\u0d24\u0d4d\u0d24\u0d3f\u0d7d \u0d15\u0d34\u0d41\u0d15\u0d3f 500 ppm \u0d17\u0d3f\u0d2c\u0d4d\u0d2c\u0d46\u0d31\u0d32\u0d3f\u0d15\u0d4d \u0d06\u0d38\u0d3f\u0d21\u0d3f\u0d7d 24 \u0d2e\u0d23\u0d3f\u0d15\u0d4d\u0d15\u0d42\u0d7c \u0d2e\u0d41\u0d15\u0d4d\u0d15\u0d3f\u0d35\u0d2f\u0d4d\u0d15\u0d4d\u0d15\u0d23\u0d02", "label": "\u0d35\u0d46\u0d33\u0d4d\u0d33\u0d24\u0d4d\u0d24\u0d3f\u0d7d \u0d15\u0d34\u0d41\u0d15\u0d3f 500 ppm \u0d17\u0d3f\u0d2c\u0d4d\u0d2c\u0d46\u0d31\u0d32\u0d3f\u0d15\u0d4d \u0d06\u0d38\u0d3f\u0d21\u0d3f\u0d7d 24 \u0d2e\u0d23\u0d3f\u0d15\u0d4d\u0d15\u0d42\u0d7c \u0d2e\u0d41\u0d15\u0d4d\u0d15\u0d3f\u0d35\u0d2f\u0d4d\u0d15\u0d4d\u0d15\u0d23\u0d02", "shape": "dot", "size": 20, "title": "Dataset Lang: ml"}, {"color": "#2ed573", "font": {"color": "white"}, "id": "\u0d28\u0d34\u0d4d\u0d38\u0d31\u0d3f \u0d2c\u0d46\u0d21\u0d3f\u0d32\u0d4b\n(Unmapped)", "label": "\u0d28\u0d34\u0d4d\u0d38\u0d31\u0d3f \u0d2c\u0d46\u0d21\u0d3f\u0d32\u0d4b\n(Unmapped)", "shape": "hexagon", "size": 40}, {"color": "#00a8ff", "font": {"color": "white"}, "id": "\u0d28\u0d34\u0d4d\u0d38\u0d31\u0d3f \u0d2c\u0d46\u0d21\u0d3f\u0d32\u0d4b", "label": "\u0d28\u0d34\u0d4d\u0d38\u0d31\u0d3f \u0d2c\u0d46\u0d21\u0d3f\u0d32\u0d4b", "shape": "dot", "size": 20, "title": "Dataset Lang: ml"}, {"color": "#2ed573", "font": {"color": "white"}, "id": "\u0d2a\u0d4b\u0d1f\u0d4d\u0d1f\u0d4d \u0d2e\u0d3f\u0d36\u0d4d\u0d30\u0d3f\u0d24\u0d02 \u0d28\u0d3f\u0d31\u0d1a\u0d4d\u0d1a \u0d2a\u0d4b\u0d33\u0d3f\u0d2c\u0d3e\u0d17\u0d3f\u0d32\u0d4b\n(Unmapped)", "label": "\u0d2a\u0d4b\u0d1f\u0d4d\u0d1f\u0d4d \u0d2e\u0d3f\u0d36\u0d4d\u0d30\u0d3f\u0d24\u0d02 \u0d28\u0d3f\u0d31\u0d1a\u0d4d\u0d1a \u0d2a\u0d4b\u0d33\u0d3f\u0d2c\u0d3e\u0d17\u0d3f\u0d32\u0d4b\n(Unmapped)", "shape": "hexagon", "size": 40}, {"color": "#00a8ff", "font": {"color": "white"}, "id": "\u0d2a\u0d4b\u0d1f\u0d4d\u0d1f\u0d4d \u0d2e\u0d3f\u0d36\u0d4d\u0d30\u0d3f\u0d24\u0d02 \u0d28\u0d3f\u0d31\u0d1a\u0d4d\u0d1a \u0d2a\u0d4b\u0d33\u0d3f\u0d2c\u0d3e\u0d17\u0d3f\u0d32\u0d4b", "label": "\u0d2a\u0d4b\u0d1f\u0d4d\u0d1f\u0d4d \u0d2e\u0d3f\u0d36\u0d4d\u0d30\u0d3f\u0d24\u0d02 \u0d28\u0d3f\u0d31\u0d1a\u0d4d\u0d1a \u0d2a\u0d4b\u0d33\u0d3f\u0d2c\u0d3e\u0d17\u0d3f\u0d32\u0d4b", "shape": "dot", "size": 20, "title": "Dataset Lang: ml"}, {"color": "#2ed573", "font": {"color": "white"}, "id": "\u0d35\u0d3f\u0d24\u0d2f\u0d4d\u0d15\u0d4d\u0d15\u0d3e\u0d02\n(Unmapped)", "label": "\u0d35\u0d3f\u0d24\u0d2f\u0d4d\u0d15\u0d4d\u0d15\u0d3e\u0d02\n(Unmapped)", "shape": "hexagon", "size": 40}, {"color": "#00a8ff", "font": {"color": "white"}, "id": "\u0d35\u0d3f\u0d24\u0d2f\u0d4d\u0d15\u0d4d\u0d15\u0d3e\u0d02", "label": "\u0d35\u0d3f\u0d24\u0d2f\u0d4d\u0d15\u0d4d\u0d15\u0d3e\u0d02", "shape": "dot", "size": 20, "title": "Dataset Lang: ml"}, {"color": "#2ed573", "font": {"color": "white"}, "id": "\u0d28\u0d47\u0d28\u0d4d\u0d24\u0d4d\u0d30\u0d35\u0d3e\u0d34\u0d2f\u0d3f\u0d32\u0d46\n(Unmapped)", "label": "\u0d28\u0d47\u0d28\u0d4d\u0d24\u0d4d\u0d30\u0d35\u0d3e\u0d34\u0d2f\u0d3f\u0d32\u0d46\n(Unmapped)", "shape": "hexagon", "size": 40}, {"color": "#00a8ff", "font": {"color": "white"}, "id": "\u0d28\u0d47\u0d28\u0d4d\u0d24\u0d4d\u0d30\u0d35\u0d3e\u0d34\u0d2f\u0d3f\u0d32\u0d46", "label": "\u0d28\u0d47\u0d28\u0d4d\u0d24\u0d4d\u0d30\u0d35\u0d3e\u0d34\u0d2f\u0d3f\u0d32\u0d46", "shape": "dot", "size": 20, "title": "Dataset Lang: ml"}, {"color": "#2ed573", "font": {"color": "white"}, "id": "\u0d38\u0d3f\u0d17\u0d31\u0d4d\u0d31\u0d4b\u0d15\u0d4d\u0d15 \u0d07\u0d32\u0d2a\u0d4d\u0d2a\u0d41\u0d33\u0d4d\u0d33\u0d3f \u0d30\u0d4b\u0d17\u0d02\n(Unmapped)", "label": "\u0d38\u0d3f\u0d17\u0d31\u0d4d\u0d31\u0d4b\u0d15\u0d4d\u0d15 \u0d07\u0d32\u0d2a\u0d4d\u0d2a\u0d41\u0d33\u0d4d\u0d33\u0d3f \u0d30\u0d4b\u0d17\u0d02\n(Unmapped)", "shape": "hexagon", "size": 40}, {"color": "#00a8ff", "font": {"color": "white"}, "id": "\u0d38\u0d3f\u0d17\u0d31\u0d4d\u0d31\u0d4b\u0d15\u0d4d\u0d15 \u0d07\u0d32\u0d2a\u0d4d\u0d2a\u0d41\u0d33\u0d4d\u0d33\u0d3f \u0d30\u0d4b\u0d17\u0d02", "label": "\u0d38\u0d3f\u0d17\u0d31\u0d4d\u0d31\u0d4b\u0d15\u0d4d\u0d15 \u0d07\u0d32\u0d2a\u0d4d\u0d2a\u0d41\u0d33\u0d4d\u0d33\u0d3f \u0d30\u0d4b\u0d17\u0d02", "shape": "dot", "size": 20, "title": "Dataset Lang: ml"}, {"color": "#2ed573", "font": {"color": "white"}, "id": "\u0d28\u0d47\u0d28\u0d4d\u0d24\u0d4d\u0d30\u0d7b \u0d07\u0d28\u0d19\u0d4d\u0d19\u0d33\u0d3f\u0d7d\n(Unmapped)", "label": "\u0d28\u0d47\u0d28\u0d4d\u0d24\u0d4d\u0d30\u0d7b \u0d07\u0d28\u0d19\u0d4d\u0d19\u0d33\u0d3f\u0d7d\n(Unmapped)", "shape": "hexagon", "size": 40}, {"color": "#00a8ff", "font": {"color": "white"}, "id": "\u0d28\u0d47\u0d28\u0d4d\u0d24\u0d4d\u0d30\u0d7b \u0d07\u0d28\u0d19\u0d4d\u0d19\u0d33\u0d3f\u0d7d", "label": "\u0d28\u0d47\u0d28\u0d4d\u0d24\u0d4d\u0d30\u0d7b \u0d07\u0d28\u0d19\u0d4d\u0d19\u0d33\u0d3f\u0d7d", "shape": "dot", "size": 20, "title": "Dataset Lang: ml"}, {"color": "#2ed573", "font": {"color": "white"}, "id": "\u0d31\u0d4b\u0d2c\u0d38\u0d4d\u0d31\u0d4d\u0d31\n(Unmapped)", "label": "\u0d31\u0d4b\u0d2c\u0d38\u0d4d\u0d31\u0d4d\u0d31\n(Unmapped)", "shape": "hexagon", "size": 40}, {"color": "#00a8ff", "font": {"color": "white"}, "id": "\u0d31\u0d4b\u0d2c\u0d38\u0d4d\u0d31\u0d4d\u0d31", "label": "\u0d31\u0d4b\u0d2c\u0d38\u0d4d\u0d31\u0d4d\u0d31", "shape": "dot", "size": 20, "title": "Dataset Lang: ml"}, {"color": "#2ed573", "font": {"color": "white"}, "id": "\u0d2a\u0d42\u0d35\u0d7b\n(Unmapped)", "label": "\u0d2a\u0d42\u0d35\u0d7b\n(Unmapped)", "shape": "hexagon", "size": 40}, {"color": "#00a8ff", "font": {"color": "white"}, "id": "\u0d2a\u0d42\u0d35\u0d7b", "label": "\u0d2a\u0d42\u0d35\u0d7b", "shape": "dot", "size": 20, "title": "Dataset Lang: ml"}, {"color": "#2ed573", "font": {"color": "white"}, "id": "\u0d2a\u0d3e\u0d33\u0d2f\u0d02\u0d15\u0d4b\u0d1f\u0d7b\n(Unmapped)", "label": "\u0d2a\u0d3e\u0d33\u0d2f\u0d02\u0d15\u0d4b\u0d1f\u0d7b\n(Unmapped)", "shape": "hexagon", "size": 40}, {"color": "#00a8ff", "font": {"color": "white"}, "id": "\u0d2a\u0d3e\u0d33\u0d2f\u0d02\u0d15\u0d4b\u0d1f\u0d7b", "label": "\u0d2a\u0d3e\u0d33\u0d2f\u0d02\u0d15\u0d4b\u0d1f\u0d7b", "shape": "dot", "size": 20, "title": "Dataset Lang: ml"}, {"color": "#2ed573", "font": {"color": "white"}, "id": "\u0d38\u0d3f\u0d17\u0d31\u0d4d\u0d31\u0d4b\u0d15\u0d4d\u0d15 \u0d30\u0d4b\u0d17\u0d02\n(Unmapped)", "label": "\u0d38\u0d3f\u0d17\u0d31\u0d4d\u0d31\u0d4b\u0d15\u0d4d\u0d15 \u0d30\u0d4b\u0d17\u0d02\n(Unmapped)", "shape": "hexagon", "size": 40}, {"color": "#00a8ff", "font": {"color": "white"}, "id": "\u0d38\u0d3f\u0d17\u0d31\u0d4d\u0d31\u0d4b\u0d15\u0d4d\u0d15 \u0d30\u0d4b\u0d17\u0d02", "label": "\u0d38\u0d3f\u0d17\u0d31\u0d4d\u0d31\u0d4b\u0d15\u0d4d\u0d15 \u0d30\u0d4b\u0d17\u0d02", "shape": "dot", "size": 20, "title": "Dataset Lang: ml"}, {"color": "#2ed573", "font": {"color": "white"}, "id": "\u0d38\u0d4d\u0d2f\u0d42\u0d21\u0d4b\u0d2e\u0d4a\u0d23\u0d3e\u0d38\u0d4d \u0d2b\u0d4d\u0d32\u0d42\u0d31\u0d38\u0d46\u0d7b\u0d38\u0d4d\n(Unmapped)", "label": "\u0d38\u0d4d\u0d2f\u0d42\u0d21\u0d4b\u0d2e\u0d4a\u0d23\u0d3e\u0d38\u0d4d \u0d2b\u0d4d\u0d32\u0d42\u0d31\u0d38\u0d46\u0d7b\u0d38\u0d4d\n(Unmapped)", "shape": "hexagon", "size": 40}, {"color": "#00a8ff", "font": {"color": "white"}, "id": "\u0d38\u0d4d\u0d2f\u0d42\u0d21\u0d4b\u0d2e\u0d4a\u0d23\u0d3e\u0d38\u0d4d \u0d2b\u0d4d\u0d32\u0d42\u0d31\u0d38\u0d46\u0d7b\u0d38\u0d4d", "label": "\u0d38\u0d4d\u0d2f\u0d42\u0d21\u0d4b\u0d2e\u0d4a\u0d23\u0d3e\u0d38\u0d4d \u0d2b\u0d4d\u0d32\u0d42\u0d31\u0d38\u0d46\u0d7b\u0d38\u0d4d", "shape": "dot", "size": 20, "title": "Dataset Lang: ml"}, {"color": "#2ed573", "font": {"color": "white"}, "id": "\u0d07\u0d32\u0d15\u0d33\u0d3f\u0d7d \u0d24\u0d33\u0d3f\u0d15\u0d4d\u0d15\u0d41\u0d28\u0d4d\u0d28\u0d24\u0d4d\n(Unmapped)", "label": "\u0d07\u0d32\u0d15\u0d33\u0d3f\u0d7d \u0d24\u0d33\u0d3f\u0d15\u0d4d\u0d15\u0d41\u0d28\u0d4d\u0d28\u0d24\u0d4d\n(Unmapped)", "shape": "hexagon", "size": 40}, {"color": "#00a8ff", "font": {"color": "white"}, "id": "\u0d07\u0d32\u0d15\u0d33\u0d3f\u0d7d \u0d24\u0d33\u0d3f\u0d15\u0d4d\u0d15\u0d41\u0d28\u0d4d\u0d28\u0d24\u0d4d", "label": "\u0d07\u0d32\u0d15\u0d33\u0d3f\u0d7d \u0d24\u0d33\u0d3f\u0d15\u0d4d\u0d15\u0d41\u0d28\u0d4d\u0d28\u0d24\u0d4d", "shape": "dot", "size": 20, "title": "Dataset Lang: ml"}, {"color": "#2ed573", "font": {"color": "white"}, "id": "\u0d17\u0d4b\u0d2e\u0d42\u0d24\u0d4d\u0d30\u0d02\n(Unmapped)", "label": "\u0d17\u0d4b\u0d2e\u0d42\u0d24\u0d4d\u0d30\u0d02\n(Unmapped)", "shape": "hexagon", "size": 40}, {"color": "#00a8ff", "font": {"color": "white"}, "id": "\u0d17\u0d4b\u0d2e\u0d42\u0d24\u0d4d\u0d30\u0d02", "label": "\u0d17\u0d4b\u0d2e\u0d42\u0d24\u0d4d\u0d30\u0d02", "shape": "dot", "size": 20, "title": "Dataset Lang: ml"}, {"color": "#2ed573", "font": {"color": "white"}, "id": "\u0d2a\u0d46\u0d1f\u0d4d\u0d30\u0d4b\u0d33\u0d3f\u0d2f\u0d02 \u0d05\u0d27\u0d3f\u0d37\u0d4d\u0d20\u0d3f\u0d24 \u0d27\u0d3e\u0d24\u0d41 \u0d0e\u0d23\u0d4d\u0d23\n(Unmapped)", "label": "\u0d2a\u0d46\u0d1f\u0d4d\u0d30\u0d4b\u0d33\u0d3f\u0d2f\u0d02 \u0d05\u0d27\u0d3f\u0d37\u0d4d\u0d20\u0d3f\u0d24 \u0d27\u0d3e\u0d24\u0d41 \u0d0e\u0d23\u0d4d\u0d23\n(Unmapped)", "shape": "hexagon", "size": 40}, {"color": "#00a8ff", "font": {"color": "white"}, "id": "\u0d2a\u0d46\u0d1f\u0d4d\u0d30\u0d4b\u0d33\u0d3f\u0d2f\u0d02 \u0d05\u0d27\u0d3f\u0d37\u0d4d\u0d20\u0d3f\u0d24 \u0d27\u0d3e\u0d24\u0d41 \u0d0e\u0d23\u0d4d\u0d23", "label": "\u0d2a\u0d46\u0d1f\u0d4d\u0d30\u0d4b\u0d33\u0d3f\u0d2f\u0d02 \u0d05\u0d27\u0d3f\u0d37\u0d4d\u0d20\u0d3f\u0d24 \u0d27\u0d3e\u0d24\u0d41 \u0d0e\u0d23\u0d4d\u0d23", "shape": "dot", "size": 20, "title": "Dataset Lang: ml"}, {"color": "#2ed573", "font": {"color": "white"}, "id": "\u0d07\u0d32\u0d15\u0d33\u0d3f\u0d7d \u0d24\u0d33\u0d3f\u0d15\u0d4d\u0d15\u0d41\u0d28\u0d4d\u0d28\u0d24\u0d41\u0d02\n(Unmapped)", "label": "\u0d07\u0d32\u0d15\u0d33\u0d3f\u0d7d \u0d24\u0d33\u0d3f\u0d15\u0d4d\u0d15\u0d41\u0d28\u0d4d\u0d28\u0d24\u0d41\u0d02\n(Unmapped)", "shape": "hexagon", "size": 40}, {"color": "#00a8ff", "font": {"color": "white"}, "id": "\u0d07\u0d32\u0d15\u0d33\u0d3f\u0d7d \u0d24\u0d33\u0d3f\u0d15\u0d4d\u0d15\u0d41\u0d28\u0d4d\u0d28\u0d24\u0d41\u0d02", "label": "\u0d07\u0d32\u0d15\u0d33\u0d3f\u0d7d \u0d24\u0d33\u0d3f\u0d15\u0d4d\u0d15\u0d41\u0d28\u0d4d\u0d28\u0d24\u0d41\u0d02", "shape": "dot", "size": 20, "title": "Dataset Lang: ml"}, {"color": "#2ed573", "font": {"color": "white"}, "id": "\u0d2c\u0d4b\u0d7c\u0d21\u0d4b \u0d2e\u0d3f\u0d36\u0d4d\u0d30\u0d3f\u0d24\u0d02\n(Unmapped)", "label": "\u0d2c\u0d4b\u0d7c\u0d21\u0d4b \u0d2e\u0d3f\u0d36\u0d4d\u0d30\u0d3f\u0d24\u0d02\n(Unmapped)", "shape": "hexagon", "size": 40}, {"color": "#00a8ff", "font": {"color": "white"}, "id": "\u0d2c\u0d4b\u0d7c\u0d21\u0d4b \u0d2e\u0d3f\u0d36\u0d4d\u0d30\u0d3f\u0d24\u0d02", "label": "\u0d2c\u0d4b\u0d7c\u0d21\u0d4b \u0d2e\u0d3f\u0d36\u0d4d\u0d30\u0d3f\u0d24\u0d02", "shape": "dot", "size": 20, "title": "Dataset Lang: ml"}, {"color": "#2ed573", "font": {"color": "white"}, "id": "\u0d15\u0d3e\u0d7c\u0d2c\u0d46\u0d7b\u0d21\u0d3e\u0d38\u0d3f\u0d02\n(Unmapped)", "label": "\u0d15\u0d3e\u0d7c\u0d2c\u0d46\u0d7b\u0d21\u0d3e\u0d38\u0d3f\u0d02\n(Unmapped)", "shape": "hexagon", "size": 40}, {"color": "#00a8ff", "font": {"color": "white"}, "id": "\u0d15\u0d3e\u0d7c\u0d2c\u0d46\u0d7b\u0d21\u0d3e\u0d38\u0d3f\u0d02", "label": "\u0d15\u0d3e\u0d7c\u0d2c\u0d46\u0d7b\u0d21\u0d3e\u0d38\u0d3f\u0d02", "shape": "dot", "size": 20, "title": "Dataset Lang: ml"}, {"color": "#2ed573", "font": {"color": "white"}, "id": "\u0d2a\u0d4d\u0d30\u0d4a\u0d2a\u0d3f\u0d15\u0d4a\u0d23\u0d38\u0d4b\u0d7e\n(Unmapped)", "label": "\u0d2a\u0d4d\u0d30\u0d4a\u0d2a\u0d3f\u0d15\u0d4a\u0d23\u0d38\u0d4b\u0d7e\n(Unmapped)", "shape": "hexagon", "size": 40}, {"color": "#00a8ff", "font": {"color": "white"}, "id": "\u0d2a\u0d4d\u0d30\u0d4a\u0d2a\u0d3f\u0d15\u0d4a\u0d23\u0d38\u0d4b\u0d7e", "label": "\u0d2a\u0d4d\u0d30\u0d4a\u0d2a\u0d3f\u0d15\u0d4a\u0d23\u0d38\u0d4b\u0d7e", "shape": "dot", "size": 20, "title": "Dataset Lang: ml"}, {"color": "#2ed573", "font": {"color": "white"}, "id": "\u0d21\u0d48\u0d2b\u0d46\u0d7b\u0d15\u0d4a\u0d23\u0d38\u0d4b\u0d7e\n(Unmapped)", "label": "\u0d21\u0d48\u0d2b\u0d46\u0d7b\u0d15\u0d4a\u0d23\u0d38\u0d4b\u0d7e\n(Unmapped)", "shape": "hexagon", "size": 40}, {"color": "#00a8ff", "font": {"color": "white"}, "id": "\u0d21\u0d48\u0d2b\u0d46\u0d7b\u0d15\u0d4a\u0d23\u0d38\u0d4b\u0d7e", "label": "\u0d21\u0d48\u0d2b\u0d46\u0d7b\u0d15\u0d4a\u0d23\u0d38\u0d4b\u0d7e", "shape": "dot", "size": 20, "title": "Dataset Lang: ml"}, {"color": "#2ed573", "font": {"color": "white"}, "id": "\u0d2e\u0d1e\u0d4d\u0d1a\u0d47\u0d30\u0d3f \u0d28\u0d47\u0d28\u0d4d\u0d24\u0d4d\u0d30\u0d7b\n(Unmapped)", "label": "\u0d2e\u0d1e\u0d4d\u0d1a\u0d47\u0d30\u0d3f \u0d28\u0d47\u0d28\u0d4d\u0d24\u0d4d\u0d30\u0d7b\n(Unmapped)", "shape": "hexagon", "size": 40}, {"color": "#00a8ff", "font": {"color": "white"}, "id": "\u0d2e\u0d1e\u0d4d\u0d1a\u0d47\u0d30\u0d3f \u0d28\u0d47\u0d28\u0d4d\u0d24\u0d4d\u0d30\u0d7b", "label": "\u0d2e\u0d1e\u0d4d\u0d1a\u0d47\u0d30\u0d3f \u0d28\u0d47\u0d28\u0d4d\u0d24\u0d4d\u0d30\u0d7b", "shape": "dot", "size": 20, "title": "Dataset Lang: ml"}, {"color": "#2ed573", "font": {"color": "white"}, "id": "\u0d30\u0d4b\u0d17\u0d02 \u0d2c\u0d3e\u0d27\u0d3f\u0d1a\u0d4d\u0d1a \u0d07\u0d32\u0d15\u0d33\u0d41\u0d1f\u0d46 50% \u0d2d\u0d3e\u0d17\u0d02 \u0d15\u0d30\u0d3f\u0d1e\u0d4d\u0d1e\u0d3f\u0d1f\u0d4d\u0d1f\u0d41\u0d23\u0d4d\u0d1f\u0d46\u0d19\u0d4d\u0d15\u0d3f\u0d7d \u0d05\u0d35 \u0d2e\u0d41\u0d31\u0d3f\u0d1a\u0d4d\u0d1a\u0d41\u0d2e\u0d3e\u0d31\u0d4d\u0d31\u0d23\u0d02\n(Unmapped)", "label": "\u0d30\u0d4b\u0d17\u0d02 \u0d2c\u0d3e\u0d27\u0d3f\u0d1a\u0d4d\u0d1a \u0d07\u0d32\u0d15\u0d33\u0d41\u0d1f\u0d46 50% \u0d2d\u0d3e\u0d17\u0d02 \u0d15\u0d30\u0d3f\u0d1e\u0d4d\u0d1e\u0d3f\u0d1f\u0d4d\u0d1f\u0d41\u0d23\u0d4d\u0d1f\u0d46\u0d19\u0d4d\u0d15\u0d3f\u0d7d \u0d05\u0d35 \u0d2e\u0d41\u0d31\u0d3f\u0d1a\u0d4d\u0d1a\u0d41\u0d2e\u0d3e\u0d31\u0d4d\u0d31\u0d23\u0d02\n(Unmapped)", "shape": "hexagon", "size": 40}, {"color": "#00a8ff", "font": {"color": "white"}, "id": "\u0d30\u0d4b\u0d17\u0d02 \u0d2c\u0d3e\u0d27\u0d3f\u0d1a\u0d4d\u0d1a \u0d07\u0d32\u0d15\u0d33\u0d41\u0d1f\u0d46 50% \u0d2d\u0d3e\u0d17\u0d02 \u0d15\u0d30\u0d3f\u0d1e\u0d4d\u0d1e\u0d3f\u0d1f\u0d4d\u0d1f\u0d41\u0d23\u0d4d\u0d1f\u0d46\u0d19\u0d4d\u0d15\u0d3f\u0d7d \u0d05\u0d35 \u0d2e\u0d41\u0d31\u0d3f\u0d1a\u0d4d\u0d1a\u0d41\u0d2e\u0d3e\u0d31\u0d4d\u0d31\u0d23\u0d02", "label": "\u0d30\u0d4b\u0d17\u0d02 \u0d2c\u0d3e\u0d27\u0d3f\u0d1a\u0d4d\u0d1a \u0d07\u0d32\u0d15\u0d33\u0d41\u0d1f\u0d46 50% \u0d2d\u0d3e\u0d17\u0d02 \u0d15\u0d30\u0d3f\u0d1e\u0d4d\u0d1e\u0d3f\u0d1f\u0d4d\u0d1f\u0d41\u0d23\u0d4d\u0d1f\u0d46\u0d19\u0d4d\u0d15\u0d3f\u0d7d \u0d05\u0d35 \u0d2e\u0d41\u0d31\u0d3f\u0d1a\u0d4d\u0d1a\u0d41\u0d2e\u0d3e\u0d31\u0d4d\u0d31\u0d23\u0d02", "shape": "dot", "size": 20, "title": "Dataset Lang: ml"}, {"color": "#2ed573", "font": {"color": "white"}, "id": "\u0d12\u0d28\u0d4d\u0d28\u0d4b \u0d2e\u0d42\u0d28\u0d4d\u0d28\u0d4b \u0d06\u0d34\u0d4d\u0d1a \u0d07\u0d1f\u0d35\u0d3f\u0d1f\u0d4d\u0d1f\u0d4d \u0d07\u0d32\u0d15\u0d33\u0d3f\u0d7d \u0d2e\u0d30\u0d41\u0d28\u0d4d\u0d28\u0d4d \u0d24\u0d33\u0d3f\u0d15\u0d4d\u0d15\u0d23\u0d02\n(Unmapped)", "label": "\u0d12\u0d28\u0d4d\u0d28\u0d4b \u0d2e\u0d42\u0d28\u0d4d\u0d28\u0d4b \u0d06\u0d34\u0d4d\u0d1a \u0d07\u0d1f\u0d35\u0d3f\u0d1f\u0d4d\u0d1f\u0d4d \u0d07\u0d32\u0d15\u0d33\u0d3f\u0d7d \u0d2e\u0d30\u0d41\u0d28\u0d4d\u0d28\u0d4d \u0d24\u0d33\u0d3f\u0d15\u0d4d\u0d15\u0d23\u0d02\n(Unmapped)", "shape": "hexagon", "size": 40}, {"color": "#00a8ff", "font": {"color": "white"}, "id": "\u0d12\u0d28\u0d4d\u0d28\u0d4b \u0d2e\u0d42\u0d28\u0d4d\u0d28\u0d4b \u0d06\u0d34\u0d4d\u0d1a \u0d07\u0d1f\u0d35\u0d3f\u0d1f\u0d4d\u0d1f\u0d4d \u0d07\u0d32\u0d15\u0d33\u0d3f\u0d7d \u0d2e\u0d30\u0d41\u0d28\u0d4d\u0d28\u0d4d \u0d24\u0d33\u0d3f\u0d15\u0d4d\u0d15\u0d23\u0d02", "label": "\u0d12\u0d28\u0d4d\u0d28\u0d4b \u0d2e\u0d42\u0d28\u0d4d\u0d28\u0d4b \u0d06\u0d34\u0d4d\u0d1a \u0d07\u0d1f\u0d35\u0d3f\u0d1f\u0d4d\u0d1f\u0d4d \u0d07\u0d32\u0d15\u0d33\u0d3f\u0d7d \u0d2e\u0d30\u0d41\u0d28\u0d4d\u0d28\u0d4d \u0d24\u0d33\u0d3f\u0d15\u0d4d\u0d15\u0d23\u0d02", "shape": "dot", "size": 20, "title": "Dataset Lang: ml"}, {"color": "#2ed573", "font": {"color": "white"}, "id": "\u0d2e\u0d30\u0d41\u0d28\u0d4d\u0d28\u0d41\u0d15\u0d7e \u0d2e\u0d3e\u0d31\u0d3f\u0d2e\u0d3e\u0d31\u0d3f \u0d09\u0d2a\u0d2f\u0d4b\u0d17\u0d3f\u0d15\u0d4d\u0d15\u0d3e\u0d7b \u0d36\u0d4d\u0d30\u0d26\u0d4d\u0d27\u0d3f\u0d15\u0d4d\u0d15\u0d41\u0d15\n(Unmapped)", "label": "\u0d2e\u0d30\u0d41\u0d28\u0d4d\u0d28\u0d41\u0d15\u0d7e \u0d2e\u0d3e\u0d31\u0d3f\u0d2e\u0d3e\u0d31\u0d3f \u0d09\u0d2a\u0d2f\u0d4b\u0d17\u0d3f\u0d15\u0d4d\u0d15\u0d3e\u0d7b \u0d36\u0d4d\u0d30\u0d26\u0d4d\u0d27\u0d3f\u0d15\u0d4d\u0d15\u0d41\u0d15\n(Unmapped)", "shape": "hexagon", "size": 40}, {"color": "#00a8ff", "font": {"color": "white"}, "id": "\u0d2e\u0d30\u0d41\u0d28\u0d4d\u0d28\u0d41\u0d15\u0d7e \u0d2e\u0d3e\u0d31\u0d3f\u0d2e\u0d3e\u0d31\u0d3f \u0d09\u0d2a\u0d2f\u0d4b\u0d17\u0d3f\u0d15\u0d4d\u0d15\u0d3e\u0d7b \u0d36\u0d4d\u0d30\u0d26\u0d4d\u0d27\u0d3f\u0d15\u0d4d\u0d15\u0d41\u0d15", "label": "\u0d2e\u0d30\u0d41\u0d28\u0d4d\u0d28\u0d41\u0d15\u0d7e \u0d2e\u0d3e\u0d31\u0d3f\u0d2e\u0d3e\u0d31\u0d3f \u0d09\u0d2a\u0d2f\u0d4b\u0d17\u0d3f\u0d15\u0d4d\u0d15\u0d3e\u0d7b \u0d36\u0d4d\u0d30\u0d26\u0d4d\u0d27\u0d3f\u0d15\u0d4d\u0d15\u0d41\u0d15", "shape": "dot", "size": 20, "title": "Dataset Lang: ml"}, {"color": "#2ed573", "font": {"color": "white"}, "id": "\u0d1a\u0d35\u0d3f\u0d1f\u0d4d\u0d1f\u0d41 \u0d2a\u0d2e\u0d4d\u0d2a\u0d4d (\u0d31\u0d4b\u0d15\u0d4d\u0d15\u0d7c \u0d38\u0d4d\u0d2a\u0d4d\u0d30\u0d46\u0d2f\u0d7c)\n(Unmapped)", "label": "\u0d1a\u0d35\u0d3f\u0d1f\u0d4d\u0d1f\u0d41 \u0d2a\u0d2e\u0d4d\u0d2a\u0d4d (\u0d31\u0d4b\u0d15\u0d4d\u0d15\u0d7c \u0d38\u0d4d\u0d2a\u0d4d\u0d30\u0d46\u0d2f\u0d7c)\n(Unmapped)", "shape": "hexagon", "size": 40}, {"color": "#00a8ff", "font": {"color": "white"}, "id": "\u0d1a\u0d35\u0d3f\u0d1f\u0d4d\u0d1f\u0d41 \u0d2a\u0d2e\u0d4d\u0d2a\u0d4d (\u0d31\u0d4b\u0d15\u0d4d\u0d15\u0d7c \u0d38\u0d4d\u0d2a\u0d4d\u0d30\u0d46\u0d2f\u0d7c)", "label": "\u0d1a\u0d35\u0d3f\u0d1f\u0d4d\u0d1f\u0d41 \u0d2a\u0d2e\u0d4d\u0d2a\u0d4d (\u0d31\u0d4b\u0d15\u0d4d\u0d15\u0d7c \u0d38\u0d4d\u0d2a\u0d4d\u0d30\u0d46\u0d2f\u0d7c)", "shape": "dot", "size": 20, "title": "Dataset Lang: ml"}, {"color": "#2ed573", "font": {"color": "white"}, "id": "\u0d2a\u0d35\u0d7c \u0d38\u0d4d\u0d2a\u0d4d\u0d30\u0d46\u0d2f\u0d7c\n(Unmapped)", "label": "\u0d2a\u0d35\u0d7c \u0d38\u0d4d\u0d2a\u0d4d\u0d30\u0d46\u0d2f\u0d7c\n(Unmapped)", "shape": "hexagon", "size": 40}, {"color": "#00a8ff", "font": {"color": "white"}, "id": "\u0d2a\u0d35\u0d7c \u0d38\u0d4d\u0d2a\u0d4d\u0d30\u0d46\u0d2f\u0d7c", "label": "\u0d2a\u0d35\u0d7c \u0d38\u0d4d\u0d2a\u0d4d\u0d30\u0d46\u0d2f\u0d7c", "shape": "dot", "size": 20, "title": "Dataset Lang: ml"}, {"color": "#2ed573", "font": {"color": "white"}, "id": "\u0d2e\u0d41\u0d15\u0d33\u0d3f\u0d32\u0d46 \u0d07\u0d32\u0d15\u0d33\u0d3f\u0d32\u0d41\u0d02 \u0d2e\u0d30\u0d41\u0d28\u0d4d\u0d28\u0d4d \u0d0e\u0d24\u0d4d\u0d24\u0d3f\u0d15\u0d4d\u0d15\u0d3e\u0d7b \u0d36\u0d4d\u0d30\u0d26\u0d4d\u0d27\u0d3f\u0d15\u0d4d\u0d15\u0d23\u0d02\n(Unmapped)", "label": "\u0d2e\u0d41\u0d15\u0d33\u0d3f\u0d32\u0d46 \u0d07\u0d32\u0d15\u0d33\u0d3f\u0d32\u0d41\u0d02 \u0d2e\u0d30\u0d41\u0d28\u0d4d\u0d28\u0d4d \u0d0e\u0d24\u0d4d\u0d24\u0d3f\u0d15\u0d4d\u0d15\u0d3e\u0d7b \u0d36\u0d4d\u0d30\u0d26\u0d4d\u0d27\u0d3f\u0d15\u0d4d\u0d15\u0d23\u0d02\n(Unmapped)", "shape": "hexagon", "size": 40}, {"color": "#00a8ff", "font": {"color": "white"}, "id": "\u0d2e\u0d41\u0d15\u0d33\u0d3f\u0d32\u0d46 \u0d07\u0d32\u0d15\u0d33\u0d3f\u0d32\u0d41\u0d02 \u0d2e\u0d30\u0d41\u0d28\u0d4d\u0d28\u0d4d \u0d0e\u0d24\u0d4d\u0d24\u0d3f\u0d15\u0d4d\u0d15\u0d3e\u0d7b \u0d36\u0d4d\u0d30\u0d26\u0d4d\u0d27\u0d3f\u0d15\u0d4d\u0d15\u0d23\u0d02", "label": "\u0d2e\u0d41\u0d15\u0d33\u0d3f\u0d32\u0d46 \u0d07\u0d32\u0d15\u0d33\u0d3f\u0d32\u0d41\u0d02 \u0d2e\u0d30\u0d41\u0d28\u0d4d\u0d28\u0d4d \u0d0e\u0d24\u0d4d\u0d24\u0d3f\u0d15\u0d4d\u0d15\u0d3e\u0d7b \u0d36\u0d4d\u0d30\u0d26\u0d4d\u0d27\u0d3f\u0d15\u0d4d\u0d15\u0d23\u0d02", "shape": "dot", "size": 20, "title": "Dataset Lang: ml"}, {"color": "#2ed573", "font": {"color": "white"}, "id": "\u0d1a\u0d15\u0d4d\u0d15\n(Unmapped)", "label": "\u0d1a\u0d15\u0d4d\u0d15\n(Unmapped)", "shape": "hexagon", "size": 40}, {"color": "#00a8ff", "font": {"color": "white"}, "id": "\u0d1a\u0d15\u0d4d\u0d15", "label": "\u0d1a\u0d15\u0d4d\u0d15", "shape": "dot", "size": 20, "title": "Dataset Lang: ml"}, {"color": "#2ed573", "font": {"color": "white"}, "id": "\u0d38\u0d38\u0d4d\u0d2f\u0d2a\u0d4d\u0d30\u0d1a\u0d30\u0d23\u0d02\n(Unmapped)", "label": "\u0d38\u0d38\u0d4d\u0d2f\u0d2a\u0d4d\u0d30\u0d1a\u0d30\u0d23\u0d02\n(Unmapped)", "shape": "hexagon", "size": 40}, {"color": "#00a8ff", "font": {"color": "white"}, "id": "\u0d38\u0d38\u0d4d\u0d2f\u0d2a\u0d4d\u0d30\u0d1a\u0d30\u0d23\u0d02", "label": "\u0d38\u0d38\u0d4d\u0d2f\u0d2a\u0d4d\u0d30\u0d1a\u0d30\u0d23\u0d02", "shape": "dot", "size": 20, "title": "Dataset Lang: ml"}, {"color": "#2ed573", "font": {"color": "white"}, "id": "10 \u0d2e\u0d3e\u0d38\u0d02 \u0d2a\u0d4d\u0d30\u0d3e\u0d2f\u0d2e\u0d41\u0d33\u0d4d\u0d33\n(Unmapped)", "label": "10 \u0d2e\u0d3e\u0d38\u0d02 \u0d2a\u0d4d\u0d30\u0d3e\u0d2f\u0d2e\u0d41\u0d33\u0d4d\u0d33\n(Unmapped)", "shape": "hexagon", "size": 40}, {"color": "#00a8ff", "font": {"color": "white"}, "id": "10 \u0d2e\u0d3e\u0d38\u0d02 \u0d2a\u0d4d\u0d30\u0d3e\u0d2f\u0d2e\u0d41\u0d33\u0d4d\u0d33", "label": "10 \u0d2e\u0d3e\u0d38\u0d02 \u0d2a\u0d4d\u0d30\u0d3e\u0d2f\u0d2e\u0d41\u0d33\u0d4d\u0d33", "shape": "dot", "size": 20, "title": "Dataset Lang: ml"}, {"color": "#2ed573", "font": {"color": "white"}, "id": "\u0d05\u0d19\u0d4d\u0d15\u0d41\u0d30\u0d23\u0d02 \u0d28\u0d1f\u0d24\u0d4d\u0d24\u0d41\u0d28\u0d4d\u0d28\u0d41\n(Unmapped)", "label": "\u0d05\u0d19\u0d4d\u0d15\u0d41\u0d30\u0d23\u0d02 \u0d28\u0d1f\u0d24\u0d4d\u0d24\u0d41\u0d28\u0d4d\u0d28\u0d41\n(Unmapped)", "shape": "hexagon", "size": 40}, {"color": "#00a8ff", "font": {"color": "white"}, "id": "\u0d05\u0d19\u0d4d\u0d15\u0d41\u0d30\u0d23\u0d02 \u0d28\u0d1f\u0d24\u0d4d\u0d24\u0d41\u0d28\u0d4d\u0d28\u0d41", "label": "\u0d05\u0d19\u0d4d\u0d15\u0d41\u0d30\u0d23\u0d02 \u0d28\u0d1f\u0d24\u0d4d\u0d24\u0d41\u0d28\u0d4d\u0d28\u0d41", "shape": "dot", "size": 20, "title": "Dataset Lang: ml"}, {"color": "#2ed573", "font": {"color": "white"}, "id": "\u0d24\u0d48\u0d15\u0d7e\n(Unmapped)", "label": "\u0d24\u0d48\u0d15\u0d7e\n(Unmapped)", "shape": "hexagon", "size": 40}, {"color": "#00a8ff", "font": {"color": "white"}, "id": "\u0d24\u0d48\u0d15\u0d7e", "label": "\u0d24\u0d48\u0d15\u0d7e", "shape": "dot", "size": 20, "title": "Dataset Lang: ml"}, {"color": "#2ed573", "font": {"color": "white"}, "id": "\u0d17\u0d4d\u0d30\u0d3e\u0d2b\u0d4d\u0d31\u0d4d\u0d31\u0d41\u0d15\u0d7e\n(Unmapped)", "label": "\u0d17\u0d4d\u0d30\u0d3e\u0d2b\u0d4d\u0d31\u0d4d\u0d31\u0d41\u0d15\u0d7e\n(Unmapped)", "shape": "hexagon", "size": 40}, {"color": "#00a8ff", "font": {"color": "white"}, "id": "\u0d17\u0d4d\u0d30\u0d3e\u0d2b\u0d4d\u0d31\u0d4d\u0d31\u0d41\u0d15\u0d7e", "label": "\u0d17\u0d4d\u0d30\u0d3e\u0d2b\u0d4d\u0d31\u0d4d\u0d31\u0d41\u0d15\u0d7e", "shape": "dot", "size": 20, "title": "Dataset Lang: ml"}, {"color": "#2ed573", "font": {"color": "white"}, "id": "3-4 \u0d2e\u0d3e\u0d38\u0d02 \u0d2a\u0d4d\u0d30\u0d3e\u0d2f\u0d2e\u0d41\u0d33\u0d4d\u0d33\n(Unmapped)", "label": "3-4 \u0d2e\u0d3e\u0d38\u0d02 \u0d2a\u0d4d\u0d30\u0d3e\u0d2f\u0d2e\u0d41\u0d33\u0d4d\u0d33\n(Unmapped)", "shape": "hexagon", "size": 40}, {"color": "#00a8ff", "font": {"color": "white"}, "id": "3-4 \u0d2e\u0d3e\u0d38\u0d02 \u0d2a\u0d4d\u0d30\u0d3e\u0d2f\u0d2e\u0d41\u0d33\u0d4d\u0d33", "label": "3-4 \u0d2e\u0d3e\u0d38\u0d02 \u0d2a\u0d4d\u0d30\u0d3e\u0d2f\u0d2e\u0d41\u0d33\u0d4d\u0d33", "shape": "dot", "size": 20, "title": "Dataset Lang: ml"}, {"color": "#2ed573", "font": {"color": "white"}, "id": "1 \u0d2e\u0d3e\u0d38\u0d02 \u0d2a\u0d4d\u0d30\u0d3e\u0d2f\u0d2e\u0d41\u0d33\u0d4d\u0d33\n(Unmapped)", "label": "1 \u0d2e\u0d3e\u0d38\u0d02 \u0d2a\u0d4d\u0d30\u0d3e\u0d2f\u0d2e\u0d41\u0d33\u0d4d\u0d33\n(Unmapped)", "shape": "hexagon", "size": 40}, {"color": "#00a8ff", "font": {"color": "white"}, "id": "1 \u0d2e\u0d3e\u0d38\u0d02 \u0d2a\u0d4d\u0d30\u0d3e\u0d2f\u0d2e\u0d41\u0d33\u0d4d\u0d33", "label": "1 \u0d2e\u0d3e\u0d38\u0d02 \u0d2a\u0d4d\u0d30\u0d3e\u0d2f\u0d2e\u0d41\u0d33\u0d4d\u0d33", "shape": "dot", "size": 20, "title": "Dataset Lang: ml"}, {"color": "#2ed573", "font": {"color": "white"}, "id": "\u0d38\u0d4b\u0d2b\u0d4d\u0d31\u0d4d\u0d31\u0d4d \u0d35\u0d41\u0d21\u0d4d \u0d17\u0d4d\u0d30\u0d3e\u0d2b\u0d4d\u0d31\u0d4d\u0d31\u0d3f\u0d02\u0d17\u0d4d (\u0d15\u0d4d\u0d32\u0d46\u0d2b\u0d4d\u0d31\u0d4d\u0d31\u0d4d \u0d30\u0d40\u0d24\u0d3f)\n(Unmapped)", "label": "\u0d38\u0d4b\u0d2b\u0d4d\u0d31\u0d4d\u0d31\u0d4d \u0d35\u0d41\u0d21\u0d4d \u0d17\u0d4d\u0d30\u0d3e\u0d2b\u0d4d\u0d31\u0d4d\u0d31\u0d3f\u0d02\u0d17\u0d4d (\u0d15\u0d4d\u0d32\u0d46\u0d2b\u0d4d\u0d31\u0d4d\u0d31\u0d4d \u0d30\u0d40\u0d24\u0d3f)\n(Unmapped)", "shape": "hexagon", "size": 40}, {"color": "#00a8ff", "font": {"color": "white"}, "id": "\u0d38\u0d4b\u0d2b\u0d4d\u0d31\u0d4d\u0d31\u0d4d \u0d35\u0d41\u0d21\u0d4d \u0d17\u0d4d\u0d30\u0d3e\u0d2b\u0d4d\u0d31\u0d4d\u0d31\u0d3f\u0d02\u0d17\u0d4d (\u0d15\u0d4d\u0d32\u0d46\u0d2b\u0d4d\u0d31\u0d4d\u0d31\u0d4d \u0d30\u0d40\u0d24\u0d3f)", "label": "\u0d38\u0d4b\u0d2b\u0d4d\u0d31\u0d4d\u0d31\u0d4d \u0d35\u0d41\u0d21\u0d4d \u0d17\u0d4d\u0d30\u0d3e\u0d2b\u0d4d\u0d31\u0d4d\u0d31\u0d3f\u0d02\u0d17\u0d4d (\u0d15\u0d4d\u0d32\u0d46\u0d2b\u0d4d\u0d31\u0d4d\u0d31\u0d4d \u0d30\u0d40\u0d24\u0d3f)", "shape": "dot", "size": 20, "title": "Dataset Lang: ml"}, {"color": "#2ed573", "font": {"color": "white"}, "id": "\u0d35\u0d3f\u0d24\u0d4d\u0d24\u0d41\u0d15\u0d7e\n(Unmapped)", "label": "\u0d35\u0d3f\u0d24\u0d4d\u0d24\u0d41\u0d15\u0d7e\n(Unmapped)", "shape": "hexagon", "size": 40}, {"color": "#00a8ff", "font": {"color": "white"}, "id": "\u0d35\u0d3f\u0d24\u0d4d\u0d24\u0d41\u0d15\u0d7e", "label": "\u0d35\u0d3f\u0d24\u0d4d\u0d24\u0d41\u0d15\u0d7e", "shape": "dot", "size": 20, "title": "Dataset Lang: ml"}, {"color": "#2ed573", "font": {"color": "white"}, "id": "\u0d35\u0d3f\u0d24\u0d2f\u0d4d\u0d15\u0d4d\u0d15\u0d23\u0d02\n(Unmapped)", "label": "\u0d35\u0d3f\u0d24\u0d2f\u0d4d\u0d15\u0d4d\u0d15\u0d23\u0d02\n(Unmapped)", "shape": "hexagon", "size": 40}, {"color": "#00a8ff", "font": {"color": "white"}, "id": "\u0d35\u0d3f\u0d24\u0d2f\u0d4d\u0d15\u0d4d\u0d15\u0d23\u0d02", "label": "\u0d35\u0d3f\u0d24\u0d2f\u0d4d\u0d15\u0d4d\u0d15\u0d23\u0d02", "shape": "dot", "size": 20, "title": "Dataset Lang: ml"}, {"color": "#2ed573", "font": {"color": "white"}, "id": "\u0d30\u0d41\u0d26\u0d4d\u0d30\u0d3e\u0d15\u0d4d\u0d37\u0d3f\n(Unmapped)", "label": "\u0d30\u0d41\u0d26\u0d4d\u0d30\u0d3e\u0d15\u0d4d\u0d37\u0d3f\n(Unmapped)", "shape": "hexagon", "size": 40}, {"color": "#00a8ff", "font": {"color": "white"}, "id": "\u0d30\u0d41\u0d26\u0d4d\u0d30\u0d3e\u0d15\u0d4d\u0d37\u0d3f", "label": "\u0d30\u0d41\u0d26\u0d4d\u0d30\u0d3e\u0d15\u0d4d\u0d37\u0d3f", "shape": "dot", "size": 20, "title": "Dataset Lang: ml"}, {"color": "#2ed573", "font": {"color": "white"}, "id": "\u0d0e. \u0d39\u0d3f\u0d7c\u0d38\u0d4d\u0d2f\u0d42\u0d1f\u0d4d\u0d1f\u0d41\u0d02\n(Unmapped)", "label": "\u0d0e. \u0d39\u0d3f\u0d7c\u0d38\u0d4d\u0d2f\u0d42\u0d1f\u0d4d\u0d1f\u0d41\u0d02\n(Unmapped)", "shape": "hexagon", "size": 40}, {"color": "#00a8ff", "font": {"color": "white"}, "id": "\u0d0e. \u0d39\u0d3f\u0d7c\u0d38\u0d4d\u0d2f\u0d42\u0d1f\u0d4d\u0d1f\u0d41\u0d02", "label": "\u0d0e. \u0d39\u0d3f\u0d7c\u0d38\u0d4d\u0d2f\u0d42\u0d1f\u0d4d\u0d1f\u0d41\u0d02", "shape": "dot", "size": 20, "title": "Dataset Lang: ml"}, {"color": "#2ed573", "font": {"color": "white"}, "id": "\u0d31\u0d42\u0d1f\u0d4d\u0d1f\u0d4d \u0d38\u0d4d\u0d31\u0d4d\u0d31\u0d4b\u0d15\u0d4d\u0d15\u0d41\u0d15\u0d33\u0d3e\u0d2f\u0d3f\n(Unmapped)", "label": "\u0d31\u0d42\u0d1f\u0d4d\u0d1f\u0d4d \u0d38\u0d4d\u0d31\u0d4d\u0d31\u0d4b\u0d15\u0d4d\u0d15\u0d41\u0d15\u0d33\u0d3e\u0d2f\u0d3f\n(Unmapped)", "shape": "hexagon", "size": 40}, {"color": "#00a8ff", "font": {"color": "white"}, "id": "\u0d31\u0d42\u0d1f\u0d4d\u0d1f\u0d4d \u0d38\u0d4d\u0d31\u0d4d\u0d31\u0d4b\u0d15\u0d4d\u0d15\u0d41\u0d15\u0d33\u0d3e\u0d2f\u0d3f", "label": "\u0d31\u0d42\u0d1f\u0d4d\u0d1f\u0d4d \u0d38\u0d4d\u0d31\u0d4d\u0d31\u0d4b\u0d15\u0d4d\u0d15\u0d41\u0d15\u0d33\u0d3e\u0d2f\u0d3f", "shape": "dot", "size": 20, "title": "Dataset Lang: ml"}, {"color": "#2ed573", "font": {"color": "white"}, "id": "\u0d1a\u0d15\u0d4d\u0d15\u0d2f\u0d3f\u0d7d\n(Unmapped)", "label": "\u0d1a\u0d15\u0d4d\u0d15\u0d2f\u0d3f\u0d7d\n(Unmapped)", "shape": "hexagon", "size": 40}, {"color": "#00a8ff", "font": {"color": "white"}, "id": "\u0d1a\u0d15\u0d4d\u0d15\u0d2f\u0d3f\u0d7d", "label": "\u0d1a\u0d15\u0d4d\u0d15\u0d2f\u0d3f\u0d7d", "shape": "dot", "size": 20, "title": "Dataset Lang: ml"}, {"color": "#2ed573", "font": {"color": "white"}, "id": "\u0d2a\u0d30\u0d3f\u0d37\u0d4d\u0d15\u0d30\u0d3f\u0d1a\u0d4d\u0d1a \u0d2b\u0d4b\u0d7c\u0d15\u0d46\u0d7c\u0d1f\u0d4d\u0d1f\u0d4d \u0d30\u0d40\u0d24\u0d3f\u0d2f\u0d3f\u0d32\u0d41\u0d33\u0d4d\u0d33 \u0d2c\u0d21\u0d4d\u0d21\u0d3f\u0d02\u0d17\u0d41\u0d02\n(Unmapped)", "label": "\u0d2a\u0d30\u0d3f\u0d37\u0d4d\u0d15\u0d30\u0d3f\u0d1a\u0d4d\u0d1a \u0d2b\u0d4b\u0d7c\u0d15\u0d46\u0d7c\u0d1f\u0d4d\u0d1f\u0d4d \u0d30\u0d40\u0d24\u0d3f\u0d2f\u0d3f\u0d32\u0d41\u0d33\u0d4d\u0d33 \u0d2c\u0d21\u0d4d\u0d21\u0d3f\u0d02\u0d17\u0d41\u0d02\n(Unmapped)", "shape": "hexagon", "size": 40}, {"color": "#00a8ff", "font": {"color": "white"}, "id": "\u0d2a\u0d30\u0d3f\u0d37\u0d4d\u0d15\u0d30\u0d3f\u0d1a\u0d4d\u0d1a \u0d2b\u0d4b\u0d7c\u0d15\u0d46\u0d7c\u0d1f\u0d4d\u0d1f\u0d4d \u0d30\u0d40\u0d24\u0d3f\u0d2f\u0d3f\u0d32\u0d41\u0d33\u0d4d\u0d33 \u0d2c\u0d21\u0d4d\u0d21\u0d3f\u0d02\u0d17\u0d41\u0d02", "label": "\u0d2a\u0d30\u0d3f\u0d37\u0d4d\u0d15\u0d30\u0d3f\u0d1a\u0d4d\u0d1a \u0d2b\u0d4b\u0d7c\u0d15\u0d46\u0d7c\u0d1f\u0d4d\u0d1f\u0d4d \u0d30\u0d40\u0d24\u0d3f\u0d2f\u0d3f\u0d32\u0d41\u0d33\u0d4d\u0d33 \u0d2c\u0d21\u0d4d\u0d21\u0d3f\u0d02\u0d17\u0d41\u0d02", "shape": "dot", "size": 20, "title": "Dataset Lang: ml"}, {"color": "#2ed573", "font": {"color": "white"}, "id": "\u0d2e\u0d32\u0d2f\u0d2f\u0d3f\u0d7d\n(Unmapped)", "label": "\u0d2e\u0d32\u0d2f\u0d2f\u0d3f\u0d7d\n(Unmapped)", "shape": "hexagon", "size": 40}, {"color": "#00a8ff", "font": {"color": "white"}, "id": "\u0d2e\u0d32\u0d2f\u0d2f\u0d3f\u0d7d", "label": "\u0d2e\u0d32\u0d2f\u0d2f\u0d3f\u0d7d", "shape": "dot", "size": 20, "title": "Dataset Lang: ml"}, {"color": "#2ed573", "font": {"color": "white"}, "id": "\u0d0e\u0d2f\u0d7c \u0d32\u0d46\u0d2f\u0d31\u0d3f\u0d02\u0d17\u0d4d\n(Unmapped)", "label": "\u0d0e\u0d2f\u0d7c \u0d32\u0d46\u0d2f\u0d31\u0d3f\u0d02\u0d17\u0d4d\n(Unmapped)", "shape": "hexagon", "size": 40}, {"color": "#00a8ff", "font": {"color": "white"}, "id": "\u0d0e\u0d2f\u0d7c \u0d32\u0d46\u0d2f\u0d31\u0d3f\u0d02\u0d17\u0d4d", "label": "\u0d0e\u0d2f\u0d7c \u0d32\u0d46\u0d2f\u0d31\u0d3f\u0d02\u0d17\u0d4d", "shape": "dot", "size": 20, "title": "Dataset Lang: ml"}, {"color": "#2ed573", "font": {"color": "white"}, "id": "\u0d2a\u0d46\u0d1a\u0d4d\u0d1a\u0d3f\u0d2a\u0d4d\u0d2a\u0d3e\u0d31\u0d48 (\u0d24\u0d2e\u0d3f\u0d34\u0d4d\u0d28\u0d3e\u0d1f\u0d4d)\n(Unmapped)", "label": "\u0d2a\u0d46\u0d1a\u0d4d\u0d1a\u0d3f\u0d2a\u0d4d\u0d2a\u0d3e\u0d31\u0d48 (\u0d24\u0d2e\u0d3f\u0d34\u0d4d\u0d28\u0d3e\u0d1f\u0d4d)\n(Unmapped)", "shape": "hexagon", "size": 40}, {"color": "#00a8ff", "font": {"color": "white"}, "id": "\u0d2a\u0d46\u0d1a\u0d4d\u0d1a\u0d3f\u0d2a\u0d4d\u0d2a\u0d3e\u0d31\u0d48 (\u0d24\u0d2e\u0d3f\u0d34\u0d4d\u0d28\u0d3e\u0d1f\u0d4d)", "label": "\u0d2a\u0d46\u0d1a\u0d4d\u0d1a\u0d3f\u0d2a\u0d4d\u0d2a\u0d3e\u0d31\u0d48 (\u0d24\u0d2e\u0d3f\u0d34\u0d4d\u0d28\u0d3e\u0d1f\u0d4d)", "shape": "dot", "size": 20, "title": "Dataset Lang: ml"}, {"color": "#2ed573", "font": {"color": "white"}, "id": "\u0d1c\u0d28\u0d41\u0d35\u0d30\u0d3f - \u0d2b\u0d46\u0d2c\u0d4d\u0d30\u0d41\u0d35\u0d30\u0d3f\n(Unmapped)", "label": "\u0d1c\u0d28\u0d41\u0d35\u0d30\u0d3f - \u0d2b\u0d46\u0d2c\u0d4d\u0d30\u0d41\u0d35\u0d30\u0d3f\n(Unmapped)", "shape": "hexagon", "size": 40}, {"color": "#00a8ff", "font": {"color": "white"}, "id": "\u0d1c\u0d28\u0d41\u0d35\u0d30\u0d3f - \u0d2b\u0d46\u0d2c\u0d4d\u0d30\u0d41\u0d35\u0d30\u0d3f", "label": "\u0d1c\u0d28\u0d41\u0d35\u0d30\u0d3f - \u0d2b\u0d46\u0d2c\u0d4d\u0d30\u0d41\u0d35\u0d30\u0d3f", "shape": "dot", "size": 20, "title": "Dataset Lang: ml"}, {"color": "#2ed573", "font": {"color": "white"}, "id": "\u0d12\u0d15\u0d4d\u0d1f\u0d4b\u0d2c\u0d7c - \u0d28\u0d35\u0d02\u0d2c\u0d7c\n(Unmapped)", "label": "\u0d12\u0d15\u0d4d\u0d1f\u0d4b\u0d2c\u0d7c - \u0d28\u0d35\u0d02\u0d2c\u0d7c\n(Unmapped)", "shape": "hexagon", "size": 40}, {"color": "#00a8ff", "font": {"color": "white"}, "id": "\u0d12\u0d15\u0d4d\u0d1f\u0d4b\u0d2c\u0d7c - \u0d28\u0d35\u0d02\u0d2c\u0d7c", "label": "\u0d12\u0d15\u0d4d\u0d1f\u0d4b\u0d2c\u0d7c - \u0d28\u0d35\u0d02\u0d2c\u0d7c", "shape": "dot", "size": 20, "title": "Dataset Lang: ml"}, {"color": "#2ed573", "font": {"color": "white"}, "id": "3-5 \u0d2e\u0d3e\u0d38\u0d02 \u0d2a\u0d4d\u0d30\u0d3e\u0d2f\u0d2e\u0d41\u0d33\u0d4d\u0d33\n(Unmapped)", "label": "3-5 \u0d2e\u0d3e\u0d38\u0d02 \u0d2a\u0d4d\u0d30\u0d3e\u0d2f\u0d2e\u0d41\u0d33\u0d4d\u0d33\n(Unmapped)", "shape": "hexagon", "size": 40}, {"color": "#00a8ff", "font": {"color": "white"}, "id": "3-5 \u0d2e\u0d3e\u0d38\u0d02 \u0d2a\u0d4d\u0d30\u0d3e\u0d2f\u0d2e\u0d41\u0d33\u0d4d\u0d33", "label": "3-5 \u0d2e\u0d3e\u0d38\u0d02 \u0d2a\u0d4d\u0d30\u0d3e\u0d2f\u0d2e\u0d41\u0d33\u0d4d\u0d33", "shape": "dot", "size": 20, "title": "Dataset Lang: ml"}, {"color": "#2ed573", "font": {"color": "white"}, "id": "\u0d31\u0d42\u0d1f\u0d4d\u0d1f\u0d4d \u0d38\u0d4d\u0d31\u0d4d\u0d31\u0d4b\u0d15\u0d4d\u0d15\u0d4d \u0d24\u0d48\u0d15\u0d33\u0d3f\u0d7d\n(Unmapped)", "label": "\u0d31\u0d42\u0d1f\u0d4d\u0d1f\u0d4d \u0d38\u0d4d\u0d31\u0d4d\u0d31\u0d4b\u0d15\u0d4d\u0d15\u0d4d \u0d24\u0d48\u0d15\u0d33\u0d3f\u0d7d\n(Unmapped)", "shape": "hexagon", "size": 40}, {"color": "#00a8ff", "font": {"color": "white"}, "id": "\u0d31\u0d42\u0d1f\u0d4d\u0d1f\u0d4d \u0d38\u0d4d\u0d31\u0d4d\u0d31\u0d4b\u0d15\u0d4d\u0d15\u0d4d \u0d24\u0d48\u0d15\u0d33\u0d3f\u0d7d", "label": "\u0d31\u0d42\u0d1f\u0d4d\u0d1f\u0d4d \u0d38\u0d4d\u0d31\u0d4d\u0d31\u0d4b\u0d15\u0d4d\u0d15\u0d4d \u0d24\u0d48\u0d15\u0d33\u0d3f\u0d7d", "shape": "dot", "size": 20, "title": "Dataset Lang: ml"}, {"color": "#2ed573", "font": {"color": "white"}, "id": "\u0d2a\u0d3e\u0d1a\u0d4d\u0d1a\u0d4d \u0d2c\u0d21\u0d4d\u0d21\u0d3f\u0d02\u0d17\u0d4d\n(Unmapped)", "label": "\u0d2a\u0d3e\u0d1a\u0d4d\u0d1a\u0d4d \u0d2c\u0d21\u0d4d\u0d21\u0d3f\u0d02\u0d17\u0d4d\n(Unmapped)", "shape": "hexagon", "size": 40}, {"color": "#00a8ff", "font": {"color": "white"}, "id": "\u0d2a\u0d3e\u0d1a\u0d4d\u0d1a\u0d4d \u0d2c\u0d21\u0d4d\u0d21\u0d3f\u0d02\u0d17\u0d4d", "label": "\u0d2a\u0d3e\u0d1a\u0d4d\u0d1a\u0d4d \u0d2c\u0d21\u0d4d\u0d21\u0d3f\u0d02\u0d17\u0d4d", "shape": "dot", "size": 20, "title": "Dataset Lang: ml"}, {"color": "#2ed573", "font": {"color": "white"}, "id": "\u0d1a\u0d46\u0d1f\u0d3f\u0d15\u0d7e\n(Unmapped)", "label": "\u0d1a\u0d46\u0d1f\u0d3f\u0d15\u0d7e\n(Unmapped)", "shape": "hexagon", "size": 40}, {"color": "#00a8ff", "font": {"color": "white"}, "id": "\u0d1a\u0d46\u0d1f\u0d3f\u0d15\u0d7e", "label": "\u0d1a\u0d46\u0d1f\u0d3f\u0d15\u0d7e", "shape": "dot", "size": 20, "title": "Dataset Lang: ml"}, {"color": "#2ed573", "font": {"color": "white"}, "id": "8 \u0d2e\u0d3e\u0d38\u0d24\u0d4d\u0d24\u0d3f\u0d28\u0d41\u0d33\u0d4d\u0d33\u0d3f\u0d7d\n(Unmapped)", "label": "8 \u0d2e\u0d3e\u0d38\u0d24\u0d4d\u0d24\u0d3f\u0d28\u0d41\u0d33\u0d4d\u0d33\u0d3f\u0d7d\n(Unmapped)", "shape": "hexagon", "size": 40}, {"color": "#00a8ff", "font": {"color": "white"}, "id": "8 \u0d2e\u0d3e\u0d38\u0d24\u0d4d\u0d24\u0d3f\u0d28\u0d41\u0d33\u0d4d\u0d33\u0d3f\u0d7d", "label": "8 \u0d2e\u0d3e\u0d38\u0d24\u0d4d\u0d24\u0d3f\u0d28\u0d41\u0d33\u0d4d\u0d33\u0d3f\u0d7d", "shape": "dot", "size": 20, "title": "Dataset Lang: ml"}, {"color": "#2ed573", "font": {"color": "white"}, "id": "1 \u0d2e\u0d40\u0d31\u0d4d\u0d31\u0d7c \u0d15\u0d4d\u0d2f\u0d42\u0d2c\u0d4d \u0d35\u0d32\u0d3f\u0d2a\u0d4d\u0d2a\u0d2e\u0d41\u0d33\u0d4d\u0d33 \u0d15\u0d41\u0d34\u0d3f\u0d15\u0d7e 9-12 \u0d2e\u0d40\u0d31\u0d4d\u0d31\u0d7c \u0d05\u0d15\u0d32\u0d24\u0d4d\u0d24\u0d3f\u0d7d \u0d15\u0d41\u0d34\u0d3f\u0d1a\u0d4d\u0d1a\u0d46\u0d1f\u0d41\u0d15\u0d4d\u0d15\u0d41\u0d28\u0d4d\u0d28\u0d41\n(Unmapped)", "label": "1 \u0d2e\u0d40\u0d31\u0d4d\u0d31\u0d7c \u0d15\u0d4d\u0d2f\u0d42\u0d2c\u0d4d \u0d35\u0d32\u0d3f\u0d2a\u0d4d\u0d2a\u0d2e\u0d41\u0d33\u0d4d\u0d33 \u0d15\u0d41\u0d34\u0d3f\u0d15\u0d7e 9-12 \u0d2e\u0d40\u0d31\u0d4d\u0d31\u0d7c \u0d05\u0d15\u0d32\u0d24\u0d4d\u0d24\u0d3f\u0d7d \u0d15\u0d41\u0d34\u0d3f\u0d1a\u0d4d\u0d1a\u0d46\u0d1f\u0d41\u0d15\u0d4d\u0d15\u0d41\u0d28\u0d4d\u0d28\u0d41\n(Unmapped)", "shape": "hexagon", "size": 40}, {"color": "#00a8ff", "font": {"color": "white"}, "id": "1 \u0d2e\u0d40\u0d31\u0d4d\u0d31\u0d7c \u0d15\u0d4d\u0d2f\u0d42\u0d2c\u0d4d \u0d35\u0d32\u0d3f\u0d2a\u0d4d\u0d2a\u0d2e\u0d41\u0d33\u0d4d\u0d33 \u0d15\u0d41\u0d34\u0d3f\u0d15\u0d7e 9-12 \u0d2e\u0d40\u0d31\u0d4d\u0d31\u0d7c \u0d05\u0d15\u0d32\u0d24\u0d4d\u0d24\u0d3f\u0d7d \u0d15\u0d41\u0d34\u0d3f\u0d1a\u0d4d\u0d1a\u0d46\u0d1f\u0d41\u0d15\u0d4d\u0d15\u0d41\u0d28\u0d4d\u0d28\u0d41", "label": "1 \u0d2e\u0d40\u0d31\u0d4d\u0d31\u0d7c \u0d15\u0d4d\u0d2f\u0d42\u0d2c\u0d4d \u0d35\u0d32\u0d3f\u0d2a\u0d4d\u0d2a\u0d2e\u0d41\u0d33\u0d4d\u0d33 \u0d15\u0d41\u0d34\u0d3f\u0d15\u0d7e 9-12 \u0d2e\u0d40\u0d31\u0d4d\u0d31\u0d7c \u0d05\u0d15\u0d32\u0d24\u0d4d\u0d24\u0d3f\u0d7d \u0d15\u0d41\u0d34\u0d3f\u0d1a\u0d4d\u0d1a\u0d46\u0d1f\u0d41\u0d15\u0d4d\u0d15\u0d41\u0d28\u0d4d\u0d28\u0d41", "shape": "dot", "size": 20, "title": "Dataset Lang: ml"}, {"color": "#2ed573", "font": {"color": "white"}, "id": "\u0d2e\u0d47\u0d7d\u0d2e\u0d23\u0d4d\u0d23\u0d4d\n(Unmapped)", "label": "\u0d2e\u0d47\u0d7d\u0d2e\u0d23\u0d4d\u0d23\u0d4d\n(Unmapped)", "shape": "hexagon", "size": 40}, {"color": "#00a8ff", "font": {"color": "white"}, "id": "\u0d2e\u0d47\u0d7d\u0d2e\u0d23\u0d4d\u0d23\u0d4d", "label": "\u0d2e\u0d47\u0d7d\u0d2e\u0d23\u0d4d\u0d23\u0d4d", "shape": "dot", "size": 20, "title": "Dataset Lang: ml"}, {"color": "#2ed573", "font": {"color": "white"}, "id": "10 \u0d15\u0d3f\u0d32\u0d4b\u0d17\u0d4d\u0d30\u0d3e\u0d02 \u0d15\u0d3e\u0d32\u0d3f\u0d35\u0d33\u0d02\n(Unmapped)", "label": "10 \u0d15\u0d3f\u0d32\u0d4b\u0d17\u0d4d\u0d30\u0d3e\u0d02 \u0d15\u0d3e\u0d32\u0d3f\u0d35\u0d33\u0d02\n(Unmapped)", "shape": "hexagon", "size": 40}, {"color": "#00a8ff", "font": {"color": "white"}, "id": "10 \u0d15\u0d3f\u0d32\u0d4b\u0d17\u0d4d\u0d30\u0d3e\u0d02 \u0d15\u0d3e\u0d32\u0d3f\u0d35\u0d33\u0d02", "label": "10 \u0d15\u0d3f\u0d32\u0d4b\u0d17\u0d4d\u0d30\u0d3e\u0d02 \u0d15\u0d3e\u0d32\u0d3f\u0d35\u0d33\u0d02", "shape": "dot", "size": 20, "title": "Dataset Lang: ml"}, {"color": "#2ed573", "font": {"color": "white"}, "id": "\u0d2e\u0d47\u0d7d\u0d2e\u0d23\u0d4d\u0d23\u0d41\u0d02 10 \u0d15\u0d3f\u0d32\u0d4b\u0d17\u0d4d\u0d30\u0d3e\u0d02 \u0d15\u0d3e\u0d32\u0d3f\u0d35\u0d33\u0d35\u0d41\u0d02 \u0d28\u0d3f\u0d31\u0d2f\u0d4d\u0d15\u0d4d\u0d15\u0d41\u0d28\u0d4d\u0d28\u0d41\n(Unmapped)", "label": "\u0d2e\u0d47\u0d7d\u0d2e\u0d23\u0d4d\u0d23\u0d41\u0d02 10 \u0d15\u0d3f\u0d32\u0d4b\u0d17\u0d4d\u0d30\u0d3e\u0d02 \u0d15\u0d3e\u0d32\u0d3f\u0d35\u0d33\u0d35\u0d41\u0d02 \u0d28\u0d3f\u0d31\u0d2f\u0d4d\u0d15\u0d4d\u0d15\u0d41\u0d28\u0d4d\u0d28\u0d41\n(Unmapped)", "shape": "hexagon", "size": 40}, {"color": "#00a8ff", "font": {"color": "white"}, "id": "\u0d2e\u0d47\u0d7d\u0d2e\u0d23\u0d4d\u0d23\u0d41\u0d02 10 \u0d15\u0d3f\u0d32\u0d4b\u0d17\u0d4d\u0d30\u0d3e\u0d02 \u0d15\u0d3e\u0d32\u0d3f\u0d35\u0d33\u0d35\u0d41\u0d02 \u0d28\u0d3f\u0d31\u0d2f\u0d4d\u0d15\u0d4d\u0d15\u0d41\u0d28\u0d4d\u0d28\u0d41", "label": "\u0d2e\u0d47\u0d7d\u0d2e\u0d23\u0d4d\u0d23\u0d41\u0d02 10 \u0d15\u0d3f\u0d32\u0d4b\u0d17\u0d4d\u0d30\u0d3e\u0d02 \u0d15\u0d3e\u0d32\u0d3f\u0d35\u0d33\u0d35\u0d41\u0d02 \u0d28\u0d3f\u0d31\u0d2f\u0d4d\u0d15\u0d4d\u0d15\u0d41\u0d28\u0d4d\u0d28\u0d41", "shape": "dot", "size": 20, "title": "Dataset Lang: ml"}, {"color": "#2ed573", "font": {"color": "white"}, "id": "\u0d1c\u0d42\u0d7a - \u0d38\u0d46\u0d2a\u0d4d\u0d31\u0d4d\u0d31\u0d02\u0d2c\u0d7c \u0d2e\u0d3e\u0d38\u0d19\u0d4d\u0d19\u0d33\u0d3f\u0d7d\n(Unmapped)", "label": "\u0d1c\u0d42\u0d7a - \u0d38\u0d46\u0d2a\u0d4d\u0d31\u0d4d\u0d31\u0d02\u0d2c\u0d7c \u0d2e\u0d3e\u0d38\u0d19\u0d4d\u0d19\u0d33\u0d3f\u0d7d\n(Unmapped)", "shape": "hexagon", "size": 40}, {"color": "#00a8ff", "font": {"color": "white"}, "id": "\u0d1c\u0d42\u0d7a - \u0d38\u0d46\u0d2a\u0d4d\u0d31\u0d4d\u0d31\u0d02\u0d2c\u0d7c \u0d2e\u0d3e\u0d38\u0d19\u0d4d\u0d19\u0d33\u0d3f\u0d7d", "label": "\u0d1c\u0d42\u0d7a - \u0d38\u0d46\u0d2a\u0d4d\u0d31\u0d4d\u0d31\u0d02\u0d2c\u0d7c \u0d2e\u0d3e\u0d38\u0d19\u0d4d\u0d19\u0d33\u0d3f\u0d7d", "shape": "dot", "size": 20, "title": "Dataset Lang: ml"}, {"color": "#2ed573", "font": {"color": "white"}, "id": "\u0d12\u0d1f\u0d4d\u0d1f\u0d41 \u0d24\u0d48\u0d15\u0d7e\n(Unmapped)", "label": "\u0d12\u0d1f\u0d4d\u0d1f\u0d41 \u0d24\u0d48\u0d15\u0d7e\n(Unmapped)", "shape": "hexagon", "size": 40}, {"color": "#00a8ff", "font": {"color": "white"}, "id": "\u0d12\u0d1f\u0d4d\u0d1f\u0d41 \u0d24\u0d48\u0d15\u0d7e", "label": "\u0d12\u0d1f\u0d4d\u0d1f\u0d41 \u0d24\u0d48\u0d15\u0d7e", "shape": "dot", "size": 20, "title": "Dataset Lang: ml"}, {"color": "#2ed573", "font": {"color": "white"}, "id": "\u0d15\u0d41\u0d34\u0d3f\u0d15\u0d33\u0d41\u0d1f\u0d46 \u0d2e\u0d27\u0d4d\u0d2f\u0d24\u0d4d\u0d24\u0d3f\u0d7d \u0d12\u0d1f\u0d4d\u0d1f\u0d41 \u0d24\u0d48\u0d15\u0d7e \u0d28\u0d1f\u0d41\u0d28\u0d4d\u0d28\u0d41\n(Unmapped)", "label": "\u0d15\u0d41\u0d34\u0d3f\u0d15\u0d33\u0d41\u0d1f\u0d46 \u0d2e\u0d27\u0d4d\u0d2f\u0d24\u0d4d\u0d24\u0d3f\u0d7d \u0d12\u0d1f\u0d4d\u0d1f\u0d41 \u0d24\u0d48\u0d15\u0d7e \u0d28\u0d1f\u0d41\u0d28\u0d4d\u0d28\u0d41\n(Unmapped)", "shape": "hexagon", "size": 40}, {"color": "#00a8ff", "font": {"color": "white"}, "id": "\u0d15\u0d41\u0d34\u0d3f\u0d15\u0d33\u0d41\u0d1f\u0d46 \u0d2e\u0d27\u0d4d\u0d2f\u0d24\u0d4d\u0d24\u0d3f\u0d7d \u0d12\u0d1f\u0d4d\u0d1f\u0d41 \u0d24\u0d48\u0d15\u0d7e \u0d28\u0d1f\u0d41\u0d28\u0d4d\u0d28\u0d41", "label": "\u0d15\u0d41\u0d34\u0d3f\u0d15\u0d33\u0d41\u0d1f\u0d46 \u0d2e\u0d27\u0d4d\u0d2f\u0d24\u0d4d\u0d24\u0d3f\u0d7d \u0d12\u0d1f\u0d4d\u0d1f\u0d41 \u0d24\u0d48\u0d15\u0d7e \u0d28\u0d1f\u0d41\u0d28\u0d4d\u0d28\u0d41", "shape": "dot", "size": 20, "title": "Dataset Lang: ml"}, {"color": "#2ed573", "font": {"color": "white"}, "id": "\u0d1c\u0d32\u0d38\u0d47\u0d1a\u0d28\u0d02\n(Unmapped)", "label": "\u0d1c\u0d32\u0d38\u0d47\u0d1a\u0d28\u0d02\n(Unmapped)", "shape": "hexagon", "size": 40}, {"color": "#00a8ff", "font": {"color": "white"}, "id": "\u0d1c\u0d32\u0d38\u0d47\u0d1a\u0d28\u0d02", "label": "\u0d1c\u0d32\u0d38\u0d47\u0d1a\u0d28\u0d02", "shape": "dot", "size": 20, "title": "Dataset Lang: ml"}, {"color": "#2ed573", "font": {"color": "white"}, "id": "\u0d32\u0d48\u0d2b\u0d4d \u0d07\u0d31\u0d3f\u0d17\u0d47\u0d37\u0d7b\n(Unmapped)", "label": "\u0d32\u0d48\u0d2b\u0d4d \u0d07\u0d31\u0d3f\u0d17\u0d47\u0d37\u0d7b\n(Unmapped)", "shape": "hexagon", "size": 40}, {"color": "#00a8ff", "font": {"color": "white"}, "id": "\u0d32\u0d48\u0d2b\u0d4d \u0d07\u0d31\u0d3f\u0d17\u0d47\u0d37\u0d7b", "label": "\u0d32\u0d48\u0d2b\u0d4d \u0d07\u0d31\u0d3f\u0d17\u0d47\u0d37\u0d7b", "shape": "dot", "size": 20, "title": "Dataset Lang: ml"}, {"color": "#2ed573", "font": {"color": "white"}, "id": "4-\u0d3e\u0d02 \u0d26\u0d3f\u0d35\u0d38\u0d02\n(Unmapped)", "label": "4-\u0d3e\u0d02 \u0d26\u0d3f\u0d35\u0d38\u0d02\n(Unmapped)", "shape": "hexagon", "size": 40}, {"color": "#00a8ff", "font": {"color": "white"}, "id": "4-\u0d3e\u0d02 \u0d26\u0d3f\u0d35\u0d38\u0d02", "label": "4-\u0d3e\u0d02 \u0d26\u0d3f\u0d35\u0d38\u0d02", "shape": "dot", "size": 20, "title": "Dataset Lang: ml"}, {"color": "#2ed573", "font": {"color": "white"}, "id": "\u0d06\u0d34\u0d4d\u0d1a\u0d2f\u0d3f\u0d7d \u0d12\u0d30\u0d3f\u0d15\u0d4d\u0d15\u0d7d\n(Unmapped)", "label": "\u0d06\u0d34\u0d4d\u0d1a\u0d2f\u0d3f\u0d7d \u0d12\u0d30\u0d3f\u0d15\u0d4d\u0d15\u0d7d\n(Unmapped)", "shape": "hexagon", "size": 40}, {"color": "#00a8ff", "font": {"color": "white"}, "id": "\u0d06\u0d34\u0d4d\u0d1a\u0d2f\u0d3f\u0d7d \u0d12\u0d30\u0d3f\u0d15\u0d4d\u0d15\u0d7d", "label": "\u0d06\u0d34\u0d4d\u0d1a\u0d2f\u0d3f\u0d7d \u0d12\u0d30\u0d3f\u0d15\u0d4d\u0d15\u0d7d", "shape": "dot", "size": 20, "title": "Dataset Lang: ml"}, {"color": "#2ed573", "font": {"color": "white"}, "id": "\u0d24\u0d23\u0d4d\u0d23\u0d40\u0d7c\u0d24\u0d4d\u0d24\u0d1f\u0d24\u0d4d\u0d24\u0d3f\u0d7d\n(Unmapped)", "label": "\u0d24\u0d23\u0d4d\u0d23\u0d40\u0d7c\u0d24\u0d4d\u0d24\u0d1f\u0d24\u0d4d\u0d24\u0d3f\u0d7d\n(Unmapped)", "shape": "hexagon", "size": 40}, {"color": "#00a8ff", "font": {"color": "white"}, "id": "\u0d24\u0d23\u0d4d\u0d23\u0d40\u0d7c\u0d24\u0d4d\u0d24\u0d1f\u0d24\u0d4d\u0d24\u0d3f\u0d7d", "label": "\u0d24\u0d23\u0d4d\u0d23\u0d40\u0d7c\u0d24\u0d4d\u0d24\u0d1f\u0d24\u0d4d\u0d24\u0d3f\u0d7d", "shape": "dot", "size": 20, "title": "Dataset Lang: ml"}, {"color": "#2ed573", "font": {"color": "white"}, "id": "10-15 \u0d26\u0d3f\u0d35\u0d38\u0d02\n(Unmapped)", "label": "10-15 \u0d26\u0d3f\u0d35\u0d38\u0d02\n(Unmapped)", "shape": "hexagon", "size": 40}, {"color": "#00a8ff", "font": {"color": "white"}, "id": "10-15 \u0d26\u0d3f\u0d35\u0d38\u0d02", "label": "10-15 \u0d26\u0d3f\u0d35\u0d38\u0d02", "shape": "dot", "size": 20, "title": "Dataset Lang: ml"}, {"color": "#2ed573", "font": {"color": "white"}, "id": "\u0d35\u0d33\u0d2a\u0d4d\u0d30\u0d2f\u0d4b\u0d17\u0d02\n(Unmapped)", "label": "\u0d35\u0d33\u0d2a\u0d4d\u0d30\u0d2f\u0d4b\u0d17\u0d02\n(Unmapped)", "shape": "hexagon", "size": 40}, {"color": "#00a8ff", "font": {"color": "white"}, "id": "\u0d35\u0d33\u0d2a\u0d4d\u0d30\u0d2f\u0d4b\u0d17\u0d02", "label": "\u0d35\u0d33\u0d2a\u0d4d\u0d30\u0d2f\u0d4b\u0d17\u0d02", "shape": "dot", "size": 20, "title": "Dataset Lang: ml"}, {"color": "#2ed573", "font": {"color": "white"}, "id": "\u0d24\u0d4b\u0d1f\u0d4d\u0d1f\u0d2d\u0d42\u0d2e\u0d3f\u0d2f\u0d3f\u0d7d\n(Unmapped)", "label": "\u0d24\u0d4b\u0d1f\u0d4d\u0d1f\u0d2d\u0d42\u0d2e\u0d3f\u0d2f\u0d3f\u0d7d\n(Unmapped)", "shape": "hexagon", "size": 40}, {"color": "#00a8ff", "font": {"color": "white"}, "id": "\u0d24\u0d4b\u0d1f\u0d4d\u0d1f\u0d2d\u0d42\u0d2e\u0d3f\u0d2f\u0d3f\u0d7d", "label": "\u0d24\u0d4b\u0d1f\u0d4d\u0d1f\u0d2d\u0d42\u0d2e\u0d3f\u0d2f\u0d3f\u0d7d", "shape": "dot", "size": 20, "title": "Dataset Lang: ml"}, {"color": "#2ed573", "font": {"color": "white"}, "id": "\u0d28\u0d28\u0d2f\u0d4d\u0d15\u0d4d\u0d15\u0d23\u0d02\n(Unmapped)", "label": "\u0d28\u0d28\u0d2f\u0d4d\u0d15\u0d4d\u0d15\u0d23\u0d02\n(Unmapped)", "shape": "hexagon", "size": 40}, {"color": "#00a8ff", "font": {"color": "white"}, "id": "\u0d28\u0d28\u0d2f\u0d4d\u0d15\u0d4d\u0d15\u0d23\u0d02", "label": "\u0d28\u0d28\u0d2f\u0d4d\u0d15\u0d4d\u0d15\u0d23\u0d02", "shape": "dot", "size": 20, "title": "Dataset Lang: ml"}, {"color": "#2ed573", "font": {"color": "white"}, "id": "\u0d21\u0d4d\u0d30\u0d3f\u0d2a\u0d4d\u0d2a\u0d4d \u0d07\u0d31\u0d3f\u0d17\u0d47\u0d37\u0d7b\n(Unmapped)", "label": "\u0d21\u0d4d\u0d30\u0d3f\u0d2a\u0d4d\u0d2a\u0d4d \u0d07\u0d31\u0d3f\u0d17\u0d47\u0d37\u0d7b\n(Unmapped)", "shape": "hexagon", "size": 40}, {"color": "#00a8ff", "font": {"color": "white"}, "id": "\u0d21\u0d4d\u0d30\u0d3f\u0d2a\u0d4d\u0d2a\u0d4d \u0d07\u0d31\u0d3f\u0d17\u0d47\u0d37\u0d7b", "label": "\u0d21\u0d4d\u0d30\u0d3f\u0d2a\u0d4d\u0d2a\u0d4d \u0d07\u0d31\u0d3f\u0d17\u0d47\u0d37\u0d7b", "shape": "dot", "size": 20, "title": "Dataset Lang: ml"}, {"color": "#2ed573", "font": {"color": "white"}, "id": "\u0d28\u0d1f\u0d40\u0d7d \u0d2e\u0d41\u0d24\u0d7d 4-\u0d3e\u0d02 \u0d2e\u0d3e\u0d38\u0d02 \u0d35\u0d30\u0d46\n(Unmapped)", "label": "\u0d28\u0d1f\u0d40\u0d7d \u0d2e\u0d41\u0d24\u0d7d 4-\u0d3e\u0d02 \u0d2e\u0d3e\u0d38\u0d02 \u0d35\u0d30\u0d46\n(Unmapped)", "shape": "hexagon", "size": 40}, {"color": "#00a8ff", "font": {"color": "white"}, "id": "\u0d28\u0d1f\u0d40\u0d7d \u0d2e\u0d41\u0d24\u0d7d 4-\u0d3e\u0d02 \u0d2e\u0d3e\u0d38\u0d02 \u0d35\u0d30\u0d46", "label": "\u0d28\u0d1f\u0d40\u0d7d \u0d2e\u0d41\u0d24\u0d7d 4-\u0d3e\u0d02 \u0d2e\u0d3e\u0d38\u0d02 \u0d35\u0d30\u0d46", "shape": "dot", "size": 20, "title": "Dataset Lang: ml"}, {"color": "#2ed573", "font": {"color": "white"}, "id": "5-\u0d3e\u0d02 \u0d24\u0d40\u0d2f\u0d24\u0d3f \u0d2e\u0d41\u0d24\u0d7d \u0d35\u0d3f\u0d33\u0d35\u0d46\u0d1f\u0d41\u0d2a\u0d4d\u0d2a\u0d4d \u0d35\u0d30\u0d46\n(Unmapped)", "label": "5-\u0d3e\u0d02 \u0d24\u0d40\u0d2f\u0d24\u0d3f \u0d2e\u0d41\u0d24\u0d7d \u0d35\u0d3f\u0d33\u0d35\u0d46\u0d1f\u0d41\u0d2a\u0d4d\u0d2a\u0d4d \u0d35\u0d30\u0d46\n(Unmapped)", "shape": "hexagon", "size": 40}, {"color": "#00a8ff", "font": {"color": "white"}, "id": "5-\u0d3e\u0d02 \u0d24\u0d40\u0d2f\u0d24\u0d3f \u0d2e\u0d41\u0d24\u0d7d \u0d35\u0d3f\u0d33\u0d35\u0d46\u0d1f\u0d41\u0d2a\u0d4d\u0d2a\u0d4d \u0d35\u0d30\u0d46", "label": "5-\u0d3e\u0d02 \u0d24\u0d40\u0d2f\u0d24\u0d3f \u0d2e\u0d41\u0d24\u0d7d \u0d35\u0d3f\u0d33\u0d35\u0d46\u0d1f\u0d41\u0d2a\u0d4d\u0d2a\u0d4d \u0d35\u0d30\u0d46", "shape": "dot", "size": 20, "title": "Dataset Lang: ml"}, {"color": "#2ed573", "font": {"color": "white"}, "id": "\u0d35\u0d3f\u0d33\u0d35\u0d46\u0d1f\u0d41\u0d2a\u0d4d\u0d2a\u0d3f\u0d28\u0d4d 15 \u0d26\u0d3f\u0d35\u0d38\u0d02 \u0d2e\u0d41\u0d2e\u0d4d\u0d2a\u0d4d \u0d35\u0d30\u0d46\n(Unmapped)", "label": "\u0d35\u0d3f\u0d33\u0d35\u0d46\u0d1f\u0d41\u0d2a\u0d4d\u0d2a\u0d3f\u0d28\u0d4d 15 \u0d26\u0d3f\u0d35\u0d38\u0d02 \u0d2e\u0d41\u0d2e\u0d4d\u0d2a\u0d4d \u0d35\u0d30\u0d46\n(Unmapped)", "shape": "hexagon", "size": 40}, {"color": "#00a8ff", "font": {"color": "white"}, "id": "\u0d35\u0d3f\u0d33\u0d35\u0d46\u0d1f\u0d41\u0d2a\u0d4d\u0d2a\u0d3f\u0d28\u0d4d 15 \u0d26\u0d3f\u0d35\u0d38\u0d02 \u0d2e\u0d41\u0d2e\u0d4d\u0d2a\u0d4d \u0d35\u0d30\u0d46", "label": "\u0d35\u0d3f\u0d33\u0d35\u0d46\u0d1f\u0d41\u0d2a\u0d4d\u0d2a\u0d3f\u0d28\u0d4d 15 \u0d26\u0d3f\u0d35\u0d38\u0d02 \u0d2e\u0d41\u0d2e\u0d4d\u0d2a\u0d4d \u0d35\u0d30\u0d46", "shape": "dot", "size": 20, "title": "Dataset Lang: ml"}]);
+                  edges = new vis.DataSet([{"color": "#ffffff", "from": "\u0d1c\u0d32\u0d38\u0d47\u0d1a\u0d28\u0d2e\u0d3f\u0d32\u0d4d\u0d32\u0d3e\u0d24\u0d46 \u0d32\u0d3e\u0d2d\u0d15\u0d30\u0d2e\u0d3e\u0d2f \u0d15\u0d43\u0d37\u0d3f", "title": "Type: PRAC", "to": "\u0d1c\u0d32\u0d38\u0d47\u0d1a\u0d28\u0d2e\u0d3f\u0d32\u0d4d\u0d32\u0d3e\u0d24\u0d46 \u0d32\u0d3e\u0d2d\u0d15\u0d30\u0d2e\u0d3e\u0d2f \u0d15\u0d43\u0d37\u0d3f\n(Unmapped)"}, {"color": "#ffffff", "from": "\u0d1c\u0d32\u0d38\u0d47\u0d1a\u0d3f\u0d24 \u0d15\u0d43\u0d37\u0d3f", "title": "Type: PRAC", "to": "\u0d1c\u0d32\u0d38\u0d47\u0d1a\u0d3f\u0d24 \u0d15\u0d43\u0d37\u0d3f\n(Unmapped)"}, {"color": "#ffffff", "from": "\u0d15\u0d43\u0d37\u0d3f\u0d15\u0d4d\u0d15\u0d3e\u0d32\u0d02", "title": "Type: STAGE", "to": "\u0d15\u0d43\u0d37\u0d3f\u0d15\u0d4d\u0d15\u0d3e\u0d32\u0d02\n(Unmapped)"}, {"color": "#ffffff", "from": "\u0d35\u0d3f\u0d33\u0d28\u0d3f\u0d7c\u0d23\u0d2f\u0d02", "title": "Type: PRAC", "to": "\u0d35\u0d3f\u0d33\u0d28\u0d3f\u0d7c\u0d23\u0d2f\u0d02\n(Unmapped)"}, {"color": "#ffffff", "from": "\u0d15\u0d43\u0d37\u0d3f\u0d30\u0d40\u0d24\u0d3f\u0d15\u0d7e", "title": "Type: PRAC", "to": "\u0d15\u0d43\u0d37\u0d3f\u0d30\u0d40\u0d24\u0d3f\u0d15\u0d7e\n(Unmapped)"}, {"color": "#ffffff", "from": "\u0d2e\u0d23\u0d4d\u0d23\u0d4d \u0d15\u0d3f\u0d33\u0d1a\u0d4d\u0d1a\u0d41\u0d2e\u0d31\u0d3f\u0d15\u0d4d\u0d15\u0d7d \u0d30\u0d40\u0d24\u0d3f\u0d15\u0d7e", "title": "Type: PRAC", "to": "\u0d2e\u0d23\u0d4d\u0d23\u0d4d \u0d15\u0d3f\u0d33\u0d1a\u0d4d\u0d1a\u0d41\u0d2e\u0d31\u0d3f\u0d15\u0d4d\u0d15\u0d7d \u0d30\u0d40\u0d24\u0d3f\u0d15\u0d7e\n(Unmapped)"}, {"color": "#ffffff", "from": "\u0d2d\u0d42\u0d2e\u0d3f \u0d12\u0d30\u0d41\u0d15\u0d4d\u0d15\u0d41\u0d28\u0d4d\u0d28 \u0d38\u0d2e\u0d2f\u0d02", "title": "Type: STAGE", "to": "\u0d2d\u0d42\u0d2e\u0d3f \u0d12\u0d30\u0d41\u0d15\u0d4d\u0d15\u0d41\u0d28\u0d4d\u0d28 \u0d38\u0d2e\u0d2f\u0d02\n(Unmapped)"}, {"color": "#ffffff", "from": "T \u0d30\u0d40\u0d24\u0d3f (\u0d37\u0d40\u0d7d\u0d21\u0d4d) \u0d05\u0d32\u0d4d\u0d32\u0d46\u0d19\u0d4d\u0d15\u0d3f\u0d7d \u0d2a\u0d3e\u0d1a\u0d4d\u0d1a\u0d4d \u0d30\u0d40\u0d24\u0d3f", "title": "Type: PRAC", "to": "T \u0d30\u0d40\u0d24\u0d3f (\u0d37\u0d40\u0d7d\u0d21\u0d4d) \u0d05\u0d32\u0d4d\u0d32\u0d46\u0d19\u0d4d\u0d15\u0d3f\u0d7d \u0d2a\u0d3e\u0d1a\u0d4d\u0d1a\u0d4d \u0d30\u0d40\u0d24\u0d3f\n(Unmapped)"}, {"color": "#ffffff", "from": "\u0d28\u0d34\u0d4d\u0d38\u0d31\u0d3f\u0d2f\u0d3f\u0d7d", "title": "Type: LOC", "to": "\u0d28\u0d34\u0d4d\u0d38\u0d31\u0d3f\u0d2f\u0d3f\u0d7d\n(Unmapped)"}, {"color": "#ffffff", "from": "\u0d07\u0d7b-\u0d38\u0d3f\u0d31\u0d4d\u0d31\u0d41 \u0d2c\u0d21\u0d4d\u0d21\u0d3f\u0d02\u0d17\u0d4d", "title": "Type: PRAC", "to": "\u0d07\u0d7b-\u0d38\u0d3f\u0d31\u0d4d\u0d31\u0d41 \u0d2c\u0d21\u0d4d\u0d21\u0d3f\u0d02\u0d17\u0d4d\n(Unmapped)"}, {"color": "#ffffff", "from": "\u0d31\u0d42\u0d1f\u0d4d\u0d1f\u0d4d\u0d38\u0d4d\u0d31\u0d4d\u0d31\u0d4b\u0d15\u0d4d\u0d15\u0d4d \u0d24\u0d48\u0d15\u0d7e", "title": "Type: INPUT", "to": "\u0d31\u0d42\u0d1f\u0d4d\u0d1f\u0d4d\u0d38\u0d4d\u0d31\u0d4d\u0d31\u0d4b\u0d15\u0d4d\u0d15\u0d4d \u0d24\u0d48\u0d15\u0d7e\n(Unmapped)"}, {"color": "#ffffff", "from": "\u0d35\u0d3f\u0d24\u0d4d\u0d24\u0d41\u0d15\u0d7e \u0d35\u0d47\u0d7c\u0d24\u0d3f\u0d30\u0d3f\u0d1a\u0d4d\u0d1a\u0d46\u0d1f\u0d41\u0d15\u0d4d\u0d15\u0d41\u0d28\u0d4d\u0d28\u0d41", "title": "Type: PRAC", "to": "\u0d35\u0d3f\u0d24\u0d4d\u0d24\u0d41\u0d15\u0d7e \u0d35\u0d47\u0d7c\u0d24\u0d3f\u0d30\u0d3f\u0d1a\u0d4d\u0d1a\u0d46\u0d1f\u0d41\u0d15\u0d4d\u0d15\u0d41\u0d28\u0d4d\u0d28\u0d41\n(Unmapped)"}, {"color": "#ffffff", "from": "\u0d15\u0d4b\u0d7a H2SO4", "title": "Type: INPUT", "to": "\u0d15\u0d4b\u0d7a H2SO4\n(Unmapped)"}, {"color": "#ffffff", "from": "\u0d35\u0d3f\u0d24\u0d4d\u0d24\u0d41\u0d15\u0d7e \u0d15\u0d4b\u0d7a H2SO4 \u0d09\u0d2a\u0d2f\u0d4b\u0d17\u0d3f\u0d1a\u0d4d\u0d1a\u0d4d 3 \u0d2e\u0d3f\u0d28\u0d3f\u0d31\u0d4d\u0d31\u0d4d \u0d2a\u0d41\u0d30\u0d1f\u0d4d\u0d1f\u0d23\u0d02", "title": "Type: PRAC", "to": "\u0d35\u0d3f\u0d24\u0d4d\u0d24\u0d41\u0d15\u0d7e \u0d15\u0d4b\u0d7a H2SO4 \u0d09\u0d2a\u0d2f\u0d4b\u0d17\u0d3f\u0d1a\u0d4d\u0d1a\u0d4d 3 \u0d2e\u0d3f\u0d28\u0d3f\u0d31\u0d4d\u0d31\u0d4d \u0d2a\u0d41\u0d30\u0d1f\u0d4d\u0d1f\u0d23\u0d02\n(Unmapped)"}, {"color": "#ffffff", "from": "500 ppm \u0d17\u0d3f\u0d2c\u0d4d\u0d2c\u0d46\u0d31\u0d32\u0d3f\u0d15\u0d4d \u0d06\u0d38\u0d3f\u0d21\u0d3f\u0d7d", "title": "Type: INPUT", "to": "500 ppm \u0d17\u0d3f\u0d2c\u0d4d\u0d2c\u0d46\u0d31\u0d32\u0d3f\u0d15\u0d4d \u0d06\u0d38\u0d3f\u0d21\u0d3f\u0d7d\n(Unmapped)"}, {"color": "#ffffff", "from": "\u0d35\u0d46\u0d33\u0d4d\u0d33\u0d24\u0d4d\u0d24\u0d3f\u0d7d \u0d15\u0d34\u0d41\u0d15\u0d3f 500 ppm \u0d17\u0d3f\u0d2c\u0d4d\u0d2c\u0d46\u0d31\u0d32\u0d3f\u0d15\u0d4d \u0d06\u0d38\u0d3f\u0d21\u0d3f\u0d7d 24 \u0d2e\u0d23\u0d3f\u0d15\u0d4d\u0d15\u0d42\u0d7c \u0d2e\u0d41\u0d15\u0d4d\u0d15\u0d3f\u0d35\u0d2f\u0d4d\u0d15\u0d4d\u0d15\u0d23\u0d02", "title": "Type: PRAC", "to": "\u0d35\u0d46\u0d33\u0d4d\u0d33\u0d24\u0d4d\u0d24\u0d3f\u0d7d \u0d15\u0d34\u0d41\u0d15\u0d3f 500 ppm \u0d17\u0d3f\u0d2c\u0d4d\u0d2c\u0d46\u0d31\u0d32\u0d3f\u0d15\u0d4d \u0d06\u0d38\u0d3f\u0d21\u0d3f\u0d7d 24 \u0d2e\u0d23\u0d3f\u0d15\u0d4d\u0d15\u0d42\u0d7c \u0d2e\u0d41\u0d15\u0d4d\u0d15\u0d3f\u0d35\u0d2f\u0d4d\u0d15\u0d4d\u0d15\u0d23\u0d02\n(Unmapped)"}, {"color": "#ffffff", "from": "\u0d28\u0d34\u0d4d\u0d38\u0d31\u0d3f \u0d2c\u0d46\u0d21\u0d3f\u0d32\u0d4b", "title": "Type: LOC", "to": "\u0d28\u0d34\u0d4d\u0d38\u0d31\u0d3f \u0d2c\u0d46\u0d21\u0d3f\u0d32\u0d4b\n(Unmapped)"}, {"color": "#ffffff", "from": "\u0d2a\u0d4b\u0d1f\u0d4d\u0d1f\u0d4d \u0d2e\u0d3f\u0d36\u0d4d\u0d30\u0d3f\u0d24\u0d02 \u0d28\u0d3f\u0d31\u0d1a\u0d4d\u0d1a \u0d2a\u0d4b\u0d33\u0d3f\u0d2c\u0d3e\u0d17\u0d3f\u0d32\u0d4b", "title": "Type: LOC", "to": "\u0d2a\u0d4b\u0d1f\u0d4d\u0d1f\u0d4d \u0d2e\u0d3f\u0d36\u0d4d\u0d30\u0d3f\u0d24\u0d02 \u0d28\u0d3f\u0d31\u0d1a\u0d4d\u0d1a \u0d2a\u0d4b\u0d33\u0d3f\u0d2c\u0d3e\u0d17\u0d3f\u0d32\u0d4b\n(Unmapped)"}, {"color": "#ffffff", "from": "\u0d35\u0d3f\u0d24\u0d2f\u0d4d\u0d15\u0d4d\u0d15\u0d3e\u0d02", "title": "Type: PRAC", "to": "\u0d35\u0d3f\u0d24\u0d2f\u0d4d\u0d15\u0d4d\u0d15\u0d3e\u0d02\n(Unmapped)"}, {"color": "#ffffff", "from": "\u0d28\u0d47\u0d28\u0d4d\u0d24\u0d4d\u0d30\u0d35\u0d3e\u0d34\u0d2f\u0d3f\u0d32\u0d46", "title": "Type: CROP", "to": "\u0d28\u0d47\u0d28\u0d4d\u0d24\u0d4d\u0d30\u0d35\u0d3e\u0d34\u0d2f\u0d3f\u0d32\u0d46\n(Unmapped)"}, {"color": "#ffffff", "from": "\u0d38\u0d3f\u0d17\u0d31\u0d4d\u0d31\u0d4b\u0d15\u0d4d\u0d15 \u0d07\u0d32\u0d2a\u0d4d\u0d2a\u0d41\u0d33\u0d4d\u0d33\u0d3f \u0d30\u0d4b\u0d17\u0d02", "title": "Type: PEST", "to": "\u0d38\u0d3f\u0d17\u0d31\u0d4d\u0d31\u0d4b\u0d15\u0d4d\u0d15 \u0d07\u0d32\u0d2a\u0d4d\u0d2a\u0d41\u0d33\u0d4d\u0d33\u0d3f \u0d30\u0d4b\u0d17\u0d02\n(Unmapped)"}, {"color": "#ffffff", "from": "\u0d28\u0d47\u0d28\u0d4d\u0d24\u0d4d\u0d30\u0d7b \u0d07\u0d28\u0d19\u0d4d\u0d19\u0d33\u0d3f\u0d7d", "title": "Type: CROP", "to": "\u0d28\u0d47\u0d28\u0d4d\u0d24\u0d4d\u0d30\u0d7b \u0d07\u0d28\u0d19\u0d4d\u0d19\u0d33\u0d3f\u0d7d\n(Unmapped)"}, {"color": "#ffffff", "from": "\u0d31\u0d4b\u0d2c\u0d38\u0d4d\u0d31\u0d4d\u0d31", "title": "Type: CROP", "to": "\u0d31\u0d4b\u0d2c\u0d38\u0d4d\u0d31\u0d4d\u0d31\n(Unmapped)"}, {"color": "#ffffff", "from": "\u0d2a\u0d42\u0d35\u0d7b", "title": "Type: CROP", "to": "\u0d2a\u0d42\u0d35\u0d7b\n(Unmapped)"}, {"color": "#ffffff", "from": "\u0d2a\u0d3e\u0d33\u0d2f\u0d02\u0d15\u0d4b\u0d1f\u0d7b", "title": "Type: CROP", "to": "\u0d2a\u0d3e\u0d33\u0d2f\u0d02\u0d15\u0d4b\u0d1f\u0d7b\n(Unmapped)"}, {"color": "#ffffff", "from": "\u0d38\u0d3f\u0d17\u0d31\u0d4d\u0d31\u0d4b\u0d15\u0d4d\u0d15 \u0d30\u0d4b\u0d17\u0d02", "title": "Type: PEST", "to": "\u0d38\u0d3f\u0d17\u0d31\u0d4d\u0d31\u0d4b\u0d15\u0d4d\u0d15 \u0d30\u0d4b\u0d17\u0d02\n(Unmapped)"}, {"color": "#ffffff", "from": "\u0d38\u0d4d\u0d2f\u0d42\u0d21\u0d4b\u0d2e\u0d4a\u0d23\u0d3e\u0d38\u0d4d \u0d2b\u0d4d\u0d32\u0d42\u0d31\u0d38\u0d46\u0d7b\u0d38\u0d4d", "title": "Type: INPUT", "to": "\u0d38\u0d4d\u0d2f\u0d42\u0d21\u0d4b\u0d2e\u0d4a\u0d23\u0d3e\u0d38\u0d4d \u0d2b\u0d4d\u0d32\u0d42\u0d31\u0d38\u0d46\u0d7b\u0d38\u0d4d\n(Unmapped)"}, {"color": "#ffffff", "from": "\u0d07\u0d32\u0d15\u0d33\u0d3f\u0d7d \u0d24\u0d33\u0d3f\u0d15\u0d4d\u0d15\u0d41\u0d28\u0d4d\u0d28\u0d24\u0d4d", "title": "Type: PRAC", "to": "\u0d07\u0d32\u0d15\u0d33\u0d3f\u0d7d \u0d24\u0d33\u0d3f\u0d15\u0d4d\u0d15\u0d41\u0d28\u0d4d\u0d28\u0d24\u0d4d\n(Unmapped)"}, {"color": "#ffffff", "from": "\u0d17\u0d4b\u0d2e\u0d42\u0d24\u0d4d\u0d30\u0d02", "title": "Type: INPUT", "to": "\u0d17\u0d4b\u0d2e\u0d42\u0d24\u0d4d\u0d30\u0d02\n(Unmapped)"}, {"color": "#ffffff", "from": "\u0d2a\u0d46\u0d1f\u0d4d\u0d30\u0d4b\u0d33\u0d3f\u0d2f\u0d02 \u0d05\u0d27\u0d3f\u0d37\u0d4d\u0d20\u0d3f\u0d24 \u0d27\u0d3e\u0d24\u0d41 \u0d0e\u0d23\u0d4d\u0d23", "title": "Type: INPUT", "to": "\u0d2a\u0d46\u0d1f\u0d4d\u0d30\u0d4b\u0d33\u0d3f\u0d2f\u0d02 \u0d05\u0d27\u0d3f\u0d37\u0d4d\u0d20\u0d3f\u0d24 \u0d27\u0d3e\u0d24\u0d41 \u0d0e\u0d23\u0d4d\u0d23\n(Unmapped)"}, {"color": "#ffffff", "from": "\u0d07\u0d32\u0d15\u0d33\u0d3f\u0d7d \u0d24\u0d33\u0d3f\u0d15\u0d4d\u0d15\u0d41\u0d28\u0d4d\u0d28\u0d24\u0d41\u0d02", "title": "Type: PRAC", "to": "\u0d07\u0d32\u0d15\u0d33\u0d3f\u0d7d \u0d24\u0d33\u0d3f\u0d15\u0d4d\u0d15\u0d41\u0d28\u0d4d\u0d28\u0d24\u0d41\u0d02\n(Unmapped)"}, {"color": "#ffffff", "from": "\u0d2c\u0d4b\u0d7c\u0d21\u0d4b \u0d2e\u0d3f\u0d36\u0d4d\u0d30\u0d3f\u0d24\u0d02", "title": "Type: INPUT", "to": "\u0d2c\u0d4b\u0d7c\u0d21\u0d4b \u0d2e\u0d3f\u0d36\u0d4d\u0d30\u0d3f\u0d24\u0d02\n(Unmapped)"}, {"color": "#ffffff", "from": "\u0d15\u0d3e\u0d7c\u0d2c\u0d46\u0d7b\u0d21\u0d3e\u0d38\u0d3f\u0d02", "title": "Type: INPUT", "to": "\u0d15\u0d3e\u0d7c\u0d2c\u0d46\u0d7b\u0d21\u0d3e\u0d38\u0d3f\u0d02\n(Unmapped)"}, {"color": "#ffffff", "from": "\u0d2a\u0d4d\u0d30\u0d4a\u0d2a\u0d3f\u0d15\u0d4a\u0d23\u0d38\u0d4b\u0d7e", "title": "Type: INPUT", "to": "\u0d2a\u0d4d\u0d30\u0d4a\u0d2a\u0d3f\u0d15\u0d4a\u0d23\u0d38\u0d4b\u0d7e\n(Unmapped)"}, {"color": "#ffffff", "from": "\u0d21\u0d48\u0d2b\u0d46\u0d7b\u0d15\u0d4a\u0d23\u0d38\u0d4b\u0d7e", "title": "Type: INPUT", "to": "\u0d21\u0d48\u0d2b\u0d46\u0d7b\u0d15\u0d4a\u0d23\u0d38\u0d4b\u0d7e\n(Unmapped)"}, {"color": "#ffffff", "from": "\u0d2e\u0d1e\u0d4d\u0d1a\u0d47\u0d30\u0d3f \u0d28\u0d47\u0d28\u0d4d\u0d24\u0d4d\u0d30\u0d7b", "title": "Type: CROP", "to": "\u0d2e\u0d1e\u0d4d\u0d1a\u0d47\u0d30\u0d3f \u0d28\u0d47\u0d28\u0d4d\u0d24\u0d4d\u0d30\u0d7b\n(Unmapped)"}, {"color": "#ffffff", "from": "\u0d30\u0d4b\u0d17\u0d02 \u0d2c\u0d3e\u0d27\u0d3f\u0d1a\u0d4d\u0d1a \u0d07\u0d32\u0d15\u0d33\u0d41\u0d1f\u0d46 50% \u0d2d\u0d3e\u0d17\u0d02 \u0d15\u0d30\u0d3f\u0d1e\u0d4d\u0d1e\u0d3f\u0d1f\u0d4d\u0d1f\u0d41\u0d23\u0d4d\u0d1f\u0d46\u0d19\u0d4d\u0d15\u0d3f\u0d7d \u0d05\u0d35 \u0d2e\u0d41\u0d31\u0d3f\u0d1a\u0d4d\u0d1a\u0d41\u0d2e\u0d3e\u0d31\u0d4d\u0d31\u0d23\u0d02", "title": "Type: PRAC", "to": "\u0d30\u0d4b\u0d17\u0d02 \u0d2c\u0d3e\u0d27\u0d3f\u0d1a\u0d4d\u0d1a \u0d07\u0d32\u0d15\u0d33\u0d41\u0d1f\u0d46 50% \u0d2d\u0d3e\u0d17\u0d02 \u0d15\u0d30\u0d3f\u0d1e\u0d4d\u0d1e\u0d3f\u0d1f\u0d4d\u0d1f\u0d41\u0d23\u0d4d\u0d1f\u0d46\u0d19\u0d4d\u0d15\u0d3f\u0d7d \u0d05\u0d35 \u0d2e\u0d41\u0d31\u0d3f\u0d1a\u0d4d\u0d1a\u0d41\u0d2e\u0d3e\u0d31\u0d4d\u0d31\u0d23\u0d02\n(Unmapped)"}, {"color": "#ffffff", "from": "\u0d12\u0d28\u0d4d\u0d28\u0d4b \u0d2e\u0d42\u0d28\u0d4d\u0d28\u0d4b \u0d06\u0d34\u0d4d\u0d1a \u0d07\u0d1f\u0d35\u0d3f\u0d1f\u0d4d\u0d1f\u0d4d \u0d07\u0d32\u0d15\u0d33\u0d3f\u0d7d \u0d2e\u0d30\u0d41\u0d28\u0d4d\u0d28\u0d4d \u0d24\u0d33\u0d3f\u0d15\u0d4d\u0d15\u0d23\u0d02", "title": "Type: PRAC", "to": "\u0d12\u0d28\u0d4d\u0d28\u0d4b \u0d2e\u0d42\u0d28\u0d4d\u0d28\u0d4b \u0d06\u0d34\u0d4d\u0d1a \u0d07\u0d1f\u0d35\u0d3f\u0d1f\u0d4d\u0d1f\u0d4d \u0d07\u0d32\u0d15\u0d33\u0d3f\u0d7d \u0d2e\u0d30\u0d41\u0d28\u0d4d\u0d28\u0d4d \u0d24\u0d33\u0d3f\u0d15\u0d4d\u0d15\u0d23\u0d02\n(Unmapped)"}, {"color": "#ffffff", "from": "\u0d2e\u0d30\u0d41\u0d28\u0d4d\u0d28\u0d41\u0d15\u0d7e \u0d2e\u0d3e\u0d31\u0d3f\u0d2e\u0d3e\u0d31\u0d3f \u0d09\u0d2a\u0d2f\u0d4b\u0d17\u0d3f\u0d15\u0d4d\u0d15\u0d3e\u0d7b \u0d36\u0d4d\u0d30\u0d26\u0d4d\u0d27\u0d3f\u0d15\u0d4d\u0d15\u0d41\u0d15", "title": "Type: PRAC", "to": "\u0d2e\u0d30\u0d41\u0d28\u0d4d\u0d28\u0d41\u0d15\u0d7e \u0d2e\u0d3e\u0d31\u0d3f\u0d2e\u0d3e\u0d31\u0d3f \u0d09\u0d2a\u0d2f\u0d4b\u0d17\u0d3f\u0d15\u0d4d\u0d15\u0d3e\u0d7b \u0d36\u0d4d\u0d30\u0d26\u0d4d\u0d27\u0d3f\u0d15\u0d4d\u0d15\u0d41\u0d15\n(Unmapped)"}, {"color": "#ffffff", "from": "\u0d1a\u0d35\u0d3f\u0d1f\u0d4d\u0d1f\u0d41 \u0d2a\u0d2e\u0d4d\u0d2a\u0d4d (\u0d31\u0d4b\u0d15\u0d4d\u0d15\u0d7c \u0d38\u0d4d\u0d2a\u0d4d\u0d30\u0d46\u0d2f\u0d7c)", "title": "Type: INPUT", "to": "\u0d1a\u0d35\u0d3f\u0d1f\u0d4d\u0d1f\u0d41 \u0d2a\u0d2e\u0d4d\u0d2a\u0d4d (\u0d31\u0d4b\u0d15\u0d4d\u0d15\u0d7c \u0d38\u0d4d\u0d2a\u0d4d\u0d30\u0d46\u0d2f\u0d7c)\n(Unmapped)"}, {"color": "#ffffff", "from": "\u0d2a\u0d35\u0d7c \u0d38\u0d4d\u0d2a\u0d4d\u0d30\u0d46\u0d2f\u0d7c", "title": "Type: INPUT", "to": "\u0d2a\u0d35\u0d7c \u0d38\u0d4d\u0d2a\u0d4d\u0d30\u0d46\u0d2f\u0d7c\n(Unmapped)"}, {"color": "#ffffff", "from": "\u0d2e\u0d41\u0d15\u0d33\u0d3f\u0d32\u0d46 \u0d07\u0d32\u0d15\u0d33\u0d3f\u0d32\u0d41\u0d02 \u0d2e\u0d30\u0d41\u0d28\u0d4d\u0d28\u0d4d \u0d0e\u0d24\u0d4d\u0d24\u0d3f\u0d15\u0d4d\u0d15\u0d3e\u0d7b \u0d36\u0d4d\u0d30\u0d26\u0d4d\u0d27\u0d3f\u0d15\u0d4d\u0d15\u0d23\u0d02", "title": "Type: PRAC", "to": "\u0d2e\u0d41\u0d15\u0d33\u0d3f\u0d32\u0d46 \u0d07\u0d32\u0d15\u0d33\u0d3f\u0d32\u0d41\u0d02 \u0d2e\u0d30\u0d41\u0d28\u0d4d\u0d28\u0d4d \u0d0e\u0d24\u0d4d\u0d24\u0d3f\u0d15\u0d4d\u0d15\u0d3e\u0d7b \u0d36\u0d4d\u0d30\u0d26\u0d4d\u0d27\u0d3f\u0d15\u0d4d\u0d15\u0d23\u0d02\n(Unmapped)"}, {"color": "#ffffff", "from": "\u0d1a\u0d15\u0d4d\u0d15", "title": "Type: CROP", "to": "\u0d1a\u0d15\u0d4d\u0d15\n(Unmapped)"}, {"color": "#ffffff", "from": "\u0d38\u0d38\u0d4d\u0d2f\u0d2a\u0d4d\u0d30\u0d1a\u0d30\u0d23\u0d02", "title": "Type: PRAC", "to": "\u0d38\u0d38\u0d4d\u0d2f\u0d2a\u0d4d\u0d30\u0d1a\u0d30\u0d23\u0d02\n(Unmapped)"}, {"color": "#ffffff", "from": "10 \u0d2e\u0d3e\u0d38\u0d02 \u0d2a\u0d4d\u0d30\u0d3e\u0d2f\u0d2e\u0d41\u0d33\u0d4d\u0d33", "title": "Type: STAGE", "to": "10 \u0d2e\u0d3e\u0d38\u0d02 \u0d2a\u0d4d\u0d30\u0d3e\u0d2f\u0d2e\u0d41\u0d33\u0d4d\u0d33\n(Unmapped)"}, {"color": "#ffffff", "from": "\u0d05\u0d19\u0d4d\u0d15\u0d41\u0d30\u0d23\u0d02 \u0d28\u0d1f\u0d24\u0d4d\u0d24\u0d41\u0d28\u0d4d\u0d28\u0d41", "title": "Type: PRAC", "to": "\u0d05\u0d19\u0d4d\u0d15\u0d41\u0d30\u0d23\u0d02 \u0d28\u0d1f\u0d24\u0d4d\u0d24\u0d41\u0d28\u0d4d\u0d28\u0d41\n(Unmapped)"}, {"color": "#ffffff", "from": "\u0d24\u0d48\u0d15\u0d7e", "title": "Type: INPUT", "to": "\u0d24\u0d48\u0d15\u0d7e\n(Unmapped)"}, {"color": "#ffffff", "from": "\u0d17\u0d4d\u0d30\u0d3e\u0d2b\u0d4d\u0d31\u0d4d\u0d31\u0d41\u0d15\u0d7e", "title": "Type: INPUT", "to": "\u0d17\u0d4d\u0d30\u0d3e\u0d2b\u0d4d\u0d31\u0d4d\u0d31\u0d41\u0d15\u0d7e\n(Unmapped)"}, {"color": "#ffffff", "from": "3-4 \u0d2e\u0d3e\u0d38\u0d02 \u0d2a\u0d4d\u0d30\u0d3e\u0d2f\u0d2e\u0d41\u0d33\u0d4d\u0d33", "title": "Type: STAGE", "to": "3-4 \u0d2e\u0d3e\u0d38\u0d02 \u0d2a\u0d4d\u0d30\u0d3e\u0d2f\u0d2e\u0d41\u0d33\u0d4d\u0d33\n(Unmapped)"}, {"color": "#ffffff", "from": "1 \u0d2e\u0d3e\u0d38\u0d02 \u0d2a\u0d4d\u0d30\u0d3e\u0d2f\u0d2e\u0d41\u0d33\u0d4d\u0d33", "title": "Type: STAGE", "to": "1 \u0d2e\u0d3e\u0d38\u0d02 \u0d2a\u0d4d\u0d30\u0d3e\u0d2f\u0d2e\u0d41\u0d33\u0d4d\u0d33\n(Unmapped)"}, {"color": "#ffffff", "from": "\u0d38\u0d4b\u0d2b\u0d4d\u0d31\u0d4d\u0d31\u0d4d \u0d35\u0d41\u0d21\u0d4d \u0d17\u0d4d\u0d30\u0d3e\u0d2b\u0d4d\u0d31\u0d4d\u0d31\u0d3f\u0d02\u0d17\u0d4d (\u0d15\u0d4d\u0d32\u0d46\u0d2b\u0d4d\u0d31\u0d4d\u0d31\u0d4d \u0d30\u0d40\u0d24\u0d3f)", "title": "Type: PRAC", "to": "\u0d38\u0d4b\u0d2b\u0d4d\u0d31\u0d4d\u0d31\u0d4d \u0d35\u0d41\u0d21\u0d4d \u0d17\u0d4d\u0d30\u0d3e\u0d2b\u0d4d\u0d31\u0d4d\u0d31\u0d3f\u0d02\u0d17\u0d4d (\u0d15\u0d4d\u0d32\u0d46\u0d2b\u0d4d\u0d31\u0d4d\u0d31\u0d4d \u0d30\u0d40\u0d24\u0d3f)\n(Unmapped)"}, {"color": "#ffffff", "from": "\u0d35\u0d3f\u0d24\u0d4d\u0d24\u0d41\u0d15\u0d7e", "title": "Type: INPUT", "to": "\u0d35\u0d3f\u0d24\u0d4d\u0d24\u0d41\u0d15\u0d7e\n(Unmapped)"}, {"color": "#ffffff", "from": "\u0d35\u0d3f\u0d24\u0d2f\u0d4d\u0d15\u0d4d\u0d15\u0d23\u0d02", "title": "Type: PRAC", "to": "\u0d35\u0d3f\u0d24\u0d2f\u0d4d\u0d15\u0d4d\u0d15\u0d23\u0d02\n(Unmapped)"}, {"color": "#ffffff", "from": "\u0d30\u0d41\u0d26\u0d4d\u0d30\u0d3e\u0d15\u0d4d\u0d37\u0d3f", "title": "Type: CROP", "to": "\u0d30\u0d41\u0d26\u0d4d\u0d30\u0d3e\u0d15\u0d4d\u0d37\u0d3f\n(Unmapped)"}, {"color": "#ffffff", "from": "\u0d0e. \u0d39\u0d3f\u0d7c\u0d38\u0d4d\u0d2f\u0d42\u0d1f\u0d4d\u0d1f\u0d41\u0d02", "title": "Type: CROP", "to": "\u0d0e. \u0d39\u0d3f\u0d7c\u0d38\u0d4d\u0d2f\u0d42\u0d1f\u0d4d\u0d1f\u0d41\u0d02\n(Unmapped)"}, {"color": "#ffffff", "from": "\u0d31\u0d42\u0d1f\u0d4d\u0d1f\u0d4d \u0d38\u0d4d\u0d31\u0d4d\u0d31\u0d4b\u0d15\u0d4d\u0d15\u0d41\u0d15\u0d33\u0d3e\u0d2f\u0d3f", "title": "Type: INPUT", "to": "\u0d31\u0d42\u0d1f\u0d4d\u0d1f\u0d4d \u0d38\u0d4d\u0d31\u0d4d\u0d31\u0d4b\u0d15\u0d4d\u0d15\u0d41\u0d15\u0d33\u0d3e\u0d2f\u0d3f\n(Unmapped)"}, {"color": "#ffffff", "from": "\u0d1a\u0d15\u0d4d\u0d15\u0d2f\u0d3f\u0d7d", "title": "Type: CROP", "to": "\u0d1a\u0d15\u0d4d\u0d15\u0d2f\u0d3f\u0d7d\n(Unmapped)"}, {"color": "#ffffff", "from": "\u0d2a\u0d30\u0d3f\u0d37\u0d4d\u0d15\u0d30\u0d3f\u0d1a\u0d4d\u0d1a \u0d2b\u0d4b\u0d7c\u0d15\u0d46\u0d7c\u0d1f\u0d4d\u0d1f\u0d4d \u0d30\u0d40\u0d24\u0d3f\u0d2f\u0d3f\u0d32\u0d41\u0d33\u0d4d\u0d33 \u0d2c\u0d21\u0d4d\u0d21\u0d3f\u0d02\u0d17\u0d41\u0d02", "title": "Type: PRAC", "to": "\u0d2a\u0d30\u0d3f\u0d37\u0d4d\u0d15\u0d30\u0d3f\u0d1a\u0d4d\u0d1a \u0d2b\u0d4b\u0d7c\u0d15\u0d46\u0d7c\u0d1f\u0d4d\u0d1f\u0d4d \u0d30\u0d40\u0d24\u0d3f\u0d2f\u0d3f\u0d32\u0d41\u0d33\u0d4d\u0d33 \u0d2c\u0d21\u0d4d\u0d21\u0d3f\u0d02\u0d17\u0d41\u0d02\n(Unmapped)"}, {"color": "#ffffff", "from": "\u0d2e\u0d32\u0d2f\u0d2f\u0d3f\u0d7d", "title": "Type: LOC", "to": "\u0d2e\u0d32\u0d2f\u0d2f\u0d3f\u0d7d\n(Unmapped)"}, {"color": "#ffffff", "from": "\u0d0e\u0d2f\u0d7c \u0d32\u0d46\u0d2f\u0d31\u0d3f\u0d02\u0d17\u0d4d", "title": "Type: PRAC", "to": "\u0d0e\u0d2f\u0d7c \u0d32\u0d46\u0d2f\u0d31\u0d3f\u0d02\u0d17\u0d4d\n(Unmapped)"}, {"color": "#ffffff", "from": "\u0d2a\u0d46\u0d1a\u0d4d\u0d1a\u0d3f\u0d2a\u0d4d\u0d2a\u0d3e\u0d31\u0d48 (\u0d24\u0d2e\u0d3f\u0d34\u0d4d\u0d28\u0d3e\u0d1f\u0d4d)", "title": "Type: LOC", "to": "\u0d2a\u0d46\u0d1a\u0d4d\u0d1a\u0d3f\u0d2a\u0d4d\u0d2a\u0d3e\u0d31\u0d48 (\u0d24\u0d2e\u0d3f\u0d34\u0d4d\u0d28\u0d3e\u0d1f\u0d4d)\n(Unmapped)"}, {"color": "#ffffff", "from": "\u0d1c\u0d28\u0d41\u0d35\u0d30\u0d3f - \u0d2b\u0d46\u0d2c\u0d4d\u0d30\u0d41\u0d35\u0d30\u0d3f", "title": "Type: STAGE", "to": "\u0d1c\u0d28\u0d41\u0d35\u0d30\u0d3f - \u0d2b\u0d46\u0d2c\u0d4d\u0d30\u0d41\u0d35\u0d30\u0d3f\n(Unmapped)"}, {"color": "#ffffff", "from": "\u0d12\u0d15\u0d4d\u0d1f\u0d4b\u0d2c\u0d7c - \u0d28\u0d35\u0d02\u0d2c\u0d7c", "title": "Type: STAGE", "to": "\u0d12\u0d15\u0d4d\u0d1f\u0d4b\u0d2c\u0d7c - \u0d28\u0d35\u0d02\u0d2c\u0d7c\n(Unmapped)"}, {"color": "#ffffff", "from": "3-5 \u0d2e\u0d3e\u0d38\u0d02 \u0d2a\u0d4d\u0d30\u0d3e\u0d2f\u0d2e\u0d41\u0d33\u0d4d\u0d33", "title": "Type: STAGE", "to": "3-5 \u0d2e\u0d3e\u0d38\u0d02 \u0d2a\u0d4d\u0d30\u0d3e\u0d2f\u0d2e\u0d41\u0d33\u0d4d\u0d33\n(Unmapped)"}, {"color": "#ffffff", "from": "\u0d31\u0d42\u0d1f\u0d4d\u0d1f\u0d4d \u0d38\u0d4d\u0d31\u0d4d\u0d31\u0d4b\u0d15\u0d4d\u0d15\u0d4d \u0d24\u0d48\u0d15\u0d33\u0d3f\u0d7d", "title": "Type: INPUT", "to": "\u0d31\u0d42\u0d1f\u0d4d\u0d1f\u0d4d \u0d38\u0d4d\u0d31\u0d4d\u0d31\u0d4b\u0d15\u0d4d\u0d15\u0d4d \u0d24\u0d48\u0d15\u0d33\u0d3f\u0d7d\n(Unmapped)"}, {"color": "#ffffff", "from": "\u0d2a\u0d3e\u0d1a\u0d4d\u0d1a\u0d4d \u0d2c\u0d21\u0d4d\u0d21\u0d3f\u0d02\u0d17\u0d4d", "title": "Type: PRAC", "to": "\u0d2a\u0d3e\u0d1a\u0d4d\u0d1a\u0d4d \u0d2c\u0d21\u0d4d\u0d21\u0d3f\u0d02\u0d17\u0d4d\n(Unmapped)"}, {"color": "#ffffff", "from": "\u0d1a\u0d46\u0d1f\u0d3f\u0d15\u0d7e", "title": "Type: CROP", "to": "\u0d1a\u0d46\u0d1f\u0d3f\u0d15\u0d7e\n(Unmapped)"}, {"color": "#ffffff", "from": "8 \u0d2e\u0d3e\u0d38\u0d24\u0d4d\u0d24\u0d3f\u0d28\u0d41\u0d33\u0d4d\u0d33\u0d3f\u0d7d", "title": "Type: STAGE", "to": "8 \u0d2e\u0d3e\u0d38\u0d24\u0d4d\u0d24\u0d3f\u0d28\u0d41\u0d33\u0d4d\u0d33\u0d3f\u0d7d\n(Unmapped)"}, {"color": "#ffffff", "from": "1 \u0d2e\u0d40\u0d31\u0d4d\u0d31\u0d7c \u0d15\u0d4d\u0d2f\u0d42\u0d2c\u0d4d \u0d35\u0d32\u0d3f\u0d2a\u0d4d\u0d2a\u0d2e\u0d41\u0d33\u0d4d\u0d33 \u0d15\u0d41\u0d34\u0d3f\u0d15\u0d7e 9-12 \u0d2e\u0d40\u0d31\u0d4d\u0d31\u0d7c \u0d05\u0d15\u0d32\u0d24\u0d4d\u0d24\u0d3f\u0d7d \u0d15\u0d41\u0d34\u0d3f\u0d1a\u0d4d\u0d1a\u0d46\u0d1f\u0d41\u0d15\u0d4d\u0d15\u0d41\u0d28\u0d4d\u0d28\u0d41", "title": "Type: PRAC", "to": "1 \u0d2e\u0d40\u0d31\u0d4d\u0d31\u0d7c \u0d15\u0d4d\u0d2f\u0d42\u0d2c\u0d4d \u0d35\u0d32\u0d3f\u0d2a\u0d4d\u0d2a\u0d2e\u0d41\u0d33\u0d4d\u0d33 \u0d15\u0d41\u0d34\u0d3f\u0d15\u0d7e 9-12 \u0d2e\u0d40\u0d31\u0d4d\u0d31\u0d7c \u0d05\u0d15\u0d32\u0d24\u0d4d\u0d24\u0d3f\u0d7d \u0d15\u0d41\u0d34\u0d3f\u0d1a\u0d4d\u0d1a\u0d46\u0d1f\u0d41\u0d15\u0d4d\u0d15\u0d41\u0d28\u0d4d\u0d28\u0d41\n(Unmapped)"}, {"color": "#ffffff", "from": "\u0d2e\u0d47\u0d7d\u0d2e\u0d23\u0d4d\u0d23\u0d4d", "title": "Type: INPUT", "to": "\u0d2e\u0d47\u0d7d\u0d2e\u0d23\u0d4d\u0d23\u0d4d\n(Unmapped)"}, {"color": "#ffffff", "from": "10 \u0d15\u0d3f\u0d32\u0d4b\u0d17\u0d4d\u0d30\u0d3e\u0d02 \u0d15\u0d3e\u0d32\u0d3f\u0d35\u0d33\u0d02", "title": "Type: INPUT", "to": "10 \u0d15\u0d3f\u0d32\u0d4b\u0d17\u0d4d\u0d30\u0d3e\u0d02 \u0d15\u0d3e\u0d32\u0d3f\u0d35\u0d33\u0d02\n(Unmapped)"}, {"color": "#ffffff", "from": "\u0d2e\u0d47\u0d7d\u0d2e\u0d23\u0d4d\u0d23\u0d41\u0d02 10 \u0d15\u0d3f\u0d32\u0d4b\u0d17\u0d4d\u0d30\u0d3e\u0d02 \u0d15\u0d3e\u0d32\u0d3f\u0d35\u0d33\u0d35\u0d41\u0d02 \u0d28\u0d3f\u0d31\u0d2f\u0d4d\u0d15\u0d4d\u0d15\u0d41\u0d28\u0d4d\u0d28\u0d41", "title": "Type: PRAC", "to": "\u0d2e\u0d47\u0d7d\u0d2e\u0d23\u0d4d\u0d23\u0d41\u0d02 10 \u0d15\u0d3f\u0d32\u0d4b\u0d17\u0d4d\u0d30\u0d3e\u0d02 \u0d15\u0d3e\u0d32\u0d3f\u0d35\u0d33\u0d35\u0d41\u0d02 \u0d28\u0d3f\u0d31\u0d2f\u0d4d\u0d15\u0d4d\u0d15\u0d41\u0d28\u0d4d\u0d28\u0d41\n(Unmapped)"}, {"color": "#ffffff", "from": "\u0d1c\u0d42\u0d7a - \u0d38\u0d46\u0d2a\u0d4d\u0d31\u0d4d\u0d31\u0d02\u0d2c\u0d7c \u0d2e\u0d3e\u0d38\u0d19\u0d4d\u0d19\u0d33\u0d3f\u0d7d", "title": "Type: STAGE", "to": "\u0d1c\u0d42\u0d7a - \u0d38\u0d46\u0d2a\u0d4d\u0d31\u0d4d\u0d31\u0d02\u0d2c\u0d7c \u0d2e\u0d3e\u0d38\u0d19\u0d4d\u0d19\u0d33\u0d3f\u0d7d\n(Unmapped)"}, {"color": "#ffffff", "from": "\u0d12\u0d1f\u0d4d\u0d1f\u0d41 \u0d24\u0d48\u0d15\u0d7e", "title": "Type: CROP", "to": "\u0d12\u0d1f\u0d4d\u0d1f\u0d41 \u0d24\u0d48\u0d15\u0d7e\n(Unmapped)"}, {"color": "#ffffff", "from": "\u0d15\u0d41\u0d34\u0d3f\u0d15\u0d33\u0d41\u0d1f\u0d46 \u0d2e\u0d27\u0d4d\u0d2f\u0d24\u0d4d\u0d24\u0d3f\u0d7d \u0d12\u0d1f\u0d4d\u0d1f\u0d41 \u0d24\u0d48\u0d15\u0d7e \u0d28\u0d1f\u0d41\u0d28\u0d4d\u0d28\u0d41", "title": "Type: PRAC", "to": "\u0d15\u0d41\u0d34\u0d3f\u0d15\u0d33\u0d41\u0d1f\u0d46 \u0d2e\u0d27\u0d4d\u0d2f\u0d24\u0d4d\u0d24\u0d3f\u0d7d \u0d12\u0d1f\u0d4d\u0d1f\u0d41 \u0d24\u0d48\u0d15\u0d7e \u0d28\u0d1f\u0d41\u0d28\u0d4d\u0d28\u0d41\n(Unmapped)"}, {"color": "#ffffff", "from": "\u0d1c\u0d32\u0d38\u0d47\u0d1a\u0d28\u0d02", "title": "Type: PRAC", "to": "\u0d1c\u0d32\u0d38\u0d47\u0d1a\u0d28\u0d02\n(Unmapped)"}, {"color": "#ffffff", "from": "\u0d32\u0d48\u0d2b\u0d4d \u0d07\u0d31\u0d3f\u0d17\u0d47\u0d37\u0d7b", "title": "Type: PRAC", "to": "\u0d32\u0d48\u0d2b\u0d4d \u0d07\u0d31\u0d3f\u0d17\u0d47\u0d37\u0d7b\n(Unmapped)"}, {"color": "#ffffff", "from": "4-\u0d3e\u0d02 \u0d26\u0d3f\u0d35\u0d38\u0d02", "title": "Type: STAGE", "to": "4-\u0d3e\u0d02 \u0d26\u0d3f\u0d35\u0d38\u0d02\n(Unmapped)"}, {"color": "#ffffff", "from": "\u0d06\u0d34\u0d4d\u0d1a\u0d2f\u0d3f\u0d7d \u0d12\u0d30\u0d3f\u0d15\u0d4d\u0d15\u0d7d", "title": "Type: STAGE", "to": "\u0d06\u0d34\u0d4d\u0d1a\u0d2f\u0d3f\u0d7d \u0d12\u0d30\u0d3f\u0d15\u0d4d\u0d15\u0d7d\n(Unmapped)"}, {"color": "#ffffff", "from": "\u0d24\u0d23\u0d4d\u0d23\u0d40\u0d7c\u0d24\u0d4d\u0d24\u0d1f\u0d24\u0d4d\u0d24\u0d3f\u0d7d", "title": "Type: LOC", "to": "\u0d24\u0d23\u0d4d\u0d23\u0d40\u0d7c\u0d24\u0d4d\u0d24\u0d1f\u0d24\u0d4d\u0d24\u0d3f\u0d7d\n(Unmapped)"}, {"color": "#ffffff", "from": "10-15 \u0d26\u0d3f\u0d35\u0d38\u0d02", "title": "Type: STAGE", "to": "10-15 \u0d26\u0d3f\u0d35\u0d38\u0d02\n(Unmapped)"}, {"color": "#ffffff", "from": "\u0d35\u0d33\u0d2a\u0d4d\u0d30\u0d2f\u0d4b\u0d17\u0d02", "title": "Type: PRAC", "to": "\u0d35\u0d33\u0d2a\u0d4d\u0d30\u0d2f\u0d4b\u0d17\u0d02\n(Unmapped)"}, {"color": "#ffffff", "from": "\u0d24\u0d4b\u0d1f\u0d4d\u0d1f\u0d2d\u0d42\u0d2e\u0d3f\u0d2f\u0d3f\u0d7d", "title": "Type: LOC", "to": "\u0d24\u0d4b\u0d1f\u0d4d\u0d1f\u0d2d\u0d42\u0d2e\u0d3f\u0d2f\u0d3f\u0d7d\n(Unmapped)"}, {"color": "#ffffff", "from": "\u0d28\u0d28\u0d2f\u0d4d\u0d15\u0d4d\u0d15\u0d23\u0d02", "title": "Type: PRAC", "to": "\u0d28\u0d28\u0d2f\u0d4d\u0d15\u0d4d\u0d15\u0d23\u0d02\n(Unmapped)"}, {"color": "#ffffff", "from": "\u0d21\u0d4d\u0d30\u0d3f\u0d2a\u0d4d\u0d2a\u0d4d \u0d07\u0d31\u0d3f\u0d17\u0d47\u0d37\u0d7b", "title": "Type: PRAC", "to": "\u0d21\u0d4d\u0d30\u0d3f\u0d2a\u0d4d\u0d2a\u0d4d \u0d07\u0d31\u0d3f\u0d17\u0d47\u0d37\u0d7b\n(Unmapped)"}, {"color": "#ffffff", "from": "\u0d28\u0d1f\u0d40\u0d7d \u0d2e\u0d41\u0d24\u0d7d 4-\u0d3e\u0d02 \u0d2e\u0d3e\u0d38\u0d02 \u0d35\u0d30\u0d46", "title": "Type: STAGE", "to": "\u0d28\u0d1f\u0d40\u0d7d \u0d2e\u0d41\u0d24\u0d7d 4-\u0d3e\u0d02 \u0d2e\u0d3e\u0d38\u0d02 \u0d35\u0d30\u0d46\n(Unmapped)"}, {"color": "#ffffff", "from": "5-\u0d3e\u0d02 \u0d24\u0d40\u0d2f\u0d24\u0d3f \u0d2e\u0d41\u0d24\u0d7d \u0d35\u0d3f\u0d33\u0d35\u0d46\u0d1f\u0d41\u0d2a\u0d4d\u0d2a\u0d4d \u0d35\u0d30\u0d46", "title": "Type: STAGE", "to": "5-\u0d3e\u0d02 \u0d24\u0d40\u0d2f\u0d24\u0d3f \u0d2e\u0d41\u0d24\u0d7d \u0d35\u0d3f\u0d33\u0d35\u0d46\u0d1f\u0d41\u0d2a\u0d4d\u0d2a\u0d4d \u0d35\u0d30\u0d46\n(Unmapped)"}, {"color": "#ffffff", "from": "\u0d35\u0d3f\u0d33\u0d35\u0d46\u0d1f\u0d41\u0d2a\u0d4d\u0d2a\u0d3f\u0d28\u0d4d 15 \u0d26\u0d3f\u0d35\u0d38\u0d02 \u0d2e\u0d41\u0d2e\u0d4d\u0d2a\u0d4d \u0d35\u0d30\u0d46", "title": "Type: STAGE", "to": "\u0d35\u0d3f\u0d33\u0d35\u0d46\u0d1f\u0d41\u0d2a\u0d4d\u0d2a\u0d3f\u0d28\u0d4d 15 \u0d26\u0d3f\u0d35\u0d38\u0d02 \u0d2e\u0d41\u0d2e\u0d4d\u0d2a\u0d4d \u0d35\u0d30\u0d46\n(Unmapped)"}]);
+
+                  nodeColors = {};
+                  allNodes = nodes.get({ returnType: "Object" });
+                  for (nodeId in allNodes) {
+                    nodeColors[nodeId] = allNodes[nodeId].color;
+                  }
+                  allEdges = edges.get({ returnType: "Object" });
+                  // adding nodes and edges to the graph
+                  data = {nodes: nodes, edges: edges};
+
+                  var options = {
+    "configure": {
+        "enabled": false
+    },
+    "edges": {
+        "color": {
+            "inherit": true
+        },
+        "smooth": {
+            "enabled": true,
+            "type": "dynamic"
+        }
+    },
+    "interaction": {
+        "dragNodes": true,
+        "hideEdgesOnDrag": false,
+        "hideNodesOnDrag": false
+    },
+    "physics": {
+        "enabled": true,
+        "forceAtlas2Based": {
+            "avoidOverlap": 0,
+            "centralGravity": 0.01,
+            "damping": 0.4,
+            "gravitationalConstant": -50,
+            "springConstant": 0.08,
+            "springLength": 100
+        },
+        "solver": "forceAtlas2Based",
+        "stabilization": {
+            "enabled": true,
+            "fit": true,
+            "iterations": 1000,
+            "onlyDynamicEdges": false,
+            "updateInterval": 50
+        }
+    }
+};
+
+                  
+
+
+                  
+
+                  network = new vis.Network(container, data, options);
+
+                  
+
+                  
+                    network.on("selectNode", neighbourhoodHighlight);
+                  
+
+                  
+
+
+                  
+                      network.on("stabilizationProgress", function(params) {
+                          document.getElementById('loadingBar').removeAttribute("style");
+                          var maxWidth = 496;
+                          var minWidth = 20;
+                          var widthFactor = params.iterations/params.total;
+                          var width = Math.max(minWidth,maxWidth * widthFactor);
+                          document.getElementById('bar').style.width = width + 'px';
+                          document.getElementById('text').innerHTML = Math.round(widthFactor*100) + '%';
+                      });
+                      network.once("stabilizationIterationsDone", function() {
+                          document.getElementById('text').innerHTML = '100%';
+                          document.getElementById('bar').style.width = '496px';
+                          document.getElementById('loadingBar').style.opacity = 0;
+                          // really clean the dom element
+                          setTimeout(function () {document.getElementById('loadingBar').style.display = 'none';}, 500);
+                      });
+                  
+
+                  return network;
+
+              }
+              drawGraph();
+        </script>
+    </body>
+</html>
