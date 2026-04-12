@@ -1,0 +1,7 @@
+pandas
+json
+requests
+time
+os
+streamlit
+pyvis

@@ -1,0 +1,1800 @@
+[
+  {
+    "subject": "വാഴ", "subject_type": "CROP",
+    "relation": "AFFECTED_BY",
+    "object": "പിണ്ടിപ്പുഴു", "object_type": "PEST",
+    "context": "നട്ട് നാലാം മാസം ആക്രമണത്തിന് സാധ്യതയുണ്ട്"
+  },
+  {
+    "subject": "ബ്യുവേറിയ ബാസിയാന", "subject_type": "INPUT",
+    "relation": "TREATED_WITH",
+    "object": "പിണ്ടിപ്പുഴു", "object_type": "PEST",
+    "context": "5 മില്ലി 20 ഗ്രാം ഒരു ലിറ്റർ വെള്ളത്തിൽ വാഴയുടെ ഇലക്കവിളിൽ സ്പ്രേ ചെയ്യുക"
+  },
+  {
+    "subject": "വാഴ", "subject_type": "CROP",
+    "relation": "AFFECTED_BY",
+    "object": "ഇലപ്പുള്ളി രോഗം", "object_type": "DISEASE",
+    "context": ""
+  },
+  {
+    "subject": "ബോർഡോ മിശ്രിതം", "subject_type": "INPUT",
+    "relation": "TREATED_WITH",
+    "object": "ഇലപ്പുള്ളി രോഗം", "object_type": "DISEASE",
+    "context": "1% വീര്യമുള്ളത്"
+  },
+  {
+    "subject": "വാഴ", "subject_type": "CROP",
+    "relation": "AFFECTED_BY",
+    "object": "കടചീയൽ", "object_type": "DISEASE",
+    "context": ""
+  },
+  {
+    "subject": "സ്യൂഡോമോണസ്", "subject_type": "INPUT",
+    "relation": "TREATED_WITH",
+    "object": "കടചീയൽ", "object_type": "DISEASE",
+    "context": "20 ഗ്രാം ഒരു ലിറ്റർ വെള്ളത്തിൽ കലക്കി ചുവട്ടിൽ ഒഴിക്കുക"
+  },
+  {
+    "subject": "ബ്ലീച്ചിങ് പൗഡർ", "subject_type": "INPUT",
+    "relation": "TREATED_WITH",
+    "object": "കടചീയൽ", "object_type": "DISEASE",
+    "context": "കിഴികെട്ടി ചുവട്ടിൽ ഇടുക"
+  },
+  {
+    "subject": "വാഴ", "subject_type": "CROP",
+    "relation": "AFFECTED_BY",
+    "object": "സിഗാടോക്ക രോഗം", "object_type": "DISEASE",
+    "context": ""
+  },
+  {
+    "subject": "കോണ്ടാഫ് ടിൽറ്റ്", "subject_type": "INPUT",
+    "relation": "TREATED_WITH",
+    "object": "സിഗാടോക്ക രോഗം", "object_type": "DISEASE",
+    "context": "ഒരു മില്ലി ഒരു ലിറ്റർ വെള്ളത്തിൽ പശ ചേർത്ത് സ്പ്രേ ചെയ്യുക"
+  },
+  {
+    "subject": "തെങ്ങ്", "subject_type": "CROP",
+    "relation": "AFFECTED_BY",
+    "object": "കൂമ്പുചീയൽ", "object_type": "DISEASE",
+    "context": "നാമ്പോല വലിച്ചാൽ ഊരിപ്പോരുക, അഴുകിയ മണ്ടയിൽ ദുർഗന്ധം"
+  },
+  {
+    "subject": "ബോർഡോ കുഴമ്പ്", "subject_type": "INPUT",
+    "relation": "TREATED_WITH",
+    "object": "കൂമ്പുചീയൽ", "object_type": "DISEASE",
+    "context": "മുറിപ്പാടിൽ പുരട്ടി പൊതിയുക"
+  },
+  {
+    "subject": "മാങ്കോസെബ്", "subject_type": "INPUT",
+    "relation": "TREATED_WITH",
+    "object": "കൂമ്പുചീയൽ", "object_type": "DISEASE",
+    "context": "2 ഗ്രാം വീതം പ്ലാസ്റ്റിക് കവറുകളിലാക്കി നാമ്പോലയ്ക്ക് താഴെ വെക്കുക"
+  },
+  {
+    "subject": "കവുങ്ങ്", "subject_type": "CROP",
+    "relation": "AFFECTED_BY",
+    "object": "മഹാളിരോഗം", "object_type": "DISEASE",
+    "context": ""
+  },
+  {
+    "subject": "ബോർഡോമിശ്രിതം", "subject_type": "INPUT",
+    "relation": "TREATED_WITH",
+    "object": "മഹാളിരോഗം", "object_type": "DISEASE",
+    "context": "1% വീര്യമുള്ളത് തളിക്കുക"
+  },
+  {
+    "subject": "നെല്ല്", "subject_type": "CROP",
+    "relation": "AFFECTED_BY",
+    "object": "കരിഞ്ചാഴി", "object_type": "PEST",
+    "context": "വിതച്ച് 25 ദിവസം വരെയുള്ള രണ്ടാം നെൽകൃഷി പാടങ്ങളിൽ"
+  },
+  {
+    "subject": "അസാഡിറക്ടിൻ", "subject_type": "INPUT",
+    "relation": "TREATED_WITH",
+    "object": "കരിഞ്ചാഴി", "object_type": "PEST",
+    "context": "1500 പിപിഎം (ഏക്കറിന് ഒരു ലിറ്റർ) തളിക്കാം"
+  },
+  {
+    "subject": "നെല്ല്", "subject_type": "CROP",
+    "relation": "AFFECTED_BY",
+    "object": "ഓലചുരുട്ടി പുഴു", "object_type": "PEST",
+    "context": ""
+  },
+  {
+    "subject": "ട്രൈക്കോഗ്രമ്മ മുട്ടക്കാർഡ്", "subject_type": "INPUT",
+    "relation": "TREATED_WITH",
+    "object": "ഓലചുരുട്ടി പുഴു", "object_type": "PEST",
+    "context": "ഏക്കറിന് 40,000 മുട്ടകൾ ഉപയോഗിക്കാം"
+  },
+  {
+    "subject": "കാർട്ടാപ് ഹൈഡ്രോക്ലോറൈഡ്", "subject_type": "INPUT",
+    "relation": "TREATED_WITH",
+    "object": "ഓലചുരുട്ടി പുഴു", "object_type": "PEST",
+    "context": "ആക്രമണം രൂക്ഷമായാൽ 400 ഗ്രാം ഏക്കറിന് നൽകുക"
+  },
+  {
+    "subject": "നെല്ല്", "subject_type": "CROP",
+    "relation": "AFFECTED_BY",
+    "object": "പോളരോഗം", "object_type": "DISEASE",
+    "context": "ഇലപ്പോളകളിൽ വെള്ളം വീണതുപോലെയുള്ള പാടുകളും അഴുകലുമാണ് ലക്ഷണം"
+  },
+  {
+    "subject": "സ്യൂഡോമോണസ്", "subject_type": "INPUT",
+    "relation": "TREATED_WITH",
+    "object": "പോളരോഗം", "object_type": "DISEASE",
+    "context": "20 ഗ്രാം ഒരു ലിറ്റർ വെള്ളത്തിൽ കലക്കി തളിക്കുന്നത് ഫലപ്രദമാണ്"
+  },
+  {
+    "subject": "നെല്ല്", "subject_type": "CROP",
+    "relation": "AFFECTED_BY",
+    "object": "ബാക്ടീരിയൽ ഇലകരിച്ചിൽ", "object_type": "DISEASE",
+    "context": ""
+  },
+  {
+    "subject": "പച്ചച്ചാണകം", "subject_type": "INPUT",
+    "relation": "TREATED_WITH",
+    "object": "ബാക്ടീരിയൽ ഇലകരിച്ചിൽ", "object_type": "DISEASE",
+    "context": "20 ഗ്രാം ഒരു ലിറ്റർ വെള്ളത്തിൽ കലക്കി തെളിയൂറ്റി തളിക്കുക"
+  },
+  {
+    "subject": "നെല്ല്", "subject_type": "CROP",
+    "relation": "AFFECTED_BY",
+    "object": "ചാഴി", "object_type": "PEST",
+    "context": "കതിരാകുമ്പോൾ ആക്രമണം ഉണ്ടാകാം"
+  },
+  {
+    "subject": "കാന്താരി ഗോമൂത്ര മിശ്രിതം", "subject_type": "INPUT",
+    "relation": "TREATED_WITH",
+    "object": "ചാഴി", "object_type": "PEST",
+    "context": "ജൈവനിയന്ത്രണം"
+  },
+  {
+    "subject": "കുരുമുളക്", "subject_type": "CROP",
+    "relation": "AFFECTED_BY",
+    "object": "ദ്രുതവാട്ടം", "object_type": "DISEASE",
+    "context": ""
+  },
+  {
+    "subject": "ബോർഡോ മിശ്രിതം", "subject_type": "INPUT",
+    "relation": "TREATED_WITH",
+    "object": "ദ്രുതവാട്ടം", "object_type": "DISEASE",
+    "context": "1% ഇലകളിലും തണ്ടുകളിലും തളിക്കുക"
+  },
+  {
+    "subject": "കുരുമുളക്", "subject_type": "CROP",
+    "relation": "AFFECTED_BY",
+    "object": "പൊള്ളുവണ്ട്", "object_type": "PEST",
+    "context": ""
+  },
+  {
+    "subject": "വേപ്പെണ്ണ", "subject_type": "INPUT",
+    "relation": "TREATED_WITH",
+    "object": "പൊള്ളുവണ്ട്", "object_type": "PEST",
+    "context": "ജൈവകീടനാശിനി"
+  },
+  {
+    "subject": "ഇഞ്ചി", "subject_type": "CROP",
+    "relation": "AFFECTED_BY",
+    "object": "മൂടുചീയൽ", "object_type": "DISEASE",
+    "context": ""
+  },
+  {
+    "subject": "മഞ്ഞൾ", "subject_type": "CROP",
+    "relation": "AFFECTED_BY",
+    "object": "കടചീയൽ", "object_type": "DISEASE",
+    "context": ""
+  },
+  {
+    "subject": "ബോർഡോ മിശ്രിതം", "subject_type": "INPUT",
+    "relation": "TREATED_WITH",
+    "object": "മൂടുചീയൽ", "object_type": "DISEASE",
+    "context": "1% തളിക്കുകയോ തടങ്ങളിൽ ഒഴിക്കുകയോ ചെയ്യുക"
+  },
+  {
+    "subject": "മാവ്", "subject_type": "CROP",
+    "relation": "AFFECTED_BY",
+    "object": "പൗഡറിമിൽഡ്യൂ രോഗം", "object_type": "DISEASE",
+    "context": ""
+  },
+  {
+    "subject": "ഹെക്സോകോണസോൾ", "subject_type": "INPUT",
+    "relation": "TREATED_WITH",
+    "object": "പൗഡറിമിൽഡ്യൂ രോഗം", "object_type": "DISEASE",
+    "context": "ഒരു ഗ്രാം ഒരു ലിറ്റർ വെള്ളത്തിൽ തളിക്കുക"
+  },
+  {
+    "subject": "വഴുതന", "subject_type": "CROP",
+    "relation": "REQUIRES_FERTILIZER",
+    "object": "നൈട്രജൻ വളവും ഫോസ്ഫറസും പൊട്ടാസ്യവും", "object_type": "INPUT",
+    "context": "5:10:5 എന്ന അളവിൽ"
+  },
+  {
+    "subject": "വഴുതന", "subject_type": "CROP",
+    "relation": "REQUIRES_SOIL_PH",
+    "object": "മണ്ണ്", "object_type": "LOC",
+    "context": "6.5-7.5 നിലനിർത്തുന്നത് നല്ലതാണ്"
+  },
+  {
+    "subject": "കാരറ്റ്", "subject_type": "CROP",
+    "relation": "REQUIRES_SOIL_PH",
+    "object": "മണ്ണ്", "object_type": "LOC",
+    "context": "ഉയർന്ന ഉൽപാദനത്തിന് 6.0 മുതൽ 7.0 വരെയാകണം"
+  },
+  {
+    "subject": "കാരറ്റ്", "subject_type": "CROP",
+    "relation": "TREATED_WITH",
+    "object": "സ്യൂഡോമോണസ് ഫ്ലൂറസൻസ്", "object_type": "INPUT",
+    "context": "പറിച്ചുനടുന്നതിന് മുമ്പ് തൈകളുടെ വേര് 5% ലായനിയിൽ മുക്കുക"
+  },
+  {
+    "subject": "സ്ട്രോബറി", "subject_type": "CROP",
+    "relation": "AFFECTED_BY",
+    "object": "ഒച്ചുകൾ", "object_type": "PEST",
+    "context": "വെല്ലുവിളിയാകാറുള്ളത്"
+  },
+  {
+    "subject": "സ്ട്രോബറി", "subject_type": "CROP",
+    "relation": "TREATED_WITH",
+    "object": "വേപ്പെണ്ണ", "object_type": "INPUT",
+    "context": "കീടരോഗങ്ങളിൽ നിന്നും സംരക്ഷണം നൽകുന്നതിന്"
+  },
+  {
+    "subject": "ഇഞ്ചി", "subject_type": "CROP",
+    "relation": "REQUIRES_INPUT",
+    "object": "ചാണകവെള്ളം", "object_type": "INPUT",
+    "context": "ഇടയ്ക്ക് ഒഴിച്ചുകൊടുക്കുന്നത് നല്ലതാണ്"
+  },
+  {
+    "subject": "കാന്താരി മുളക്", "subject_type": "CROP",
+    "relation": "AFFECTED_BY",
+    "object": "മൂടുചീയൽ രോഗം", "object_type": "DISEASE",
+    "context": ""
+  },
+  {
+    "subject": "അടുക്കളത്തോട്ടം", "subject_type": "LOC",
+    "relation": "AFFECTED_BY",
+    "object": "വെള്ളീച്ച", "object_type": "PEST",
+    "context": "ഇലയുടെ അടിയിൽ കാണുന്ന"
+  },
+  {
+    "subject": "മഞ്ഞക്കെണി", "subject_type": "INPUT",
+    "relation": "TREATED_WITH",
+    "object": "വെള്ളീച്ച", "object_type": "PEST",
+    "context": "നിയന്ത്രിക്കുന്നതിന് അവിടവിടെയായി തൂക്കുക"
+  },
+  {
+    "subject": "അടുക്കളത്തോട്ടം", "subject_type": "LOC",
+    "relation": "AFFECTED_BY",
+    "object": "പച്ചത്തുള്ളൻ", "object_type": "PEST",
+    "context": ""
+  },
+  {
+    "subject": "വേപ്പെണ്ണ എമൽഷൻ", "subject_type": "INPUT",
+    "relation": "TREATED_WITH",
+    "object": "പച്ചത്തുള്ളൻ", "object_type": "PEST",
+    "context": "നശിപ്പിക്കാൻ ആഴ്ചയിലൊരിക്കൽ തളിക്കാം"
+  },
+  {
+    "subject": "അടുക്കളത്തോട്ടം", "subject_type": "LOC",
+    "relation": "AFFECTED_BY",
+    "object": "മുഞ്ഞ", "object_type": "PEST",
+    "context": ""
+  },
+  {
+    "subject": "മഗ്നീഷ്യം സൾഫേറ്റ്", "subject_type": "INPUT",
+    "relation": "TREATED_WITH",
+    "object": "തെങ്ങ്", "object_type": "CROP",
+    "context": "വലിയ തെങ്ങുകൾക്ക് 500 ഗ്രാം നൽകാം"
+  },
+  {
+    "subject": "നെല്ല്", "subject_type": "CROP",
+    "relation": "GROWN_IN_SEASON",
+    "object": "ഖരിഫ്", "object_type": "CONTEXT",
+    "context": "ജൂൺ -ജൂലൈ മുതൽ സെപ്റ്റംബർ -ഒക്ടോബർ വരെ"
+  },
+  {
+    "subject": "ഗോതമ്പ്", "subject_type": "CROP",
+    "relation": "GROWN_IN_SEASON",
+    "object": "റബി", "object_type": "CONTEXT",
+    "context": "ഒക്ടോബർ -നവംബർ മുതൽ ജനുവരി-ഫെബ്രുവരി വരെ"
+  },
+  {
+    "subject": "കരിമ്പ്", "subject_type": "CROP",
+    "relation": "IS_A",
+    "object": "ദ്വൈവാർഷികവിള", "object_type": "CONTEXT",
+    "context": "രണ്ട് കാലയളവുകളുടെ ആയുസ്സുണ്ട്"
+  },
+  {
+    "subject": "പച്ചമുളക്", "subject_type": "CROP",
+    "relation": "TREATED_WITH",
+    "object": "സ്യൂഡോമൊണാസ് ലായനി", "object_type": "INPUT",
+    "context": "നടുന്നതിന് മുൻപ് 20 ഗ്രാം ലായനിയിൽ മുക്കിവയ്ക്കുന്നത് നല്ലതാണ്"
+  },
+  {
+    "subject": "മരച്ചീനി", "subject_type": "CROP",
+    "relation": "REQUIRES_FERTILIZER",
+    "object": "യൂറിയ", "object_type": "INPUT",
+    "context": "45-60 ദിവസം പ്രായമായതിന് 40 ഗ്രാം നൽകുക"
+  },
+  {
+    "subject": "മരച്ചീനി", "subject_type": "CROP",
+    "relation": "REQUIRES_FERTILIZER",
+    "object": "റോക്ക് ഫോസ്ഫേറ്റ്", "object_type": "INPUT",
+    "context": "60 ഗ്രാം നൽകുക"
+  },
+  {
+    "subject": "വെള്ളരി വർഗ്ഗങ്ങൾ", "subject_type": "CROP",
+    "relation": "AFFECTED_BY",
+    "object": "കായീച്ചകൾ", "object_type": "PEST",
+    "context": ""
+  },
+  {
+    "subject": "ഫെറോമോൺ ട്രാപ്പുകൾ", "subject_type": "INPUT",
+    "relation": "TREATED_WITH",
+    "object": "കായീച്ചകൾ", "object_type": "PEST",
+    "context": "നിയന്ത്രിക്കുക (Cuelure 15 എണ്ണം ഒരു ഹെക്ടറിന്)"
+  },
+  {
+    "subject": "കൊക്കോ", "subject_type": "CROP",
+    "relation": "AFFECTED_BY",
+    "object": "രോഗങ്ങൾ", "object_type": "DISEASE",
+    "context": "തുടർച്ചയായ മഴ കാരണം കായകൾ കറുത്ത് ഉണങ്ങിപ്പോവുന്നു"
+  },
+  {
+    "subject": "ബോർഡോ മിശ്രിതം", "subject_type": "INPUT",
+    "relation": "TREATED_WITH",
+    "object": "കൊക്കോ", "object_type": "CROP",
+    "context": "രോഗങ്ങളെ പ്രതിരോധിക്കാൻ സാധിക്കും"
+  },
+  {
+    "subject": "കറുവപ്പട്ട", "subject_type": "CROP",
+    "relation": "REQUIRES_CLIMATE",
+    "object": "ചൂടുള്ള കാലാവസ്ഥ", "object_type": "CONTEXT",
+    "context": "തെക്കൻ സംസ്ഥാനങ്ങളിൽ"
+  },
+  {
+    "subject": "കറുവപ്പട്ട", "subject_type": "CROP",
+    "relation": "IS_A",
+    "object": "ഔഷധസസ്യം", "object_type": "CONTEXT",
+    "context": "ആയുർവേദത്തിൽ തമാലഃ, ത്വക്പത്ര, തമാലപാത്രം"
+  },
+  {
+    "subject": "മുരിങ്ങ", "subject_type": "CROP",
+    "relation": "REQUIRES_SOIL",
+    "object": "മണൽ കലർന്ന പശിമരാശി മണ്ണ്", "object_type": "LOC",
+    "context": "ഏറ്റവും അനുയോജ്യം"
+  },
+  {
+    "subject": "വള്ളിച്ചീര", "subject_type": "CROP",
+    "relation": "REQUIRES_INPUT",
+    "object": "ഉണങ്ങിയ കാലിവളം", "object_type": "INPUT",
+    "context": "കുഴികളിൽ ചേർത്ത് നട്ടാൽ പെട്ടെന്ന് വേരുപിടിക്കും"
+  },
+  {
+    "subject": "ഏത്തവാഴ", "subject_type": "CROP",
+    "relation": "REQUIRES_FERTILIZER",
+    "object": "ഡോളമൈറ്റ്", "object_type": "INPUT",
+    "context": "കുഴികൾ തയാറാക്കുമ്പോൾ 500 ഗ്രാം ചേർക്കുക"
+  },
+  {
+    "subject": "ഏത്തവാഴ", "subject_type": "CROP",
+    "relation": "REQUIRES_FERTILIZER",
+    "object": "സമ്പൂർണ", "object_type": "INPUT",
+    "context": "10 ഗ്രാം ഒരു ലിറ്റർ വെള്ളത്തിൽ കലക്കി ഇലകളിൽ തളിക്കാവുന്നതാണ്"
+  },
+  {
+    "subject": "നാരകം", "subject_type": "CROP",
+    "relation": "REQUIRES_FERTILIZER",
+    "object": "എൻപികെ വളങ്ങൾ", "object_type": "INPUT",
+    "context": "ചെടിച്ചട്ടിയിൽ ഉള്ള ചെടിക്ക് ഒന്നര മാസത്തിൽ ഒരിക്കൽ ഇട്ട് കൊടുക്കാം"
+  },
+  {
+    "subject": "കോവൽ",
+    "subject_type": "CROP",
+    "relation": "REQUIRES_FERTILIZER",
+    "object": "ജൈവവളം",
+    "object_type": "INPUT",
+    "context": "3-4 കിലോഗ്രാം"
+  },
+  {
+    "subject": "കോവൽ",
+    "subject_type": "CROP",
+    "relation": "REQUIRES_FERTILIZER",
+    "object": "എൻപികെ 15:15:15",
+    "object_type": "INPUT",
+    "context": "20 ഗ്രാം, 2 മാസത്തെ ഇടവേളകളിൽ"
+  },
+  {
+    "subject": "പച്ചക്കറി സമ്പൂർണ",
+    "subject_type": "INPUT",
+    "relation": "TREATED_WITH",
+    "object": "കോവൽ",
+    "object_type": "CROP",
+    "context": "5 ഗ്രാം, രണ്ടാഴ്ച ഇടവിട്ട് ഇലകളിൽ തളിക്കുക (സൂക്ഷ്മ മൂലകങ്ങളുടെ അഭാവം പരിഹരിക്കാൻ)"
+  },
+  {
+    "subject": "വേപ്പിൻ പിണ്ണാക്ക്",
+    "subject_type": "INPUT",
+    "relation": "TREATED_WITH",
+    "object": "കോവൽ",
+    "object_type": "CROP",
+    "context": "100 ഗ്രാം ചെടിച്ചുവട്ടിൽ ചേർത്ത് കൊടുക്കാം (മണ്ണിലെ കീടങ്ങളെ നിയന്ത്രിക്കാൻ)"
+  },
+  {
+    "subject": "നന്മ (ജൈവകീടനാശിനി)",
+    "subject_type": "INPUT",
+    "relation": "TREATED_WITH",
+    "object": "കോവൽ",
+    "object_type": "CROP",
+    "context": "5 മില്ലിലിറ്റർ 1 ലിറ്റർ വെള്ളത്തിൽ, രണ്ടാഴ്ച ഇടവിട്ട് (പുഴുശല്യം തടയാൻ)"
+  },
+  {
+    "subject": "കുരുമുളക്",
+    "subject_type": "CROP",
+    "relation": "AFFECTED_BY",
+    "object": "ദ്രുതവാട്ട രോഗം",
+    "object_type": "DISEASE",
+    "context": "മഴക്കാലം ആരംഭിച്ചതോടെ"
+  },
+  {
+    "subject": "ഫൈറ്റോഫ്ത്തോറ കാപ്സിസി",
+    "subject_type": "PEST",
+    "relation": "CAUSES",
+    "object": "ദ്രുതവാട്ട രോഗം",
+    "object_type": "DISEASE",
+    "context": ""
+  },
+  {
+    "subject": "കുള്ളൻ തെങ്ങ്",
+    "subject_type": "CROP",
+    "relation": "AFFECTED_BY",
+    "object": "കാറ്റുവീഴ്ച",
+    "object_type": "DISEASE",
+    "context": "തെക്കൻ ജില്ലകളിൽ"
+  },
+  {
+    "subject": "കുള്ളൻ തെങ്ങ്",
+    "subject_type": "CROP",
+    "relation": "AFFECTED_BY",
+    "object": "ഓലചീയൽ രോഗം",
+    "object_type": "DISEASE",
+    "context": "തെക്കൻ ജില്ലകളിൽ"
+  },
+  {
+    "subject": "കൊമ്പൻചെല്ലി",
+    "subject_type": "PEST",
+    "relation": "AFFECTED_BY",
+    "object": "ഓലചീയൽ രോഗം",
+    "object_type": "DISEASE",
+    "context": "ഗന്ധം ആകർഷിക്കും"
+  },
+  {
+    "subject": "ചെമ്പൻചെല്ലി",
+    "subject_type": "PEST",
+    "relation": "AFFECTED_BY",
+    "object": "ഓലചീയൽ രോഗം",
+    "object_type": "DISEASE",
+    "context": "ഗന്ധം ആകർഷിക്കും"
+  },
+  {
+    "subject": "കൽപശ്രീ",
+    "subject_type": "CROP",
+    "relation": "IS_A",
+    "object": "കുള്ളൻ തെങ്ങ്",
+    "object_type": "CONTEXT",
+    "context": "കാറ്റുവീഴ്ചയെ ചെറുക്കാൻ ശേഷിയുള്ളത്"
+  },
+  {
+    "subject": "കൽപരക്ഷ",
+    "subject_type": "CROP",
+    "relation": "IS_A",
+    "object": "കുള്ളൻ തെങ്ങ്",
+    "object_type": "CONTEXT",
+    "context": "കാറ്റുവീഴ്ചയെ ചെറുക്കാൻ ശേഷിയുള്ളത്, കൊപ്രയ്ക്ക് മികച്ചത്"
+  },
+  {
+    "subject": "ചാവക്കാട് കുറിയ ഓറഞ്ച് (ചെന്തെങ്ങ്)",
+    "subject_type": "CROP",
+    "relation": "IS_A",
+    "object": "കുള്ളൻ തെങ്ങ്",
+    "object_type": "CONTEXT",
+    "context": "കാറ്റുവീഴ്ചയില്ലാത്ത പ്രദേശങ്ങളിൽ, ഇളനീരിന് മികച്ചത്"
+  },
+  {
+    "subject": "കൽപസൂര്യ",
+    "subject_type": "CROP",
+    "relation": "IS_A",
+    "object": "കുള്ളൻ തെങ്ങ്",
+    "object_type": "CONTEXT",
+    "context": "വാണിജ്യക്കൃഷിക്ക് അനുയോജ്യം"
+  },
+  {
+    "subject": "കൽപജ്യോതി",
+    "subject_type": "CROP",
+    "relation": "IS_A",
+    "object": "കുള്ളൻ തെങ്ങ്",
+    "object_type": "CONTEXT",
+    "context": "വാണിജ്യക്കൃഷിക്ക് അനുയോജ്യം"
+  },
+  {
+    "subject": "ഗംഗബോന്തം",
+    "subject_type": "CROP",
+    "relation": "IS_A",
+    "object": "കുള്ളൻ തെങ്ങ്",
+    "object_type": "CONTEXT",
+    "context": "സിപിസിആർഐ ശുപാർശ ചെയ്യുന്നില്ല"
+  },
+  {
+    "subject": "മാംസഭോജി സസ്യങ്ങൾ (പ്രാണിപിടിയൻ ചെടികൾ)",
+    "subject_type": "CROP",
+    "relation": "REQUIRES_SOIL",
+    "object": "വളം ചേർക്കാത്ത മിശ്രിതം",
+    "object_type": "LOC",
+    "context": "ഇരകളെ പിടിക്കാനുള്ള അവയവങ്ങൾ ഉൽപാദിപ്പിക്കാൻ"
+  },
+  {
+    "subject": "കറിവേപ്പ്",
+    "subject_type": "CROP",
+    "relation": "REQUIRES_FERTILIZER",
+    "object": "കുമ്മായം",
+    "object_type": "INPUT",
+    "context": "1.5x1.5x1.5 അടി അളവിൽ കുഴിയെടുത്ത് വിതറി ഒരാഴ്ച കാത്തിരിക്കുക"
+  },
+  {
+    "subject": "കറിവേപ്പ്",
+    "subject_type": "CROP",
+    "relation": "REQUIRES_FERTILIZER",
+    "object": "ചാണകപ്പൊടി, എല്ലുപൊടി, വേപ്പിൻപിണ്ണാക്ക്",
+    "object_type": "INPUT",
+    "context": "അടിവളമായി"
+  },
+  {
+    "subject": "കറിവേപ്പ്",
+    "subject_type": "CROP",
+    "relation": "REQUIRES_FERTILIZER",
+    "object": "ചാണക സ്ലറി, ഫിഷ് അമിനോ ആസിഡ്",
+    "object_type": "INPUT",
+    "context": "വർഷത്തിൽ 4-5 തവണ"
+  },
+  {
+    "subject": "മുരിങ്ങ",
+    "subject_type": "CROP",
+    "relation": "REQUIRES_SOIL",
+    "object": "ജൈവാംശം കൂടുതലുള്ളതും മണൽ കലർന്നതുമായ പശിമരാശി മണ്ണ്",
+    "object_type": "LOC",
+    "context": "ഏറ്റവും അനുയോജ്യം"
+  },
+  {
+    "subject": "മുരിങ്ങ",
+    "subject_type": "CROP",
+    "relation": "REQUIRES_FERTILIZER",
+    "object": "ഡോളമൈറ്റ്",
+    "object_type": "INPUT",
+    "context": "വളപ്രയോഗത്തിന് മുൻപ് മണ്ണിൽ ചേർക്കുക"
+  },
+  {
+    "subject": "പന്നൽ സസ്യങ്ങൾ (Pteridophytes)",
+    "subject_type": "CROP",
+    "relation": "REQUIRES_SOIL",
+    "object": "നല്ല നീർവാർച്ചയുള്ള മണ്ണും മണൽ മിശ്രിതവും",
+    "object_type": "LOC",
+    "context": ""
+  },
+  {
+    "subject": "ചാണകപ്പൊടി",
+    "subject_type": "INPUT",
+    "relation": "TREATED_WITH",
+    "object": "പന്നൽ സസ്യങ്ങൾ (Pteridophytes)",
+    "object_type": "CROP",
+    "context": "ചെടിച്ചട്ടിയിൽ മണ്ണോടൊപ്പം ചേർക്കുന്നത് പോഷകങ്ങൾ നൽകാൻ സഹായിക്കും"
+  },
+  {
+    "subject": "കറിവേപ്പില",
+    "subject_type": "CROP",
+    "relation": "AFFECTED_BY",
+    "object": "കറുത്ത അരക്ക്",
+    "object_type": "PEST",
+    "context": "ഇലകളിൽ പറ്റിപ്പിടിച്ച് നീരൂറ്റിക്കുടിക്കുന്നു"
+  },
+  {
+    "subject": "കഞ്ഞിവെള്ളം",
+    "subject_type": "INPUT",
+    "relation": "TREATED_WITH",
+    "object": "കറുത്ത അരക്ക്",
+    "object_type": "PEST",
+    "context": "ഇരട്ടി വെള്ളം ചേർത്ത് നേർപ്പിച്ച് ഇലകളിൽ തളിക്കുക"
+  },
+  {
+    "subject": "പ്ലം",
+    "subject_type": "CROP",
+    "relation": "REQUIRES_CLIMATE",
+    "object": "ശീതോഷ്ണ മേഖലകൾ",
+    "object_type": "CONTEXT",
+    "context": "ശരാശരി താപനില 15 ഡിഗ്രി സെൽഷ്യസിലും ശൈത്യകാലത്ത് പൂജ്യത്തിനു താഴെയുമെത്തുന്ന കാലാവസ്ഥ"
+  },
+  {
+    "subject": "പ്ലം",
+    "subject_type": "CROP",
+    "relation": "REQUIRES_FERTILIZER",
+    "object": "കോഴിക്കാഷ്ഠം, കാടക്കാഷ്ഠം",
+    "object_type": "INPUT",
+    "context": ""
+  },
+  {
+    "subject": "പ്ലം",
+    "subject_type": "CROP",
+    "relation": "REQUIRES_FERTILIZER",
+    "object": "ജൈവവളം",
+    "object_type": "INPUT",
+    "context": "തുലാവർഷത്തിനു തൊട്ടുമുമ്പ്, അഞ്ച് കിലോ"
+  },
+  {
+    "subject": "പിയർ",
+    "subject_type": "CROP",
+    "relation": "REQUIRES_CLIMATE",
+    "object": "ശീതോഷ്ണ മേഖലകൾ",
+    "object_type": "CONTEXT",
+    "context": "ശരാശരി താപനില 15 ഡിഗ്രി സെൽഷ്യസിലും ശൈത്യകാലത്ത് പൂജ്യത്തിനു താഴെയുമെത്തുന്ന കാലാവസ്ഥ"
+  },
+  {
+    "subject": "പിയർ",
+    "subject_type": "CROP",
+    "relation": "REQUIRES_FERTILIZER",
+    "object": "കോഴിക്കാഷ്ഠം, കാടക്കാഷ്ഠം",
+    "object_type": "INPUT",
+    "context": ""
+  },
+  {
+    "subject": "പിയർ",
+    "subject_type": "CROP",
+    "relation": "REQUIRES_FERTILIZER",
+    "object": "ജൈവവളം",
+    "object_type": "INPUT",
+    "context": "തുലാവർഷത്തിനു തൊട്ടുമുമ്പ്, അഞ്ച് കിലോ"
+  },
+  {
+    "subject": "വെണ്ട",
+    "subject_type": "CROP",
+    "relation": "REQUIRES_FERTILIZER",
+    "object": "ഡോളമൈറ്റ് അല്ലെങ്കിൽ നീറ്റുകക്ക",
+    "object_type": "INPUT",
+    "context": "ഒരു ചതുരശ്ര മീറ്ററിൽ 50 ഗ്രാം ഡോളമൈറ്റോ 30 ഗ്രാം നീറ്റുകക്കയോ ചേർത്ത് 14 ദിവസം ഇടുക"
+  },
+  {
+    "subject": "വെണ്ട",
+    "subject_type": "CROP",
+    "relation": "REQUIRES_FERTILIZER",
+    "object": "ട്രൈക്കോഡെർമ ചേർത്ത് സമ്പുഷ്ടീകരിച്ച ജൈവവളമോ കംപോസ്റ്റാക്കിയ ചകിരിച്ചോറോ",
+    "object_type": "INPUT",
+    "context": "ഒരു ചതുരശ്ര മീറ്ററിൽ ചേർക്കുക"
+  },
+  {
+    "subject": "തക്കാളി",
+    "subject_type": "CROP",
+    "relation": "AFFECTED_BY",
+    "object": "വാട്ടരോഗം",
+    "object_type": "DISEASE",
+    "context": ""
+  },
+  {
+    "subject": "അർക്ക രക്ഷക്",
+    "subject_type": "CROP",
+    "relation": "IS_A",
+    "object": "തക്കാളി",
+    "object_type": "CONTEXT",
+    "context": "വാട്ടരോഗപ്രതിരോധശേഷിയുള്ള ഇനം"
+  },
+  {
+    "subject": "റംബുട്ടാൻ",
+    "subject_type": "CROP",
+    "relation": "AFFECTED_BY",
+    "object": "കുമിൾ രോഗബാധ",
+    "object_type": "DISEASE",
+    "context": "മഴക്കാലത്ത് ഞെടുപ്പിന് വിള്ളലുകളിലൂടെ"
+  },
+  {
+    "subject": "ബാസില്ലസ് സബ്ടിലിസ്",
+    "subject_type": "INPUT",
+    "relation": "TREATED_WITH",
+    "object": "റംബുട്ടാൻ",
+    "object_type": "CROP",
+    "context": "ഒരു ലിറ്റർ വെള്ളത്തിൽ 30 മില്ലി, നോൺ-അയോണിക് അഡ്ജസന്റ് ചേർത്ത് സ്പ്രേ ചെയ്യുക (കായ കൊഴിച്ചിൽ നിയന്ത്രിക്കാൻ)"
+  },
+  {
+    "subject": "സ്യൂഡോമോണാസ് ഫ്ലൂറസൻസ്",
+    "subject_type": "INPUT",
+    "relation": "TREATED_WITH",
+    "object": "റംബുട്ടാൻ",
+    "object_type": "CROP",
+    "context": "ഒരു ലിറ്റർ വെള്ളത്തിൽ 30 ഗ്രാം, നോൺ-അയോണിക് അഡ്ജസന്റ് ചേർത്ത് സ്പ്രേ ചെയ്യുക (കായ കൊഴിച്ചിൽ നിയന്ത്രിക്കാൻ)"
+  },
+  {
+    "subject": "കാന്താരി",
+    "subject_type": "CROP",
+    "relation": "AFFECTED_BY",
+    "object": "വെള്ളീച്ച",
+    "object_type": "PEST",
+    "context": ""
+  },
+  {
+    "subject": "മഞ്ഞക്കെണി",
+    "subject_type": "INPUT",
+    "relation": "TREATED_WITH",
+    "object": "വെള്ളീച്ച",
+    "object_type": "PEST",
+    "context": "കാന്താരിയെ ആക്രമിക്കുന്നവയെ നിയന്ത്രിക്കാം"
+  },
+  {
+    "subject": "കാന്താരി",
+    "subject_type": "CROP",
+    "relation": "AFFECTED_BY",
+    "object": "ഇലപ്പേനുകൾ, മണ്ഡരി, ശൽക്ക കീടങ്ങൾ",
+    "object_type": "PEST",
+    "context": ""
+  },
+  {
+    "subject": "വേപ്പ് അധിഷ്ഠിത സംയുക്തങ്ങൾ",
+    "subject_type": "INPUT",
+    "relation": "TREATED_WITH",
+    "object": "ഇലപ്പേനുകൾ, മണ്ഡരി, ശൽക്ക കീടങ്ങൾ",
+    "object_type": "PEST",
+    "context": "ആദ്യദിവസം ഇലയുടെ അടിയിൽ വീഴത്തക്കവിധം തളിക്കുക"
+  },
+  {
+    "subject": "വെർട്ടിസീലിയം",
+    "subject_type": "INPUT",
+    "relation": "TREATED_WITH",
+    "object": "ഇലപ്പേനുകൾ, മണ്ഡരി, ശൽക്ക കീടങ്ങൾ",
+    "object_type": "PEST",
+    "context": "ഒരു ലിറ്റർ വെള്ളത്തിൽ 30 ഗ്രാം, പിറ്റേദിവസം വൈകുന്നേരം തളിക്കുക"
+  },
+  {
+    "subject": "കാന്താരി",
+    "subject_type": "CROP",
+    "relation": "REQUIRES_FERTILIZER",
+    "object": "നാനോ DAP, സൾഫേറ്റ് ഓഫ് പൊട്ടാഷ് (SOP)",
+    "object_type": "INPUT",
+    "context": "ഒരു ലിറ്റർ വെള്ളത്തിൽ 3 മില്ലി DAP യും 3 ഗ്രാം SOP യും 45 ദിവസത്തിലൊരിക്കൽ തളിക്കുക"
+  },
+  {
+    "subject": "നെല്ല്",
+    "subject_type": "CROP",
+    "relation": "AFFECTED_BY",
+    "object": "വന്യമൃഗശല്യം (മാനുകൾ, ആനകൾ)",
+    "object_type": "PEST",
+    "context": "വയനാട് പുൽപ്പള്ളി പഞ്ചായത്തിലെ ചേകാടിയിൽ"
+  },
+  {
+    "subject": "സമ്പൂർണ",
+    "subject_type": "INPUT",
+    "relation": "TREATED_WITH",
+    "object": "നെല്ല്",
+    "object_type": "CROP",
+    "context": "ആദ്യഘട്ടത്തിൽ ഡ്രോൺ വഴി തളിക്കുന്നു (വളർച്ചയ്ക്ക്)"
+  },
+  {
+    "subject": "സ്യൂഡോമോണസ്",
+    "subject_type": "INPUT",
+    "relation": "TREATED_WITH",
+    "object": "നെല്ല്",
+    "object_type": "CROP",
+    "context": "രണ്ടാം ഘട്ടത്തിൽ ഡ്രോൺ വഴി തളിക്കുന്നു (രോഗ-കീട പ്രതിരോധത്തിന്)"
+  },
+  {
+    "subject": "ഹെർബോലീവ് പ്ലസ്സ്",
+    "subject_type": "INPUT",
+    "relation": "TREATED_WITH",
+    "object": "നെല്ല്",
+    "object_type": "CROP",
+    "context": "മൂന്നാം ഘട്ടത്തിൽ ഡ്രോൺ വഴി തളിക്കുന്നു (വന്യമൃഗങ്ങളെ തുരത്താൻ)"
+  },
+  {
+    "subject": "കുറ്റിക്കുരുമുളക്",
+    "subject_type": "CROP",
+    "relation": "TREATED_WITH",
+    "object": "ഐബിഎ ലായനി",
+    "object_type": "INPUT",
+    "context": "മുക്കി നടുന്നത് വേരുപിടിക്കാൻ സഹായിക്കും"
+  },
+  {
+    "subject": "കുറ്റിക്കുരുമുളക്",
+    "subject_type": "CROP",
+    "relation": "REQUIRES_FERTILIZER",
+    "object": "കടലപ്പിണ്ണാക്ക്, വേപ്പിൻപിണ്ണാക്ക്",
+    "object_type": "INPUT",
+    "context": "രണ്ടാഴ്ച ഇടവേളയിൽ 15 ഗ്രാം കടലപ്പിണ്ണാക്കും 30 ഗ്രാം വേപ്പിൻപിണ്ണാക്കും"
+  },
+  {
+    "subject": "നേന്ത്രവാഴ",
+    "subject_type": "CROP",
+    "relation": "AFFECTED_BY",
+    "object": "സിഗറ്റോക്ക ഇലപ്പുള്ളി രോഗം",
+    "object_type": "DISEASE",
+    "context": "വേനൽമഴ തുടങ്ങുമ്പോൾ"
+  },
+  {
+    "subject": "സ്യൂഡോമൊണാസ് ഫ്ലൂറസെൻസ്",
+    "subject_type": "INPUT",
+    "relation": "TREATED_WITH",
+    "object": "സിഗറ്റോക്ക ഇലപ്പുള്ളി രോഗം",
+    "object_type": "DISEASE",
+    "context": "ഒരു ലിറ്റർ വെള്ളത്തിൽ 50 ഗ്രാം ഇലകളിൽ തളിക്കുക"
+  },
+  {
+    "subject": "ഗോമൂത്രം, പെട്രോളിയം അധിഷ്ഠിത ധാതു എണ്ണ",
+    "subject_type": "INPUT",
+    "relation": "TREATED_WITH",
+    "object": "സിഗറ്റോക്ക ഇലപ്പുള്ളി രോഗം",
+    "object_type": "DISEASE",
+    "context": "10% വീര്യമുള്ളത് തളിക്കുക"
+  },
+  {
+    "subject": "ബോർഡോ മിശ്രിതം, കാർബെൻഡാസിം, പ്രൊപികൊണസോൾ, ഡൈഫെൻകൊണസോൾ",
+    "subject_type": "INPUT",
+    "relation": "TREATED_WITH",
+    "object": "സിഗറ്റോക്ക ഇലപ്പുള്ളി രോഗം",
+    "object_type": "DISEASE",
+    "context": "(1%), (0.1%), (0.1%), (0.1%) യഥാക്രമം"
+  },
+  {
+    "subject": "മഞ്ചേരി നേന്ത്രൻ",
+    "subject_type": "CROP",
+    "relation": "IS_A",
+    "object": "നേന്ത്രവാഴ",
+    "object_type": "CONTEXT",
+    "context": "സിഗറ്റോക്ക രോഗം താരതമ്യേന കുറവ്"
+  },
+  {
+    "subject": "ബീൻസ്",
+    "subject_type": "CROP",
+    "relation": "REQUIRES_SOIL",
+    "object": "പോഷകസമൃദ്ധമായ മണ്ണ് (കമ്പോസ്റ്റും പോട്ടിംഗ് മണ്ണും)",
+    "object_type": "LOC",
+    "context": "കളിമണ്ണ് ഒഴിവാക്കുക"
+  },
+  {
+    "subject": "ബീൻസ്",
+    "subject_type": "CROP",
+    "relation": "REQUIRES_FERTILIZER",
+    "object": "ഫോസ്ഫറസ്, പൊട്ടാസ്യം സമ്പന്നമായ വളങ്ങൾ",
+    "object_type": "INPUT",
+    "context": ""
+  },
+  {
+    "subject": "പാവൽ",
+    "subject_type": "CROP",
+    "relation": "REQUIRES_SOIL",
+    "object": "ജൈവവളങ്ങൾ ചേർത്ത മണൽമയമായതോ പശിമരാശിയുള്ളതോ ആയ മണ്ണ്",
+    "object_type": "LOC",
+    "context": "വെള്ളം കെട്ടിനിൽക്കാത്ത മണ്ണ്"
+  },
+  {
+    "subject": "പാവൽ",
+    "subject_type": "CROP",
+    "relation": "AFFECTED_BY",
+    "object": "പച്ചത്തുള്ളൻ, വെള്ളീച്ചകൾ",
+    "object_type": "PEST",
+    "context": ""
+  },
+  {
+    "subject": "വേപ്പെണ്ണ-ആവണക്കെണ്ണ-വെളുത്തുള്ളി മിശ്രിതം",
+    "subject_type": "INPUT",
+    "relation": "TREATED_WITH",
+    "object": "പച്ചത്തുള്ളൻ, വെള്ളീച്ചകൾ",
+    "object_type": "PEST",
+    "context": "വള്ളി വീശിത്തുടങ്ങുമ്പോൾ മുതൽ ആഴ്ചയിലൊരിക്കൽ സ്പ്രേ ചെയ്യുക"
+  },
+  {
+    "subject": "പാവൽ",
+    "subject_type": "CROP",
+    "relation": "AFFECTED_BY",
+    "object": "കായീച്ച",
+    "object_type": "PEST",
+    "context": ""
+  },
+  {
+    "subject": "ചെറി",
+    "subject_type": "CROP",
+    "relation": "REQUIRES_SOIL",
+    "object": "നല്ല നീർവാർച്ചയുള്ളതും ജൈവവള സമ്പുഷ്ടവുമായ മണ്ണ്",
+    "object_type": "LOC",
+    "context": "pH 6.0 മുതൽ 7.5 വരെ അനുയോജ്യം"
+  },
+  {
+    "subject": "ചെറി",
+    "subject_type": "CROP",
+    "relation": "REQUIRES_FERTILIZER",
+    "object": "കമ്പോസ്റ്റ്, വേപ്പിൻ പിണ്ണാക്ക്, ഗോമൂത്രം",
+    "object_type": "INPUT",
+    "context": ""
+  },
+  {
+    "subject": "സ്ട്രോബറി",
+    "subject_type": "CROP",
+    "relation": "REQUIRES_SOIL",
+    "object": "മണലും കമ്പോസ്റ്റും ചേർത്ത മണ്ണ്",
+    "object_type": "LOC",
+    "context": "വെള്ളം കെട്ടിനിൽക്കാൻ പാടില്ല"
+  },
+  {
+    "subject": "എപ്സം സോൾട്ട് (മഗ്നീഷ്യം സൾഫേറ്റ്)",
+    "subject_type": "INPUT",
+    "relation": "TREATED_WITH",
+    "object": "പൂച്ചെടികൾ",
+    "object_type": "CROP",
+    "context": "2 ഗ്രാം ഒരു ലിറ്റർ വെള്ളത്തിൽ, പൂവിടാനും ഇലകൾക്ക് പച്ച നിറം ലഭിക്കാനും"
+  },
+  {
+    "subject": "പഴത്തൊലിയും മുട്ടത്തോടും",
+    "subject_type": "INPUT",
+    "relation": "TREATED_WITH",
+    "object": "പൂച്ചെടികൾ",
+    "object_type": "CROP",
+    "context": "ഉണക്കിപ്പൊടിച്ച് ഉപയോഗിക്കുക"
+  },
+  {
+    "subject": "മുന്തിരി",
+    "subject_type": "CROP",
+    "relation": "REQUIRES_FERTILIZER",
+    "object": "കമ്പോസ്റ്റ്, ചാണകപ്പൊടി, എല്ലുപൊടി, വേപ്പിൻ പിണ്ണാക്ക്, പൊട്ടാഷ്, രാജ്ഫോസ്",
+    "object_type": "INPUT",
+    "context": "നടുന്നതിന് മുമ്പ് കുഴിയിൽ ചേർക്കുക"
+  },
+  {
+    "subject": "വഴുതന (പൊന്നി ഇനം)",
+    "subject_type": "CROP",
+    "relation": "AFFECTED_BY",
+    "object": "ബാക്ടീരിയൽ വാട്ട രോഗം",
+    "object_type": "DISEASE",
+    "context": "പ്രതിരോധശേഷിയുള്ള ഇനം"
+  },
+  {
+    "subject": "വഴുതന (പൊന്നി ഇനം)",
+    "subject_type": "CROP",
+    "relation": "AFFECTED_BY",
+    "object": "കായ്, തണ്ട് തുരപ്പൻ പുഴു",
+    "object_type": "PEST",
+    "context": "പ്രതിരോധശേഷിയുള്ള ഇനം"
+  },
+  {
+    "subject": "വഴുതന",
+    "subject_type": "CROP",
+    "relation": "REQUIRES_SOIL",
+    "object": "നീർവാർച്ചയുള്ളതും ഫലഭൂയിഷ്ഠവുമായ പശിമരാശി മണ്ണ്",
+    "object_type": "LOC",
+    "context": ""
+  },
+  {
+    "subject": "കുങ്കുമപ്പൂവ് (ക്രോക്കസ് സറ്റൈവസ്)",
+    "subject_type": "CROP",
+    "relation": "REQUIRES_SOIL",
+    "object": "നല്ല നീർവാർച്ചയുള്ള മണ്ണ്",
+    "object_type": "LOC",
+    "context": "പി.എച്ച് മൂല്യം 6 നും 8 നും ഇടയിൽ, കളിമണ്ണ് ഒഴിവാക്കണം"
+  },
+  {
+    "subject": "കുങ്കുമപ്പൂവ്",
+    "subject_type": "CROP",
+    "relation": "REQUIRES_FERTILIZER",
+    "object": "നൈട്രജൻ, പൊട്ടാഷ്, ഫോസ്ഫറസ്",
+    "object_type": "INPUT",
+    "context": "പ്രതിവർഷം 20 കി.ഗ്രാം, 30 കി.ഗ്രാം, 80 കി.ഗ്രാം രണ്ട് തവണകളായി (ഹെക്ടറിന്)"
+  },
+  {
+    "subject": "കുങ്കുമപ്പൂവ്",
+    "subject_type": "CROP",
+    "relation": "AFFECTED_BY",
+    "object": "ഫ്യൂസേറിയം, റൈസോക്ടോണിയ ക്രോക്കോറം, വയലറ്റ് റൂട്ട് റോട്ട്",
+    "object_type": "DISEASE",
+    "context": ""
+  },
+  {
+    "subject": "വെണ്ട",
+    "subject_type": "CROP",
+    "relation": "AFFECTED_BY",
+    "object": "മൊസൈക് രോഗം",
+    "object_type": "DISEASE",
+    "context": ""
+  },
+  {
+    "subject": "സുസ്ഥിര, അർക്ക അനാമിക, വർഷ, ഉപഹാർ, അർക്ക അഭയ, അഞ്ജിത",
+    "subject_type": "CROP",
+    "relation": "IS_A",
+    "object": "വെണ്ട",
+    "object_type": "CONTEXT",
+    "context": "മൊസൈക് രോഗത്തെ പ്രതിരോധിക്കാൻ കഴിവുള്ള ഇനങ്ങൾ"
+  },
+  {
+    "subject": "വെണ്ട",
+    "subject_type": "CROP",
+    "relation": "REQUIRES_FERTILIZER",
+    "object": "കുമ്മായം, കാലിവളമോ കോഴിക്കാഷ്ഠമോ",
+    "object_type": "INPUT",
+    "context": "അടിവളമായി"
+  },
+  {
+    "subject": "സ്യൂഡോമോണസ് ലായനി",
+    "subject_type": "INPUT",
+    "relation": "TREATED_WITH",
+    "object": "വെണ്ട",
+    "object_type": "CROP",
+    "context": "വിത്ത് നടുന്നതിന് മുമ്പ് മുക്കിവെക്കണം"
+  },
+  {
+    "subject": "വെണ്ട",
+    "subject_type": "CROP",
+    "relation": "AFFECTED_BY",
+    "object": "വൈറസ് രോഗം",
+    "object_type": "DISEASE",
+    "context": "ഇലകളിൽ പച്ചപ്പ് നഷ്ടപ്പെട്ട് മഞ്ഞ നിറമാകുകയും ഞരമ്പുകൾ തടിക്കുകയും ചെയ്യും"
+  },
+  {
+    "subject": "വെള്ളീച്ച",
+    "subject_type": "PEST",
+    "relation": "CAUSES",
+    "object": "വൈറസ് രോഗം",
+    "object_type": "DISEASE",
+    "context": "വെണ്ടയിൽ"
+  },
+  {
+    "subject": "വേപ്പധിഷ്ഠിത കീടനാശിനികൾ",
+    "subject_type": "INPUT",
+    "relation": "TREATED_WITH",
+    "object": "വെള്ളീച്ച",
+    "object_type": "PEST",
+    "context": "വെണ്ടയിൽ"
+  },
+  {
+    "subject": "എഗ്ഗ് അമിനോ ആസിഡ്",
+    "subject_type": "INPUT",
+    "relation": "TREATED_WITH",
+    "object": "വെണ്ട",
+    "object_type": "CROP",
+    "context": "10 ദിവസത്തിലൊരിക്കൽ സ്പ്രേ ചെയ്യുന്നത് കരുത്ത് വർദ്ധിപ്പിക്കും"
+  },
+  {
+    "subject": "മുളക്",
+    "subject_type": "CROP",
+    "relation": "REQUIRES_FERTILIZER",
+    "object": "ജൈവവളം",
+    "object_type": "INPUT",
+    "context": "അരക്കിലോ ചെടിയൊന്നിന് അടിവളമായി"
+  },
+  {
+    "subject": "അമരപ്പയർ",
+    "subject_type": "CROP",
+    "relation": "AFFECTED_BY",
+    "object": "മുഞ്ഞ, ചാഴി, കായ് തുരപ്പൻ, ചിത്രകീടം, പയർ വണ്ട്",
+    "object_type": "PEST",
+    "context": ""
+  },
+  {
+    "subject": "വേപ്പധിഷ്ഠിത കീടനാശിനികൾ, പുകയില കഷായം, വേപ്പിൻകുരു സത്ത്",
+    "subject_type": "INPUT",
+    "relation": "TREATED_WITH",
+    "object": "മുഞ്ഞ, ചാഴി, കായ് തുരപ്പൻ, ചിത്രകീടം, പയർ വണ്ട്",
+    "object_type": "PEST",
+    "context": "അമരപ്പയറിൽ"
+  },
+  {
+    "subject": "കുമ്പളം",
+    "subject_type": "CROP",
+    "relation": "AFFECTED_BY",
+    "object": "കായീച്ച, മത്തൻ വണ്ട്, ആമ വണ്ട്",
+    "object_type": "PEST",
+    "context": "വേനലിൽ ശല്യം കൂടുതൽ"
+  },
+  {
+    "subject": "അവക്കാഡോ (വെണ്ണപ്പഴം)",
+    "subject_type": "CROP",
+    "relation": "REQUIRES_FERTILIZER",
+    "object": "നൈട്രജൻ, ഫോസ്ഫറസ്, പൊട്ടാഷ് (വളമിശ്രിതം)",
+    "object_type": "INPUT",
+    "context": "പ്രായം കുറഞ്ഞ തൈകൾക്ക് 1:1:1, വളർന്ന ചെടികൾക്ക് 2:1:2 അനുപാതത്തിൽ"
+  },
+  {
+    "subject": "ചോളം",
+    "subject_type": "CROP",
+    "relation": "REQUIRES_FERTILIZER",
+    "object": "ഫിഷ് അമിനോ, ഗോമൂത്രം, ഫിഷ് വളം",
+    "object_type": "INPUT",
+    "context": "തൈ നട്ട് രണ്ടാഴ്ച കഴിയുമ്പോൾ മുതൽ"
+  },
+  {
+    "subject": "പപ്പായ (റെഡ് ലേഡി)",
+    "subject_type": "CROP",
+    "relation": "AFFECTED_BY",
+    "object": "തടയഴുകൽ (ഫംഗസ്), ഇലചുരുളൽ, വാട്ടം (വൈറസ്)",
+    "object_type": "DISEASE",
+    "context": ""
+  },
+  {
+    "subject": "സ്യൂഡോമോണസ് ലായനി",
+    "subject_type": "INPUT",
+    "relation": "TREATED_WITH",
+    "object": "തടയഴുകൽ (ഫംഗസ്)",
+    "object_type": "DISEASE",
+    "context": "വിത്ത് പാകുന്നതിന് മുമ്പ് മുക്കുന്നത് ഫംഗസ് രോഗങ്ങളെ തടയാൻ സഹായിക്കും"
+  },
+  {
+    "subject": "ബോർഡോ മിശ്രിതം",
+    "subject_type": "INPUT",
+    "relation": "TREATED_WITH",
+    "object": "പപ്പായ",
+    "object_type": "CROP",
+    "context": "മഴക്കാലത്തിന് മുമ്പായി ഇലകൾക്ക് താഴെ വരെ തണ്ടിൽ പുരട്ടുന്നത് തണ്ട് ചീയൽ തടയും, ഇലകളിലെ പുള്ളിപ്പൊട്ട് രോഗത്തിനും ഉത്തമം"
+  },
+  {
+    "subject": "വെണ്ട",
+    "subject_type": "CROP",
+    "relation": "AFFECTED_BY",
+    "object": "ഇലച്ചാടി, തണ്ടുതുരപ്പൻ, കായ്തുരപ്പൻ, ഇലച്ചുരുട്ടി പുഴു, നിമവിരകൾ",
+    "object_type": "PEST",
+    "context": ""
+  },
+  {
+    "subject": "വെളുത്തുള്ളി മിശ്രിതം, 4% വീര്യമുള്ള വേപ്പിൻകുരുസത്ത്, അല്ലെങ്കിൽ ബിവേറിയ",
+    "subject_type": "INPUT",
+    "relation": "TREATED_WITH",
+    "object": "ഇലച്ചാടി, തണ്ടുതുരപ്പൻ, കായ്തുരപ്പൻ, ഇലച്ചുരുട്ടി പുഴു",
+    "object_type": "PEST",
+    "context": "വെണ്ടയിൽ തളിക്കുന്നത്"
+  },
+  {
+    "subject": "ശീമക്കൊന്നയില, വേപ്പിൻപിണ്ണാക്ക്",
+    "subject_type": "INPUT",
+    "relation": "TREATED_WITH",
+    "object": "നിമവിരകൾ",
+    "object_type": "PEST",
+    "context": "മണ്ണിൽ ചേർക്കുന്നത് ശല്യം കുറയ്ക്കും"
+  },
+  {
+    "subject": "വെണ്ട",
+    "subject_type": "CROP",
+    "relation": "AFFECTED_BY",
+    "object": "മഞ്ഞളിപ്പ് അഥവാ നരപ്പ് രോഗം (വൈറസ്)",
+    "object_type": "DISEASE",
+    "context": ""
+  },
+  {
+    "subject": "സിംബിഡിൻ, ഏലയ്ക്കാനീം",
+    "subject_type": "INPUT",
+    "relation": "TREATED_WITH",
+    "object": "മഞ്ഞളിപ്പ് അഥവാ നരപ്പ് രോഗം (വൈറസ്)",
+    "object_type": "DISEASE",
+    "context": "മറ്റ് ജൈവകീടനാശിനികളോ ഉപയോഗിക്കാം"
+  },
+  {
+    "subject": "ചീര",
+    "subject_type": "CROP",
+    "relation": "AFFECTED_BY",
+    "object": "ഇലപ്പുള്ളി രോഗം (റൈസോക്ടോണിയ സോളാനി)",
+    "object_type": "DISEASE",
+    "context": "ചുവന്ന ചീരയിൽ കൂടുതൽ, മഴക്കാലത്ത്"
+  },
+  {
+    "subject": "പാൽക്കായം-മഞ്ഞൾപ്പൊടി മിശ്രിതം",
+    "subject_type": "INPUT",
+    "relation": "TREATED_WITH",
+    "object": "ഇലപ്പുള്ളി രോഗം",
+    "object_type": "DISEASE",
+    "context": "10 ഗ്രാം പാൽക്കായം 2.5 ലിറ്റർ വെള്ളത്തിൽ + 2 ഗ്രാം സോഡാപ്പൊടി + 8 ഗ്രാം മഞ്ഞൾപ്പൊടി, സ്പ്രേ ചെയ്യുക"
+  },
+  {
+    "subject": "ചാണകത്തെളി + സ്യൂഡോമോണാസ്",
+    "subject_type": "INPUT",
+    "relation": "TREATED_WITH",
+    "object": "ഇലപ്പുള്ളി രോഗം",
+    "object_type": "DISEASE",
+    "context": "2% ചാണകത്തെളിയിൽ 2% സ്യൂഡോമോണാസ് കലക്കി തളിക്കുക"
+  },
+  {
+    "subject": "മാവ്",
+    "subject_type": "CROP",
+    "relation": "TREATED_WITH",
+    "object": "നാഫ്തലിൻ അസറ്റിക് ആസിഡ് (പ്ലാനോഫിക്സ് 4.5 SL)",
+    "object_type": "INPUT",
+    "context": "കായ് വീഴ്ച കുറയ്ക്കാൻ, രണ്ട് മുതൽ മൂന്ന് മില്ലിലിറ്റർ അഞ്ച് ലിറ്റർ വെള്ളത്തിൽ, കായ്പിടിത്തമുണ്ടായി രണ്ടാഴ്ചയ്ക്കുശേഷം തളിക്കുക"
+  },
+  {
+    "subject": "പേര",
+    "subject_type": "CROP",
+    "relation": "REQUIRES_FERTILIZER",
+    "object": "കാലിവളം, യൂറിയ, മസ്സൂറിഫോസ്, പൊട്ടാഷ്",
+    "object_type": "INPUT",
+    "context": "ഒരു വർഷം 80 കി. ഗ്രാം കാലിവളം, 434 ഗ്രാം യൂറിയ, 444 ഗ്രാം മസ്സൂറിഫോസ്, 434 ഗ്രാം പൊട്ടാഷ് (10 വർഷമായ ചെടിക്ക്)"
+  },
+  {
+    "subject": "ആര്യവേപ്പ്",
+    "subject_type": "CROP",
+    "relation": "TREATED_WITH",
+    "object": "ത്വക്ക് രോഗങ്ങൾ",
+    "object_type": "DISEASE",
+    "context": "തിളപ്പിച്ച വെള്ളത്തിൽ കുളിക്കുന്നത് ശമിപ്പിക്കും"
+  },
+  {
+    "subject": "വേപ്പില",
+    "subject_type": "INPUT",
+    "relation": "TREATED_WITH",
+    "object": "പ്രമേഹം",
+    "object_type": "DISEASE",
+    "context": "രക്തത്തിലെ പഞ്ചസാരയുടെ അളവ് കുറയ്ക്കാൻ സഹായിക്കും"
+  },
+  {
+    "subject": "വേപ്പില നീര്",
+    "subject_type": "INPUT",
+    "relation": "TREATED_WITH",
+    "object": "കൃമികൾ",
+    "object_type": "PEST",
+    "context": "തേൻ ചേർത്ത് വെറും വയറ്റിൽ കഴിക്കുന്നത് ഉദരത്തിലെയും കുടലിലെയും കൃമികളെ നശിപ്പിക്കും"
+  },
+  {
+    "subject": "വേപ്പിൻ ചില്ലകൾ",
+    "subject_type": "INPUT",
+    "relation": "TREATED_WITH",
+    "object": "ദന്ത അണുബാധകൾ",
+    "object_type": "DISEASE",
+    "context": "ചവയ്ക്കുന്നത് രോഗങ്ങളെ അകറ്റിനിർത്തുന്നു"
+  },
+  {
+    "subject": "വേപ്പില",
+    "subject_type": "INPUT",
+    "relation": "TREATED_WITH",
+    "object": "താരൻ",
+    "object_type": "DISEASE",
+    "context": "ആൻ്റി ബാക്ടീരിയൽ, ആൻ്റിഫംഗൽ ഗുണങ്ങൾ കാരണം തടയുന്നു"
+  },
+  {
+    "subject": "അമരപ്പയർ",
+    "subject_type": "CROP",
+    "relation": "GROWN_IN_SEASON",
+    "object": "നവംബർ - ഫെബ്രുവരി",
+    "object_type": "CONTEXT",
+    "context": "കുറഞ്ഞ ദിനദൈർഘ്യമുള്ള സമയത്ത് പൂക്കുകയും കായ്ക്കുകയും ചെയ്യുന്നു"
+  },
+  {
+    "subject": "അമരപ്പയർ",
+    "subject_type": "CROP",
+    "relation": "REQUIRES_SPACING",
+    "object": "3 മീറ്റർ x 1.25 മീറ്റർ",
+    "object_type": "CONTEXT",
+    "context": "വരികൾ തമ്മിൽ മൂന്ന് മീറ്ററും ചെടികൾ തമ്മിൽ 1.25 മീറ്ററും"
+  },
+  {
+    "subject": "അമരപ്പയർ",
+    "subject_type": "CROP",
+    "relation": "TREATED_WITH",
+    "object": "കൂമ്പ് നുള്ളൽ",
+    "object_type": "INPUT",
+    "context": "പന്തലിൽ മൂന്നടി പടർന്നാൽ കൂടുതൽ ശാഖകൾ വളരാൻ"
+  },
+  {
+    "subject": "ഒച്ച്",
+    "subject_type": "PEST",
+    "relation": "TREATED_WITH",
+    "object": "മുട്ടത്തോട്",
+    "object_type": "INPUT",
+    "context": "പൊടിച്ച് വിതറിയാൽ ഒച്ചുകൾക്ക് നീങ്ങാൻ പ്രയാസമാകും"
+  },
+  {
+    "subject": "ഒച്ച്",
+    "subject_type": "PEST",
+    "relation": "TREATED_WITH",
+    "object": "പുതിനയില",
+    "object_type": "INPUT",
+    "context": "രൂക്ഷഗന്ധം ഒച്ചുകളെ അകറ്റുന്നു"
+  },
+  {
+    "subject": "ഒച്ച്",
+    "subject_type": "PEST",
+    "relation": "TREATED_WITH",
+    "object": "ഉപ്പ്",
+    "object_type": "INPUT",
+    "context": "മുകളിലേക്ക് വിതറുന്നത് ഉടനടി നശിപ്പിക്കും"
+  },
+  {
+    "subject": "ഒച്ച്",
+    "subject_type": "PEST",
+    "relation": "TREATED_WITH",
+    "object": "പുകയില - തുരിശ് ലായനി",
+    "object_type": "INPUT",
+    "context": "25 ഗ്രാം പുകയില + 60 ഗ്രാം തുരിശ്, വിളകളിൽ തളിക്കുക"
+  },
+  {
+    "subject": "കറിവേപ്പില",
+    "subject_type": "CROP",
+    "relation": "AFFECTED_BY",
+    "object": "അരക്ക്",
+    "object_type": "PEST",
+    "context": "ഇലകളിൽ പറ്റിപ്പിടിച്ച് നീരൂറ്റിക്കുടിച്ച് വളർച്ച മുരടിപ്പിക്കുന്നു"
+  },
+  {
+    "subject": "കഞ്ഞിവെള്ളം",
+    "subject_type": "INPUT",
+    "relation": "TREATED_WITH",
+    "object": "അരക്ക്",
+    "object_type": "PEST",
+    "context": "ഇരട്ടി വെള്ളം ചേർത്ത് നേർപ്പിച്ച് തളിച്ചാൽ അരക്കിനെ അടർത്തിമാറ്റാം"
+  },
+  {
+    "subject": "പയർ",
+    "subject_type": "CROP",
+    "relation": "AFFECTED_BY",
+    "object": "കറുത്ത പേൻ",
+    "object_type": "PEST",
+    "context": "നാലില പ്രായം മുതൽ കായ്കൾ ഉണ്ടാകുന്നതുവരെ"
+  },
+  {
+    "subject": "പുളിക്കാത്ത കഞ്ഞിവെള്ളം",
+    "subject_type": "INPUT",
+    "relation": "TREATED_WITH",
+    "object": "കറുത്ത പേൻ",
+    "object_type": "PEST",
+    "context": "രാവിലെ 11 മണിയോടെ തളിക്കുന്നത് പയറിലെ പേനിനെ നശിപ്പിക്കും"
+  },
+  {
+    "subject": "വെള്ളരിവർഗ്ഗ വിളകൾ",
+    "subject_type": "CROP",
+    "relation": "TREATED_WITH",
+    "object": "കഞ്ഞിവെള്ളക്കെണി",
+    "object_type": "INPUT",
+    "context": "പുളിച്ച കഞ്ഞിവെള്ളം + ശർക്കരപ്പൊടി + കീടനാശിനി (കായീച്ചയെ നിയന്ത്രിക്കാൻ)"
+  },
+  {
+    "subject": "പച്ചക്കറിക്കൃഷി",
+    "subject_type": "CROP",
+    "relation": "REQUIRES_INPUT",
+    "object": "മൾച്ചിംഗ് ഷീറ്റ്",
+    "object_type": "INPUT",
+    "context": "കളകളെ ഒഴിവാക്കാനും ഈർപ്പം നിലനിർത്താനും സഹായിക്കുന്നു"
+  },
+  {
+    "subject": "മാവ്",
+    "subject_type": "CROP",
+    "relation": "AFFECTED_BY",
+    "object": "കായീച്ച",
+    "object_type": "PEST",
+    "context": "മാങ്ങയിൽ സുഷിരങ്ങളുണ്ടാക്കി മുട്ടയിടുന്നു"
+  },
+  {
+    "subject": "മാലത്തിയോൺ + പഞ്ചസാര",
+    "subject_type": "INPUT",
+    "relation": "TREATED_WITH",
+    "object": "കായീച്ച",
+    "object_type": "PEST",
+    "context": "2 മില്ലിലിറ്റർ മാലത്തിയോൺ + 20 ഗ്രാം പഞ്ചസാര 1 ലിറ്റർ വെള്ളത്തിൽ"
+  },
+  {
+    "subject": "കണിവെള്ളരി",
+    "subject_type": "CROP",
+    "relation": "AFFECTED_BY",
+    "object": "കായ് ചീയൽ രോഗം",
+    "object_type": "DISEASE",
+    "context": "കായകളിലെ മുറിവുകളിലൂടെ കുമിൾ ബാധിക്കുന്നു"
+  },
+  {
+    "subject": "സ്യൂഡോമോണാസ്",
+    "subject_type": "INPUT",
+    "relation": "TREATED_WITH",
+    "object": "കായ് ചീയൽ രോഗം",
+    "object_type": "DISEASE",
+    "context": "20 ഗ്രാം ഒരു ലിറ്റർ വെള്ളത്തിൽ കലക്കി ഒഴിക്കുക"
+  },
+  {
+    "subject": "വെള്ളരി",
+    "subject_type": "CROP",
+    "relation": "AFFECTED_BY",
+    "object": "വെള്ളരി മൊസൈക് രോഗം",
+    "object_type": "DISEASE",
+    "context": "ഇലകളിൽ ഇളം പച്ച/കടുംപച്ച വരകളും പുള്ളികളും"
+  },
+  {
+    "subject": "ഡൈമേതൊയേറ്റ് 30EC",
+    "subject_type": "INPUT",
+    "relation": "TREATED_WITH",
+    "object": "മൊസൈക് രോഗം",
+    "object_type": "DISEASE",
+    "context": "രണ്ട് മില്ലി ഒരു ലിറ്റർ വെള്ളത്തിൽ തളിക്കുക"
+  },
+  {
+    "subject": "ഫിഷ് അമിനോ ആസിഡ്",
+    "subject_type": "INPUT",
+    "relation": "REQUIRES_INPUT",
+    "object": "ചെറിയ മീൻ + ശർക്കര",
+    "object_type": "INPUT",
+    "context": "തുല്യ അളവിൽ എടുത്ത് 30 ദിവസം വായു കടക്കാതെ സൂക്ഷിക്കുക"
+  },
+  {
+    "subject": "മാവ്",
+    "subject_type": "CROP",
+    "relation": "AFFECTED_BY",
+    "object": "മാംഗോ ഹോപ്പർ, മുഞ്ഞ, തേയിലക്കൊതുക്",
+    "object_type": "PEST",
+    "context": "പൂക്കളുടെയും തളിരിലകളുടെയും നീര് വലിച്ചുകുടിച്ച് ഉണക്കുന്നു"
+  },
+  {
+    "subject": "എക്കാലക്സ്",
+    "subject_type": "INPUT",
+    "relation": "TREATED_WITH",
+    "object": "മാംഗോ ഹോപ്പർ",
+    "object_type": "PEST",
+    "context": "2 മില്ലി ഒരു ലിറ്റർ വെള്ളത്തിൽ തളിക്കുക"
+  },
+  {
+    "subject": "ബീൻസ്",
+    "subject_type": "CROP",
+    "relation": "REQUIRES_CLIMATE",
+    "object": "ചെറിയ തണുപ്പ്",
+    "object_type": "CONTEXT",
+    "context": "നവംബർ മുതൽ ഫെബ്രുവരി വരെയുള്ള മാസങ്ങൾ ഉത്തമം"
+  },
+  {
+    "subject": "ബീൻസ്",
+    "subject_type": "CROP",
+    "relation": "REQUIRES_FERTILIZER",
+    "object": "കുമ്മായം",
+    "object_type": "INPUT",
+    "context": "സെന്റിന് രണ്ട് കിലോഗ്രാം കുമ്മായം ചേർത്ത് മണ്ണിളക്കുക"
+  },
+  {
+    "subject": "ബീൻസ്",
+    "subject_type": "CROP",
+    "relation": "REQUIRES_FERTILIZER",
+    "object": "ജൈവവളം",
+    "object_type": "INPUT",
+    "context": "സെന്റിന് 80 കിലോഗ്രാം അടിവളമായി നൽകുക"
+  },
+  {
+    "subject": "കുരുമുളക് (വിജയ്)",
+    "subject_type": "CROP",
+    "relation": "IS_A",
+    "object": "സങ്കരയിനം",
+    "object_type": "CONTEXT",
+    "context": "പന്നിയൂർ രണ്ട്, നീലമുണ്ടി എന്നിവയുടെ സങ്കരയിനം, തണലുള്ള പ്രദേശങ്ങൾക്ക് അനുയോജ്യം"
+  },
+  {
+    "subject": "വാഴത്തോൽ വളം",
+    "subject_type": "INPUT",
+    "relation": "REQUIRES_INPUT",
+    "object": "വാഴപ്പഴത്തിന്റെ തൊലി",
+    "object_type": "INPUT",
+    "context": "ജൈവ പൊട്ടാസ്യത്തിന്റെ പ്രധാന ഉറവിടം"
+  },
+  {
+    "subject": "പുതിന",
+    "subject_type": "CROP",
+    "relation": "REQUIRES_PROPAGATION",
+    "object": "തണ്ടുകൾ",
+    "object_type": "INPUT",
+    "context": "തണ്ടുകൾ മുറിച്ചു നട്ട് എളുപ്പത്തിൽ കൃഷി ചെയ്യാം"
+  },
+  {
+    "subject": "ചീര",
+    "subject_type": "CROP",
+    "relation": "AFFECTED_BY",
+    "object": "കൂടുകെട്ടിപ്പുഴു, ഇലതീനിപ്പുഴു",
+    "object_type": "PEST",
+    "context": "ഇലകൾ തിന്നു നശിപ്പിക്കുന്നു"
+  },
+  {
+    "subject": "വേപ്പിൻകുരു സത്ത്",
+    "subject_type": "INPUT",
+    "relation": "TREATED_WITH",
+    "object": "ചീരയിലെ പുഴുക്കൾ",
+    "object_type": "PEST",
+    "context": "5% വീര്യമുള്ള ലായനി തളിക്കുക"
+  },
+  {
+    "subject": "വഴുതന",
+    "subject_type": "CROP",
+    "relation": "TREATED_WITH",
+    "object": "സ്യൂഡോമോണാസ് ഫ്ലൂറസെൻസ്",
+    "object_type": "INPUT",
+    "context": "വേരുകൾ 20 മിനിറ്റ് ലായനിയിൽ മുക്കിവെക്കുന്നത് രോഗപ്രതിരോധശേഷി കൂട്ടും"
+  },
+  {
+    "subject": "പയർ",
+    "subject_type": "CROP",
+    "relation": "REQUIRES_FERTILIZER",
+    "object": "കുമ്മായം",
+    "object_type": "INPUT",
+    "context": "വിതയ്ക്കുന്നതിന് 15 ദിവസം മുമ്പ് ചേർക്കണം"
+  },
+  {
+    "subject": "റബർ",
+    "subject_type": "CROP",
+    "relation": "AFFECTED_BY",
+    "object": "മഴ",
+    "object_type": "CLIMATE",
+    "context": "മഴ കാരണം ടാപ്പിങ്ങിന് തടസ്സങ്ങൾ നേരിടുന്നുണ്ട്"
+  },
+  {
+    "subject": "റെഡ് ലേഡി പപ്പായ",
+    "subject_type": "CROP",
+    "relation": "TIME_TO_HARVEST",
+    "object": "ഒന്നര വർഷം",
+    "object_type": "TIME",
+    "context": "ഒന്നര വർഷം കൊണ്ട് ലാഭകരമാകും"
+  },
+  {
+    "subject": "വെള്ള കാന്താരി (സമൃദ്ധി)",
+    "subject_type": "CROP",
+    "relation": "SUITABLE_FOR",
+    "object": "റബർ തോട്ടം",
+    "object_type": "LOC",
+    "context": "തണലിൽ നന്നായി വളർന്ന് ഫലം നൽകാൻ ഇതിന് കഴിയും"
+  },
+  {
+    "subject": "കാന്താരി വിത്ത്",
+    "subject_type": "INPUT",
+    "relation": "GERMINATION_TIME",
+    "object": "6-7 ദിവസം",
+    "object_type": "TIME",
+    "context": "6-7 ദിവസത്തിനുള്ളിൽ വിത്ത് മുളയ്ക്കാൻ തുടങ്ങും"
+  },
+  {
+    "subject": "മുളക് തൈകൾ",
+    "subject_type": "CROP",
+    "relation": "TRANSPLANT_AGE",
+    "object": "ഒരു മാസം",
+    "object_type": "TIME",
+    "context": "ഒരു മാസത്തിനുള്ളിൽ തൈകൾ പറിച്ചുനടാം"
+  },
+  {
+    "subject": "മുളക്",
+    "subject_type": "CROP",
+    "relation": "AFFECTED_BY",
+    "object": "മൈറ്റ്സ്",
+    "object_type": "PEST",
+    "context": "കൂമ്പിലയിൽനിന്ന് നീരൂറ്റി കുടിക്കുന്നതുമൂലം ചെടി മുരടിക്കുന്നു"
+  },
+  {
+    "subject": "ഗോമൂത്രം ശീമക്കൊന്ന സത്ത്",
+    "subject_type": "INPUT",
+    "relation": "TREATED_WITH",
+    "object": "മൈറ്റ്സ് / വെള്ളീച്ച",
+    "object_type": "PEST",
+    "context": "50 മില്ലിലിറ്റർ ഒരു ലിറ്റർ വെള്ളത്തിൽ കലക്കി തളിക്കുക"
+  },
+  {
+    "subject": "മുളക്",
+    "subject_type": "CROP",
+    "relation": "AFFECTED_BY",
+    "object": "വാട്ടരോഗം",
+    "object_type": "DISEASE",
+    "context": "ചെടികൾ പെട്ടെന്ന് വാടിപ്പോകുന്നു"
+  },
+  {
+    "subject": "സ്യൂഡോമോണസ്",
+    "subject_type": "INPUT",
+    "relation": "TREATED_WITH",
+    "object": "വാട്ടരോഗം",
+    "object_type": "DISEASE",
+    "context": "20 ഗ്രാം ഒരു ലിറ്റർ വെള്ളത്തിൽ കലക്കി ചുവട്ടിൽ ഒഴിക്കുക"
+  },
+  {
+    "subject": "പിസ്ത",
+    "subject_type": "CROP",
+    "relation": "TIME_TO_FRUIT",
+    "object": "എട്ട് വർഷം",
+    "object_type": "TIME",
+    "context": "പിസ്ത കായ്ക്കാൻ ഏകദേശം എട്ട് വർഷമെടുക്കും"
+  },
+  {
+    "subject": "പിസ്ത കുരു",
+    "subject_type": "INPUT",
+    "relation": "GERMINATION_TIME",
+    "object": "28 ദിവസം",
+    "object_type": "TIME",
+    "context": "ഫ്രിഡ്ജിൽ നനഞ്ഞ ടിഷ്യൂ പേപ്പറിൽ സൂക്ഷിച്ചാൽ 28 ദിവസത്തിനുള്ളിൽ മുളയ്ക്കും"
+  },
+  {
+    "subject": "പിസ്ത",
+    "subject_type": "CROP",
+    "relation": "REQUIRES_FERTILIZER",
+    "object": "ചാണകം",
+    "object_type": "INPUT",
+    "context": "ചെടിയുടെ വളർച്ചയ്ക്ക് അത്യാവശ്യമാണ്"
+  },
+  {
+    "subject": "വേപ്പെണ്ണ-സോപ്പ് ലായനി",
+    "subject_type": "INPUT",
+    "relation": "TREATED_WITH",
+    "object": "പിസ്ത കീടാക്രമണം",
+    "object_type": "PEST",
+    "context": "കീടാക്രമണം ഉണ്ടായാൽ ഇലകളിൽ തളിക്കുക"
+  },
+  {
+    "subject": "കുറ്റിക്കുരുമുളക്",
+    "subject_type": "CROP",
+    "relation": "TIME_TO_FRUIT",
+    "object": "ആറുമാസം",
+    "object_type": "TIME",
+    "context": "കുറ്റിക്കുരുമുളക് ആറുമാസം കൊണ്ട് വിളവ് തരും"
+  },
+  {
+    "subject": "കുറ്റിക്കുരുമുളക്",
+    "subject_type": "CROP",
+    "relation": "REQUIRES_FERTILIZER",
+    "object": "കടലപ്പിണ്ണാക്ക് / വേപ്പിൻ പിണ്ണാക്ക്",
+    "object_type": "INPUT",
+    "context": "രണ്ടാഴ്ചയിലൊരിക്കൽ 15 ഗ്രാം കടലപ്പിണ്ണാക്കും 30 ഗ്രാം വേപ്പിൻ പിണ്ണാക്കും"
+  },
+  {
+    "subject": "ചക്ക (ഒട്ടിച്ചുചേർത്തത്)",
+    "subject_type": "CROP",
+    "relation": "TIME_TO_FRUIT",
+    "object": "4-5 വർഷം",
+    "object_type": "TIME",
+    "context": "ഒട്ടിച്ചുചേർത്ത ചെടികൾക്ക് 4-5 വർഷം മുതൽ വിളവ് നൽകാൻ കഴിയും"
+  },
+  {
+    "subject": "മാതളനാരങ്ങ",
+    "subject_type": "CROP",
+    "relation": "REQUIRES_CLIMATE",
+    "object": "35-38 ഡിഗ്രി സെൽഷ്യസ്",
+    "object_type": "CLIMATE",
+    "context": "ശരിയായ കായ് വികസനത്തിനും മധുരത്തിനും ഈ താപനില ആവശ്യമാണ്"
+  },
+  {
+    "subject": "മാതളനാരങ്ങ",
+    "subject_type": "CROP",
+    "relation": "REQUIRES_SOIL_PH",
+    "object": "ലവണാംശം / ക്ഷാരാംശം",
+    "object_type": "SOIL",
+    "context": "ഒരു പരിധിവരെ മണ്ണിലെ ലവണാംശവും ക്ഷാരാംശവും സഹിക്കാൻ കഴിയും"
+  },
+  {
+    "subject": "അന്നോണ (കസ്റ്റാർഡ് ആപ്പിൾ)",
+    "subject_type": "CROP",
+    "relation": "REQUIRES_CLIMATE",
+    "object": "ഉയർന്ന ആർദ്രത",
+    "object_type": "CLIMATE",
+    "context": "ഉയർന്ന ആർദ്രതയും ശക്തമായ ശൈത്യകാലവുമുള്ള കാലാവസ്ഥ അനുയോജ്യം"
+  },
+  {
+    "subject": "ബെർ (Ber)",
+    "subject_type": "CROP",
+    "relation": "REQUIRES_SOIL",
+    "object": "ക്ഷാര മണ്ണ്",
+    "object_type": "SOIL",
+    "context": "ഉയർന്ന പിഎച്ച് ഉള്ള ക്ഷാര മണ്ണിലും ജിപ്സം ഉപയോഗിച്ച് വളർത്താം"
+  },
+  {
+    "subject": "നെല്ലിക്ക",
+    "subject_type": "CROP",
+    "relation": "REQUIRES_SOIL_PH",
+    "object": "pH 8.5",
+    "object_type": "SOIL",
+    "context": "മണ്ണിലെ ക്ഷാരത്വം (pH 8.5) ഇവയ്ക്ക് സഹിക്കാൻ കഴിയും"
+  },
+  {
+    "subject": "ബെയ്ൽ (Bael)",
+    "subject_type": "CROP",
+    "relation": "REQUIRES_SOIL_PH",
+    "object": "pH 5 - pH 10",
+    "object_type": "SOIL",
+    "context": "pH 5 മുതൽ pH 10 വരെയുള്ള വിശാലമായ മണ്ണിൽ ഇത് നന്നായി വളരുന്നു"
+  },
+  {
+    "subject": "ഈത്തപ്പഴം",
+    "subject_type": "CROP",
+    "relation": "REQUIRES_CLIMATE",
+    "object": "3000 താപ യൂണിറ്റുകൾ",
+    "object_type": "CLIMATE",
+    "context": "ഫലം പാകമാകുന്നതിന് പ്രത്യേക താപ യൂണിറ്റുകൾ ആവശ്യമാണ്"
+  },
+  {
+    "subject": "അത്തിപ്പഴം",
+    "subject_type": "CROP",
+    "relation": "REQUIRES_SOIL",
+    "object": "നീർവാർച്ചയുള്ള പശിമരാശി",
+    "object_type": "SOIL",
+    "context": "നല്ല നീർവാർച്ചയുള്ള കളിമൺ കലർന്ന പശിമരാശി മണ്ണോ ഇടത്തരം കറുത്ത മണ്ണോ നല്ലത്"
+  },
+  {
+    "subject": "ലിച്ചി",
+    "subject_type": "CROP",
+    "relation": "REQUIRES_SOIL_PH",
+    "object": "pH 5.5",
+    "object_type": "SOIL",
+    "context": "മണ്ണിന്റെ pH ഏകദേശം 5.5 ആയിരിക്കണം"
+  },
+  {
+    "subject": "പച്ചമുളക്",
+    "subject_type": "CROP",
+    "relation": "AFFECTED_BY",
+    "object": "മുരടിപ്പ് രോഗം",
+    "object_type": "DISEASE",
+    "context": "ഇലകൾ ചുരുളുകയും വളർച്ച മുരടിക്കുകയും ചെയ്യുന്നു"
+  },
+  {
+    "subject": "വേപ്പെണ്ണ-വെളുത്തുള്ളി മിശ്രിതം",
+    "subject_type": "INPUT",
+    "relation": "TREATED_WITH",
+    "object": "മുരടിപ്പ് രോഗം",
+    "object_type": "DISEASE",
+    "context": "തൈകൾ പറിച്ചു നട്ട് പത്താം ദിവസം മുതൽ തളിക്കാവുന്നതാണ്"
+  },
+  {
+    "subject": "സർവസുഗന്ധി",
+    "subject_type": "CROP",
+    "relation": "IS_A",
+    "object": "നിത്യഹരിത സസ്യം",
+    "object_type": "CONTEXT",
+    "context": "കേരളത്തിലെ മണ്ണിൽ നന്നായി വളരുന്ന സസ്യം"
+  },
+  {
+    "subject": "മാവ്",
+    "subject_type": "CROP",
+    "relation": "AFFECTED_BY",
+    "object": "കൊമ്പുണക്കം",
+    "object_type": "DISEASE",
+    "context": "ഇലകൾ തവിട്ടോ കറുപ്പോ നിറത്തിൽ വട്ടത്തിൽ കരിഞ്ഞുതുടങ്ങുന്നു"
+  },
+  {
+    "subject": "ബോർഡോ കുഴമ്പ്",
+    "subject_type": "INPUT",
+    "relation": "TREATED_WITH",
+    "object": "കൊമ്പുണക്കം",
+    "object_type": "DISEASE",
+    "context": "രോഗം ബാധിച്ച ഭാഗം മുറിച്ചു മാറ്റി ബോർഡോ കുഴമ്പ് പുരട്ടണം"
+  },
+  {
+    "subject": "തണ്ണിമത്തൻ",
+    "subject_type": "CROP",
+    "relation": "GROWN_IN_SEASON",
+    "object": "ഡിസംബർ - മാർച്ച്",
+    "object_type": "TIME",
+    "context": "ഈ മാസങ്ങളിൽ കൃഷി ചെയ്യാവുന്നതാണ്"
+  },
+  {
+    "subject": "കച്ചോലം",
+    "subject_type": "CROP",
+    "relation": "TIME_TO_HARVEST",
+    "object": "6-7 മാസം",
+    "object_type": "TIME",
+    "context": "നട്ട് 6-7 മാസമാകുമ്പോൾ ഇലകൾ ഉണങ്ങുമ്പോൾ വിളവെടുക്കാം"
+  },
+  {
+    "subject": "അവക്കാഡോ",
+    "subject_type": "CROP",
+    "relation": "REQUIRES_SOIL",
+    "object": "മണൽ കലർന്ന പശിമരാശി",
+    "object_type": "SOIL",
+    "context": "എല്ലാത്തരം മണ്ണിലും വളരുമെങ്കിലും മണൽ കലർന്ന പശിമരാശി മണ്ണാണ് ഏറ്റവും അനുയോജ്യം"
+  },
+  {
+    "subject": "ചൗചൗ",
+    "subject_type": "CROP",
+    "relation": "AFFECTED_BY",
+    "object": "കീടനാശിനികൾ ആവശ്യമില്ല",
+    "object_type": "CONTEXT",
+    "context": "കീടനാശിനികൾ ആവശ്യമില്ലാത്ത ഏക പച്ചക്കറിയാണ് ചൗചൗ"
+  },
+  {
+    "subject": "നീല അമരി",
+    "subject_type": "CROP",
+    "relation": "REQUIRES_FERTILIZER",
+    "object": "അധിക വളപ്രയോഗം ആവശ്യമില്ല",
+    "object_type": "CONTEXT",
+    "context": "വേരിലെ മുഴകളിലൂടെ നൈട്രജൻ ഉത്പാദിപ്പിക്കുന്നതിനാൽ അധിക വളപ്രയോഗം ആവശ്യമില്ല"
+  },
+  {
+    "subject": "ആടലോടകം",
+    "subject_type": "CROP",
+    "relation": "AFFECTED_BY",
+    "object": "വെള്ളക്കെട്ട്",
+    "object_type": "SOIL",
+    "context": "വെള്ളക്കെട്ട് ഈ ചെടിക്ക് ദോഷകരമാണ്"
+  },
+  {
+    "subject": "ചന്ദനം",
+    "subject_type": "CROP",
+    "relation": "TIME_TO_HARVEST",
+    "object": "25 വർഷം",
+    "object_type": "TIME",
+    "context": "25 വർഷം പ്രായമാകുമ്പോഴേക്കും കാതൽ ലഭിക്കും"
+  }
+]
