@@ -2174,7 +2174,8 @@
     "relation": "SAME_AS",
     "object": "AGROVOC:c_6599",
     "object_type": "UNIVERSAL_ANCHOR",
-    "context": "Universal Anchor for rice"
+    "context": "Universal Anchor for rice",
+    "weight": 1
   },
   {
     "subject": "മുരിങ്ങ",
