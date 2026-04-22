@@ -33,7 +33,7 @@ all_entities = get_all_entities(data)
 # 4. Sidebar Legend
 with st.sidebar:
     st.header("📊 Graph Legend")
-    st.markdown("- 🟢 Crops | 🔴 Diseases | 🟠 Pests\n- 🔵 Inputs | ⚪ AGROVOC | 🔘 Other")
+    st.markdown("- 🟢 Crops - 🔴 Diseases - 🟠 Pests - 🔵 Inputs - ⚪ AGROVOC - 🔘 Other")
     st.divider()
     st.info("💡 **Learning Mode:** Clicking '✅ Correct' ranks that result higher for future searches.")
 
