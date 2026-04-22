@@ -253,7 +253,8 @@
     "relation": "TREATED_WITH",
     "object": "മൂടുചീയൽ",
     "object_type": "DISEASE",
-    "context": "1% തളിക്കുകയോ തടങ്ങളിൽ ഒഴിക്കുകയോ ചെയ്യുക"
+    "context": "1% തളിക്കുകയോ തടങ്ങളിൽ ഒഴിക്കുകയോ ചെയ്യുക",
+    "weight": 1
   },
   {
     "subject": "മാവ്",

@@ -5,3 +5,4 @@ time
 os
 streamlit
 pyvis
+thefuzz
