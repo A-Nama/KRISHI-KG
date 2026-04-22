@@ -1,9 +1,5 @@
-pandas
-json
-requests
-time
-os
 streamlit
-pyvis
-thefuzz
-python-Levenshtein
+pandas
+requests
+pyvis==0.3.1
+thefuzz[speedup]
