@@ -6,3 +6,4 @@ os
 streamlit
 pyvis
 thefuzz
+python-Levenshtein
